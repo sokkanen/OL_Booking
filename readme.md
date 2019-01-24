@@ -13,6 +13,8 @@ Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tar
 
 [Kuva tietokannan hahmotelmasta](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta_alustava.png)
 
+[User storyt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md)
+
 [Ohjelman tämänhetkinen versio Herokussa](https://ol-booking.herokuapp.com)
 
 Huom! Ohjelman varaustoimintoon liittyvä kalenteri ei toimi Mozilla Firefoxilla!
