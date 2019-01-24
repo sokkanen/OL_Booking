@@ -15,4 +15,4 @@ Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tar
 
 [Ohjelman tämänhetkinen versio Herokussa](https://ol-booking.herokuapp.com)
 
- 
+Huom! Ohjelman varaustoimintoon liittyvä kalenteri ei toimi Mozilla Firefoxilla!
