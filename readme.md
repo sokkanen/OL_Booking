@@ -11,4 +11,8 @@ tarjoamiaan palveluita.
 
 Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tarkastelun..
 
+[Kuva tietokannan hahmotelmasta](https://github.com/sokkanen/TSOHA_OL_Booking/dokumentointi/images/tietokanta_alustava.png)
+
+[Ohjelman tämänhetkinen versio Herokussa](https://ol-booking.herokuapp.com)
+
  

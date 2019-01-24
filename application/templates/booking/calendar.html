@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div>
+    <h1>
+        
+        "Company name's" booking calendar for 
+        {{ month }}
+         /
+        {{ year }}
+        
+    </h1>
+        <table>
+          <tr>
+            <td>
+                <form method="POST" action="{{ url_for('prev_month') }}">
+                    <input type="submit" value="previous month"/>
+                </form>
+            </td>
+            <td>
+                <form method="POST" action="{{ url_for('next_month') }}">
+                    <input type="submit" value="next month"/>
+                </form>
+            </td>
+          </tr>
+        </table>
+    <div>
+      <table>
+          <tr>
+              {% for name in daynames %}
+              {% if name == '|SU|' %}
+              <td><h3 style="color: red">{{ name }}</h3></td>
+              {% else %}
+              <td><h3>{{ name }}</h3></td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+          {% for week in days %}
+        <tr>
+          {% for day in week %}
+            {% if day != 0%}
+              <td>{{ day  }}</td>
+            {% else %}
+              <td></td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <br/>
+  <form method="POST" action="{{ url_for('booking_create') }}">
+            Date:
+            <input type="datetime-local" name="time"><br/>
+            Service:
+            <input list="services" name="service">
+            <datalist id="services">
+              <option value="Palvelu1">
+              <option value="Palvelu2">
+              <option value="Palvelu3">
+              <option value="Palvelu4">
+            </datalist><br/>
+            Service provider:
+            <input list="workers" name="worker">
+            <datalist id="workers">
+              <option value="Palvelua_tarjoava1">
+              <option value="Palvelua_tarjoava2">
+              <option value="Palvelua_tarjoava3">
+            </datalist><br/>
+            Notes:
+            <input type="text" name="notes"/><br/><br/>
+            <input type="submit" name="add_booking" value="Book service"/>
+            <input type="reset">
+</form>
+{% endblock %}
+</div>

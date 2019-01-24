@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<div>
+    <p>
+        Booking management for workers and supervisors<br/>
+        The view will require login<br/>
+    </p>
+</div>
+<table>
+    <tr>
+        <th>Customer</th>
+        <th>Service provider</th>
+        <th>Service</th>
+        <th>Notes from customer:</th>
+        <th>Time</th>
+        <th>Confirmed</th>
+    </tr>
+    {% if bookings is defined and bookings|length > 0 %}
+    {% for booking in bookings %}
+    <tr>
+        <td> Not implemented </td>
+        <td> Not implemented </td>
+        <td> Not implemented </td>
+        <td>{{ booking.notes }}</td>
+        <td>{{ booking.requested_date }}</td>
+        <td>{{ booking.confirmed }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('booking_set_confirmed', booking_id=booking.id) }}">
+                <input type="submit" value="Set confirmed"/>
+            </form>
+        </td>
+        <td>
+            <form method="POST" action="{{ url_for('booking_remove', booking_id=booking.id) }}">
+                <input type="submit" value="Remove booking"/>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+            <tr></tr>
+            <tr>
+                    <td></td>
+                    <td></td>
+                    <td><h3 style="color:red;"> No bookings found </h3></td>
+            </tr>
+    </table></b>
+    {% endif %}
+{% endblock %}

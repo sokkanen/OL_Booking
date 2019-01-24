@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+        Worker management view for administrators.<br/>
+        This view will require login<br/><br/>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Is admin</th>
+        <th>Services</th>
+    </tr>
+    {% if workers is defined and workers|length > 0 %}
+        {% for worker in workers %} 
+            <tr>
+                <form method="POST" action="{{ url_for('worker_modify', worker_id=worker.id) }}">
+                    <td><input type="text" name="name" value='{{ worker.name }}'/></td>
+                    <td><input type="text" name="username" value='{{ worker.username }}'/></td>
+                    <td><input type="text" name="admin" value='{{ worker.isAdmin }}'/></td>
+                    <td>Not implemented</td>     
+                    <td><input type="submit" value="Modify worker"/></td>
+                    <td><input type="reset"></td>
+                </form>
+            </tr>
+        {% endfor %}
+        {% else %}
+            <tr></tr>
+            <tr>
+                    <td></td>
+                    <td></td>
+                    <td><h3 style="color:red;"> No workers added yet </h3></td>
+            </tr>
+            {% endif %}
+</table></b>
+
+</br>
+<h3>Add a worker</h3>
+<form method="POST" action="{{ url_for('worker_create') }}">
+        Name:
+        <input type="text" name="name"/><br/>
+        Username:
+        <input type="text" name="username"/><br/>
+        Password:
+        <input type="password" name="password"/><br/>
+        Confirm Password:
+        <input type="password" name="password2"/><br/>
+        Select worker role:
+        <input type="radio" name="admin" value="False"> Worker
+        <input type="radio" name="admin" value="True"> Admin<br></br>
+        <input type="submit" value="Add worker"/>
+        <input type="reset">
+</form>
+
+{% endblock %}
