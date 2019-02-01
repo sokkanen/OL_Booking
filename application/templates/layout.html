@@ -9,6 +9,7 @@
         <p>logged in with a username <b>{{ current_user.username }}</b> <a href="{{ url_for('user_logout') }}">Logout</a></p>
         {% else %}
         <a href="{{ url_for('user_login') }}">Login</a>
+        <a href="{{ url_for('user_register') }}">Register</a>
         {% endif %}
 
         <ul>
