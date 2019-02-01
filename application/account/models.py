@@ -10,11 +10,9 @@ class Account(db.Model):
     linked_worker = db.relationship('Worker', backref='account', uselist=False, lazy=True)
     linked_customer = db.relationship('Customer', backref='account', uselist=False, lazy=True)
 
-    def __init__(self, username, password, customer_id, worker_id):
+    def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.customer_id = customer_id
-        self.worker_id = worker_id
 
     def get_id(self):
         return self.id

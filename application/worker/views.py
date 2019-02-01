@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for
 from datetime import datetime, date
 from application.worker.models import Worker
 from application.service.models import Service
+from application.account.models import Account
 from application.worker.forms import WorkerForm
 from application.service.forms import ServiceForm, Service_Worker_Form
 
@@ -23,14 +24,20 @@ def worker_create():
     form = WorkerForm(request.form)
     if not form.validate():
         return render_template("worker/list.html", workers = Worker.query.all(), services = Service.query.all(), wform = form, sform = ServiceForm(), swform = Service_Worker_Form())
-    name = form.name.data
+    
     password = form.password.data
+    username = form.username.data
+    account = Account(username, password)
+    db.session().add(account)
+    db.session().commit()
+    account_id = Account.query.filter_by(username=form.username.data, password=form.password.data).first().id
+    name = form.name.data
     isAdmin = form.role.data
     if isAdmin == "True":
         isAdmin = True
     else:
         isAdmin = False
-    worker = Worker(name, name, password, isAdmin)
+    worker = Worker(name, isAdmin, account_id)
     db.session().add(worker)
     db.session().commit()
     return redirect(url_for("worker_index"))

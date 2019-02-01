@@ -38,11 +38,11 @@
 <h3>Add a worker</h3>
 <form method="POST" action="{{ url_for('worker_create') }}">
     <table>
-      <tr>
+        <tr>
           {{ wform.name.label}}
-      </tr>
-      <tr>
-          <td>{{ wform.name}}</td>
+        </tr>
+        <tr>
+          <td>{{ wform.name}}</td></br>
           <td>
           <ul>
               {% for error in wform.name.errors %}
@@ -50,7 +50,20 @@
               {% endfor %}
           </ul>
           </td>
-      </tr>
+        </tr>
+        <tr>
+            <td>{{ wform.username.label}} </td>
+        </tr>
+        <tr>   
+            <td>{{ wform.username}}</td>
+            <td>
+            <ul>
+                {% for error in wform.username.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            </td>
+        </tr>
         <tr>
           <td>{{ wform.password.label}}</td>
         </tr>

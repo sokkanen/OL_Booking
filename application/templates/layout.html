@@ -5,11 +5,16 @@
         <title>OL-booking</title>
     </head>
     <body>
+        {% if current_user.is_authenticated %}
+        <p>logged in with a username <b>{{ current_user.username }}</b> <a href="{{ url_for('user_logout') }}">Logout</a></p>
+        {% else %}
+        <a href="{{ url_for('user_login') }}">Login</a>
+        {% endif %}
+
         <ul>
             <li><a href="/">Front page</a></li>
             <li><a href="{{ url_for('cal_index') }}">Booking</a></li>
             <li><a href="{{ url_for('booking_index') }}">My Bookings</a></li>
-            <li><a href="{{ url_for('user_login') }}">User Login</a></li>
         </ul>
         {% block body %}
             <div>
