@@ -16,5 +16,6 @@ from application.worker import models
 from application.service import models
 from application.account import models
 from application.account import views
+from application.customer import models
   
 db.create_all()

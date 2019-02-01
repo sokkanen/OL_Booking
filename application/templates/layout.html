@@ -9,7 +9,7 @@
             <li><a href="/">Front page</a></li>
             <li><a href="{{ url_for('cal_index') }}">Booking</a></li>
             <li><a href="{{ url_for('booking_index') }}">My Bookings</a></li>
-            <li><a href="{{ url_for('customer_login') }}">Customer Login</a></li>
+            <li><a href="{{ url_for('user_login') }}">User Login</a></li>
         </ul>
         {% block body %}
             <div>
@@ -20,7 +20,6 @@
         <font size="2">Site management </br>
                 <a href="{{ url_for('booking_index') }}">Manage Bookings</a></br>
                 <a href="{{ url_for('worker_index') }}">Worker and service management</a></br>
-                <a href="{{ url_for('customer_login') }}">Staff Login</a>
         </font> 
         </div>
     </body>

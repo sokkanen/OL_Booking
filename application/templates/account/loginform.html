@@ -3,7 +3,7 @@
 {% block body %}
 <h3>Login:</h3>
 <font color="red">{{ error }}</font> 
-<form method="POST" action="{{ url_for('customer_login') }}">
+<form method="POST" action="{{ url_for('user_login') }}">
     <table>
         <tr>
           {{ form.username.label}}
