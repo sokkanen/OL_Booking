@@ -11,6 +11,9 @@ tarjoamiaan palveluita.
 
 Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tarkastelun..
 
+#### Testitunnukset ####
+Ohjelman tämänhetkinen versio ei vaadi testitunnuksia. Kaikki toiminnallisuudet saa vielä toistaiseksi näkymään rekisteröitymisen kautta.
+
 [Kuva tietokannan hahmotelmasta](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta_alustava.png)
 
 [User storyt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md)
