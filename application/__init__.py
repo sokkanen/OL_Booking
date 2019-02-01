@@ -14,7 +14,7 @@ from application.booking import models
 from application.worker import views
 from application.worker import models
 from application.service import models
-from application.customer import models
-from application.customer import views
+from application.account import models
+from application.account import views
   
 db.create_all()

@@ -6,13 +6,13 @@
 <form method="POST" action="{{ url_for('customer_login') }}">
     <table>
         <tr>
-          {{ form.name.label}}
+          {{ form.username.label}}
         </tr>
         <tr>
-            <td>{{ form.name}}</td>
+            <td>{{ form.username}}</td>
             <td>
                 <ul>
-                {% for error in form.name.errors %}
+                {% for error in form.username.errors %}
                 <li>{{ error }}</li>
                 {% endfor %}
                 </ul>
@@ -32,7 +32,7 @@
             </td>
         </tr>
     </table>
-  <input type="submit" name="login_customer "value="Login"/>
+  <input type="submit" name="user_login" value="Login"/>
   <input type="reset">
 </form>
 

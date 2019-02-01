@@ -9,24 +9,11 @@ class Worker(db.Model):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
     isAdmin = db.Column(db.Boolean, nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
 
-    def __init__(self, name, username, password, isAdmin):
+    def __init__(self, name, username, password, isAdmin, account_id):
         self.name = name
         self.username = username
         self.password = password
         self.isAdmin = isAdmin
-  
-    #def get_id(self):
-    #    return self.id
-
-    #def is_active(self):
-    #    return True
-
-    #def is_anonymous(self):
-    #    return False
-
-    #def is_authenticated(self):
-    #    return True
-
-    #def is_admin(self):
-    #    return self.isAdmin
+        self.account_id = account_id
