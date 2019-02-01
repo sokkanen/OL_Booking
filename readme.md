@@ -14,6 +14,8 @@ Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tar
 #### Testitunnukset ####
 Ohjelman tämänhetkinen versio ei vaadi testitunnuksia. Kaikki toiminnallisuudet saa vielä toistaiseksi näkymään rekisteröitymisen kautta.
 
+#### Linkit ####
+
 [Kuva tietokannan hahmotelmasta](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta_alustava.png)
 
 [User storyt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md)
