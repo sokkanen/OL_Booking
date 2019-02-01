@@ -1,10 +1,8 @@
 from application import db
+from application.models import Base
 
-class Account(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
+class Account(Base):
+
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
     linked_worker = db.relationship('Worker', backref='account', uselist=False, lazy=True)

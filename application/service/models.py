@@ -1,8 +1,8 @@
 from application import db
+from application.models import BaseWithName
 
-class Service(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(144), nullable=False)
+class Service(BaseWithName):
+
     duration_hrs = db.Column(db.Integer)
     duration_mins = db.Column(db.Integer)
     cost_per_hour = db.Column(db.Integer)

@@ -1,11 +1,8 @@
 from application import db
+from application.models import BaseWithName
 
-class Customer(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
-    name = db.Column(db.String(144), nullable=False)
+class Customer(BaseWithName):
+
     email = db.Column(db.String(144), nullable=False)
     address = db.Column(db.String(144), nullable=False)
     phone = db.Column(db.String(144), nullable=False)

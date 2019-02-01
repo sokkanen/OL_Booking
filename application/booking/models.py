@@ -1,10 +1,8 @@
 from application import db
+from application.models import Base
 
-class Booking(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-    onupdate=db.func.current_timestamp())
+class Booking(Base):
+
     notes = db.Column(db.String(150), nullable=False)
     confirmed = db.Column(db.Boolean, nullable=False)
     requested_date = db.Column(db.DateTime, nullable=False)
