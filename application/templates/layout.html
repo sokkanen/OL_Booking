@@ -7,14 +7,21 @@
     <body>
         <ul>
             <li><a href="/">Front page</a></li>
-            <li><a href="{{ url_for('booking_index') }}">View Bookings</a></li>
             <li><a href="{{ url_for('cal_index') }}">Booking</a></li>
-            <li><a href="{{ url_for('worker_index') }}">Worker management</a></li>
+            <li><a href="{{ url_for('booking_index') }}">My Bookings</a></li>
+            <li><a href="{{ url_for('customer_login') }}">Customer Login</a></li>
         </ul>
         {% block body %}
             <div>
                 
             </div>
         {% endblock %}
+        <div align="right">
+        <font size="2">Site management </br>
+                <a href="{{ url_for('booking_index') }}">Manage Bookings</a></br>
+                <a href="{{ url_for('worker_index') }}">Worker and service management</a></br>
+                <a href="{{ url_for('customer_login') }}">Staff Login</a>
+        </font> 
+        </div>
     </body>
 </html>

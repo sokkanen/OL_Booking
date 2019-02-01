@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
   
 {% block body %}
-        Worker management view for administrators.<br/>
-        This view will require login<br/><br/>
+        Worker and service management view for administrators.<br/>
+        This view will require login and admin-role<br/><br/>
+        <h2><u>Workers:</u></h2>
 <table>
     <tr>
         <th>Name</th>
@@ -36,19 +37,148 @@
 </br>
 <h3>Add a worker</h3>
 <form method="POST" action="{{ url_for('worker_create') }}">
-        Name:
-        <input type="text" name="name"/><br/>
-        Username:
-        <input type="text" name="username"/><br/>
-        Password:
-        <input type="password" name="password"/><br/>
-        Confirm Password:
-        <input type="password" name="password2"/><br/>
-        Select worker role:
-        <input type="radio" name="admin" value="False"> Worker
-        <input type="radio" name="admin" value="True"> Admin<br></br>
-        <input type="submit" value="Add worker"/>
-        <input type="reset">
+    <table>
+      <tr>
+          {{ wform.name.label}}
+      </tr>
+      <tr>
+          <td>{{ wform.name}}</td>
+          <td>
+          <ul>
+              {% for error in wform.name.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+          </ul>
+          </td>
+      </tr>
+        <tr>
+          <td>{{ wform.password.label}}</td>
+        </tr>
+        <tr>
+          <td>
+              {{ wform.password}}</br>
+          </td>
+          <td>
+              <ul>
+                  {% for error in wform.password.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+              </ul>
+          </td>
+        </tr>
+        <tr>
+            <td>{{ wform.confirm_password.label}}</td>
+        </tr>
+              <tr>
+                <td>
+                    {{ wform.confirm_password}}</br>
+                </td>
+                <td>
+                    <ul>
+                        {% for error in wform.confirm_password.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+              </tr>
+              <tr>
+                    <td>{{ wform.role.label}}</td>
+                </tr>
+                      <tr>
+                        <td>
+                            {{ wform.role}}
+                        </td>
+                </tr>
+    </table>
+  <input type="submit" name="add_worker "value="Add worker"/>
+  <input type="reset">
+</form>
+</br>
+<h2><u>Services:</u></h2>
+<table>
+        <tr>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Cost per Hour</th>
+            <th>Total</th>
+            <th>Assign worker</th>
+        </tr>
+        {% if services is defined and services|length > 0 %}
+        {% for service in services %}
+        <tr>
+            <td>{{ service.name}}</td>
+            <td>{{ service.duration_hrs}}h {{service.duration_mins}}min</td>
+            <td>{{ service.cost_per_hour }} €</td>
+            <td>{{ (service.cost_per_hour) * (service.duration_hrs) + ((service.cost_per_hour) * (service.duration_mins) / 60) }} €</td>
+            <td>
+                <form method="POST" action="{{ url_for('worker_assign') }}">
+                {{ swform.workers_list }}
+                <input type="submit" name="assign_worker "value="Assign worker"/>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td><h3 style="color:red;"> No services added yet </h3></td>
+        </tr>
+        {% endif %}
+</table></b>
+<h3>Add a Service</h3>
+<form method="POST" action="{{ url_for('service_create') }}">
+    <table>
+        <tr>
+          {{ sform.name.label}}
+        </tr>
+        <tr>
+            <td>{{ sform.name}}</td>
+            <td>
+                <ul>
+                {% for error in sform.name.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ sform.duration_hrs.label }}</td>
+        </tr>
+        <tr>
+            <td>{{ sform.duration_hrs}}</td>
+            <td>
+                <ul>
+                {% for error in sform.duration_hrs.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ sform.duration_mins.label}}</td>
+        </tr>
+        <tr>
+            <td>
+                {{ sform.duration_mins}}</br>
+            </td>
+            <td>
+                <ul>
+                {% for error in sform.duration_mins.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ sform.cost_per_hour.label }}</td>
+        </tr>
+        <tr>
+            <td>{{ sform.cost_per_hour}}</td>
+        </tr>
+    </table>
+  <input type="submit" name="add_service "value="Add service"/>
+  <input type="reset">
 </form>
 
 {% endblock %}

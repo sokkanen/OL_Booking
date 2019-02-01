@@ -6,7 +6,7 @@ class Booking(db.Model):
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
     onupdate=db.func.current_timestamp())
 
-    notes = db.Column(db.String(144), nullable=False)
+    notes = db.Column(db.String(150), nullable=False)
     confirmed = db.Column(db.Boolean, nullable=False)
     requested_date = db.Column(db.DateTime, nullable=False)
 

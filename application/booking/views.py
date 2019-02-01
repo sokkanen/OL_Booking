@@ -2,36 +2,12 @@ from application import app, db
 from flask import render_template, request, redirect, url_for
 from datetime import datetime, date
 from application.booking.models import Booking
+from application.booking.forms import BookingForm
+from application.booking.cal import Month_And_Year
 import calendar
 
-# Kalenteritoiminnallisuus omaan luokkaansa.
-
-class Month_And_Year:
-    def __init__(self):
-        self.year = datetime.now().year
-        self.month = datetime.now().month
-
-    def previous_month(self):
-        if self.month == 1:
-            self.year -=1
-            self.month = 12
-        else:
-            self.month -=1
-
-    def next_month(self):
-        if self.month == 12:
-            self.year +=1
-            self.month = 1
-        else:
-            self.month +=1
-
-    def get_month(self):
-        return self.month
-
-    def get_year(self):
-        return self.year
-
 current = Month_And_Year()
+daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
 
 @app.route("/bookings", methods=["GET"])
 def booking_index():
@@ -57,11 +33,10 @@ def booking_remove(booking_id):
 def cal_index():
     year = current.get_year()
     month = current.get_month()
-    daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
     lst = []
     for day in list(calendar.monthcalendar(year, month)):
         lst.append(day)
-    return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames)
+    return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = BookingForm())
 
 @app.route("/calendar/prev/", methods=["POST"])
 def prev_month():
@@ -75,10 +50,19 @@ def next_month():
 
 @app.route("/calendar", methods=["POST"])
 def booking_create():
-    req_time = datetime.strptime(request.form.get("time"), '%Y-%m-%dT%H:%M')
-    notes = request.form.get("notes")
-    b = Booking(notes, False, req_time)
-    db.session().add(b)
-    db.session().commit()
+    form = BookingForm(request.form)
+    if not form.validate():
+        year = current.get_year()
+        month = current.get_month()
+        lst = []
+        for day in list(calendar.monthcalendar(year, month)):
+            lst.append(day)
+        return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = form)
+    else:
+        dateAndTime = form.date.data
+        notes = form.notes.data
+        b = Booking(notes, False, dateAndTime)
+        db.session().add(b)
+        db.session().commit()
 
     return redirect(url_for("cal_index"))

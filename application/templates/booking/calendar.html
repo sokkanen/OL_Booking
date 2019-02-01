@@ -51,27 +51,53 @@
     </div>
     <br/>
   <form method="POST" action="{{ url_for('booking_create') }}">
-            Date:
-            <input type="datetime-local" name="time"><br/>
-            Service:
-            <input list="services" name="service">
-            <datalist id="services">
-              <option value="Palvelu1">
-              <option value="Palvelu2">
-              <option value="Palvelu3">
-              <option value="Palvelu4">
-            </datalist><br/>
-            Service provider:
-            <input list="workers" name="worker">
-            <datalist id="workers">
-              <option value="Palvelua_tarjoava1">
-              <option value="Palvelua_tarjoava2">
-              <option value="Palvelua_tarjoava3">
-            </datalist><br/>
-            Notes:
-            <input type="text" name="notes"/><br/><br/>
-            <input type="submit" name="add_booking" value="Book service"/>
-            <input type="reset">
+    <table>
+      <tr>
+          {{ form.date.label}}
+      </tr>
+      <tr>
+          <td>{{ form.date}}</td>
+          <td>
+          <ul>
+              {% for error in form.date.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+          </ul>
+          </td>
+      </tr>
+      <tr>
+        <td>{{ form.service.label}}</td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.service}}</br>
+        </td>
+        <td>
+            <ul>
+                {% for error in form.service.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+      </tr>
+      <tr>
+          <td>{{ form.notes.label}}</td>
+        </tr>
+        <tr>
+          <td>
+              {{ form.notes}}</br>
+          </td>
+          <td>
+              <ul>
+                  {% for error in form.notes.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+              </ul>
+          </td>
+        </tr>
+    </table>
+  <input type="submit" name="add_booking" value="Book service"/>
+  <input type="reset">
 </form>
 {% endblock %}
 </div>
