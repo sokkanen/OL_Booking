@@ -45,4 +45,7 @@ def load_account(account_id):
     return Account.query.get(account_id)
 
 # Luo taulut
-db.create_all()
+try:
+    db.create_all()
+except:
+    pass
