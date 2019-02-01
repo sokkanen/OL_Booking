@@ -10,6 +10,7 @@ class Customer(db.Model):
     address = db.Column(db.String(144), nullable=False)
     phone = db.Column(db.String(144), nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
+    bookings = db.relationship('Booking', backref='customer', lazy=True)
 
     def __init__(self, name, email, address, phone, account_id):
         self.name = name

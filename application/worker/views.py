@@ -1,6 +1,7 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
 from datetime import datetime, date
+from flask_login import login_required
 from application.worker.models import Worker
 from application.service.models import Service
 from application.account.models import Account
@@ -8,10 +9,12 @@ from application.worker.forms import WorkerForm
 from application.service.forms import ServiceForm, Service_Worker_Form
 
 @app.route("/worker", methods=["GET"])
+@login_required
 def worker_index():
     return render_template("worker/list.html", workers = Worker.query.all(), services = Service.query.all(), wform = WorkerForm(), sform = ServiceForm(), swform = Service_Worker_Form())
 
 @app.route("/worker/<worker_id>/", methods=["POST"])
+@login_required
 def worker_modify(worker_id):
     w = Worker.query.get(worker_id)
     # TARVITSEE SÄÄTÄÄ JA RAKENTAA
@@ -20,6 +23,7 @@ def worker_modify(worker_id):
     return redirect(url_for("booking_index"))
 
 @app.route("/worker", methods=["POST"])
+@login_required
 def worker_create():
     form = WorkerForm(request.form)
     if not form.validate():
@@ -43,12 +47,14 @@ def worker_create():
     return redirect(url_for("worker_index"))
 
 @app.route("/worker/assign", methods=["POST"])
+@login_required
 def worker_assign():
     # TARVITSEE LIITOSTAULUN
     print("hi!")
     return redirect(url_for("worker_index"))
 
 @app.route("/worker/add_service", methods=["POST"])
+@login_required
 def service_create():
     form = ServiceForm(request.form)
     if not form.validate():

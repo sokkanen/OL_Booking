@@ -1,5 +1,6 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required, current_user
 from datetime import datetime, date
 from application.booking.models import Booking
 from application.booking.forms import BookingForm
@@ -10,10 +11,13 @@ current = Month_And_Year()
 daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
 
 @app.route("/bookings", methods=["GET"])
+@login_required
 def booking_index():
+    ### Haettava käyttäjä
     return render_template("booking/list.html", bookings = Booking.query.all())
 
 @app.route("/bookings/<booking_id>/", methods=["POST"])
+@login_required
 def booking_set_confirmed(booking_id):
     b = Booking.query.get(booking_id)
     b.confirmed = True
@@ -22,6 +26,7 @@ def booking_set_confirmed(booking_id):
     return redirect(url_for("booking_index"))
 
 @app.route("/bookings/del/<booking_id>/", methods=["POST"])
+@login_required
 def booking_remove(booking_id):
     b = Booking.query.get(booking_id)
     db.session.delete(b)
@@ -61,7 +66,8 @@ def booking_create():
     else:
         dateAndTime = form.date.data
         notes = form.notes.data
-        b = Booking(notes, False, dateAndTime)
+        customer_id = current_user.id
+        b = Booking(notes, False, dateAndTime, customer_id)
         db.session().add(b)
         db.session().commit()
 
