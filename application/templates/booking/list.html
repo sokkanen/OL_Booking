@@ -2,32 +2,56 @@
   
 {% block body %}
 <div>
-    <p>
-        Booking management for workers and supervisors<br/>
-        The view will require login<br/>
-    </p>
+    <h1>Booking management</h1>
 </div>
+    <h3>Upcoming bookings: </h3>
 <table>
     <tr>
         <th>Customer</th>
-        <th>Service provider</th>
-        <th>Service</th>
-        <th>Notes from customer:</th>
-        <th>Time</th>
+        <th>Requested time</th>
+        <th>Notes from the customer:</th>
         <th>Confirmed</th>
+        <th>Service</th>
+        <th>Service provider</th>
+        <th>Assign and confirm</th>
+        <th>Remove</th>
     </tr>
     {% if bookings is defined and bookings|length > 0 %}
     {% for booking in bookings %}
     <tr>
         <td> Not implemented </td>
-        <td> Not implemented </td>
-        <td> Not implemented </td>
-        <td>{{ booking.notes }}</td>
         <td>{{ booking.requested_date }}</td>
+        <td><textarea readonly rows="3" cols="50">{{ booking.notes }}</textarea></td>
         <td>{{ booking.confirmed }}</td>
         <td>
-            <form method="POST" action="{{ url_for('booking_set_confirmed', booking_id=booking.id) }}">
-                <input type="submit" value="Set confirmed"/>
+            {% for service in services %}
+            {% if service.id == booking.service_id %}
+            {{ service.name }}
+            {% endif %}
+            {% endfor %}
+        </td>
+        <td>
+            {% if booking.worker_id != 0 %}
+                {% for worker in workers %}
+                    {% if worker.id == booking.worker_id %}
+                        {{ worker.name }}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+            <select name="workerlist" form="assign">
+                {% for worker in workers %}
+                    {% for service in worker.services %}
+                    {% if service.id == booking.service_id %}
+                        <option>{{ worker.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </select>
+            {% endif %}
+        </td>
+        <td>
+            <form method="POST" id="assign" action="{{ url_for('booking_set_confirmed', booking_id=booking.id) }}">
+                <input type="submit" value="Assign and confirm"/>
             </form>
         </td>
         <td>
@@ -44,6 +68,8 @@
                     <td></td>
                     <td><h3 style="color:red;"> No bookings found </h3></td>
             </tr>
-    </table></b>
     {% endif %}
+    </table></b>
+    <h3>Passed bookings:</h3>
+
 {% endblock %}

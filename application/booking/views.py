@@ -3,6 +3,9 @@ from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from datetime import datetime, date
 from application.booking.models import Booking
+from application.service.models import Service
+from application.worker.models import Worker
+from application.customer.models import Customer
 from application.booking.forms import BookingForm
 from application.booking.cal import Month_And_Year
 import calendar
@@ -14,7 +17,8 @@ daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
 @login_required
 def booking_index():
     ### Haettava käyttäjä
-    return render_template("booking/list.html", bookings = Booking.query.all())
+    ### Eroteltava vanhat ja uudet varaukset.
+    return render_template("booking/list.html", bookings = Booking.query.all(), services = Service.query.all(), workers = Worker.query.all(), customers = Customer.query.all())
 
 @app.route("/bookings/<booking_id>/", methods=["POST"])
 @login_required
@@ -66,11 +70,12 @@ def booking_create():
     else:
         dateAndTime = form.date.data
         notes = form.notes.data
+        service_id = form.service.data.id
         if (current_user.is_authenticated):
             customer_id = current_user.id
         else:
             customer_id = 0
-        b = Booking(notes, False, dateAndTime, customer_id)
+        b = Booking(notes, False, dateAndTime, customer_id, service_id)
         db.session().add(b)
         db.session().commit()
         flash('Booking successfully submitted.')

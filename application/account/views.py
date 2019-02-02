@@ -52,4 +52,14 @@ def user_register():
     customer = Customer(name, email, address, phone, account_id)
     db.session().add(customer)
     db.session().commit() # Luodaan Customer, jossa viite äsken luotuun Accountiin.
+    flash('User created')
     return redirect(url_for("user_login"))
+
+# ASIAKASSIVU
+# Puuttuu template
+# Puuttuu linkkaaminen /Bookings -sivulta.
+# Tähän myös asiakastietojen muokkaaminen.
+@app.route("/account/<customer_id>/", methods=["GET", "POST"])
+def customer_information(customer_id):
+    customer = Customer.query.filter_by(id=customer_id).first()
+    return render_template("account/customer.html", customer = customer)
