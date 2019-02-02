@@ -7,6 +7,7 @@ class Booking(Base):
     confirmed = db.Column(db.Boolean, nullable=False)
     requested_date = db.Column(db.DateTime, nullable=False)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
+    worker_id = db.Column(db.Integer, db.ForeignKey('worker.id'))
 
     # Käyttäjä ja työntekijä tullaan toteuttamaan viiteavaimilla...
 

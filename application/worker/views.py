@@ -46,11 +46,14 @@ def worker_create():
     db.session().commit()
     return redirect(url_for("worker_index"))
 
-@app.route("/worker/assign", methods=["POST"])
+@app.route("/worker/assign/<service_id>/", methods=["POST"])
 @login_required
-def worker_assign():
-    # TARVITSEE LIITOSTAULUN
-    print("hi!")
+def worker_assign(service_id):
+    form = Service_Worker_Form(request.form)
+    w = form.workers_list.data
+    s = Service.query.get(service_id)
+    w.services.append(s)
+    db.session.commit()
     return redirect(url_for("worker_index"))
 
 @app.route("/worker/add_service", methods=["POST"])

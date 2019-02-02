@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
   
 {% block body %}
-        Worker and service management view for administrators.<br/>
-        This view will require login and admin-role<br/><br/>
+        <h1>Worker and service management</h1>
         <h2><u>Workers:</u></h2>
 <table>
     <tr>
         <th>Name</th>
-        <th>Username</th>
         <th>Is admin</th>
         <th>Services</th>
     </tr>
@@ -16,9 +14,14 @@
             <tr>
                 <form method="POST" action="{{ url_for('worker_modify', worker_id=worker.id) }}">
                     <td><input type="text" name="name" value='{{ worker.name }}'/></td>
-                    <td><input type="text" name="username" value='{{ worker.username }}'/></td>
                     <td><input type="text" name="admin" value='{{ worker.isAdmin }}'/></td>
-                    <td>Not implemented</td>     
+                    <td>
+                        <select>
+                        {% for service in worker.services%}
+                        <option value="{{ service.name}}">{{ service.name }}</option>
+                        {% endfor %}
+                        </select>
+                    </td>     
                     <td><input type="submit" value="Modify worker"/></td>
                     <td><input type="reset"></td>
                 </form>
@@ -124,7 +127,7 @@
             <td>{{ service.cost_per_hour }} €</td>
             <td>{{ (service.cost_per_hour) * (service.duration_hrs) + ((service.cost_per_hour) * (service.duration_mins) / 60) }} €</td>
             <td>
-                <form method="POST" action="{{ url_for('worker_assign') }}">
+                <form method="POST" action="{{ url_for('worker_assign', service_id=service.id) }}">
                 {{ swform.workers_list }}
                 <input type="submit" name="assign_worker "value="Assign worker"/>
                 </form>

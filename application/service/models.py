@@ -2,7 +2,7 @@ from application import db
 from application.models import BaseWithName
 
 class Service(BaseWithName):
-
+    
     duration_hrs = db.Column(db.Integer)
     duration_mins = db.Column(db.Integer)
     cost_per_hour = db.Column(db.Integer)

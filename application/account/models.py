@@ -23,3 +23,10 @@ class Account(Base):
 
     def is_authenticated(self):
         return True
+
+# Erillisenä tauluna?
+class Role(db.Model):
+    __tablename = 'roles'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(20), unique=True)
+
