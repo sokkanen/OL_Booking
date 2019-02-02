@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user
 
 from application import app, db
@@ -21,11 +21,13 @@ def user_login():
                                error = "No such username or password")
 
     login_user(account)
+    flash('Logged in successfully.')
     return redirect(url_for("index"))
 
 @app.route("/logout")
 def user_logout():
     logout_user()
+    flash('Logged out successfully.')
     return redirect(url_for("index"))
 
 @app.route("/register", methods = ["GET", "POST"])

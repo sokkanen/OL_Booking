@@ -1,5 +1,5 @@
 from application import app, db
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from datetime import datetime, date
 from application.booking.models import Booking
@@ -66,9 +66,13 @@ def booking_create():
     else:
         dateAndTime = form.date.data
         notes = form.notes.data
-        customer_id = current_user.id
+        if (current_user.is_authenticated):
+            customer_id = current_user.id
+        else:
+            customer_id = 0
         b = Booking(notes, False, dateAndTime, customer_id)
         db.session().add(b)
         db.session().commit()
+        flash('Booking successfully submitted.')
 
     return redirect(url_for("cal_index"))
