@@ -26,8 +26,8 @@ class Booking(Base):
         stmt = text("SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins" 
                     " FROM Booking LEFT JOIN Worker ON Worker.id = Booking.worker_id"
                     " LEFT JOIN Service ON Booking.service_id = Service.id"
-                    " WHERE (Booking.confirmed = True)"
-                    " GROUP BY Booking.requested_date, Worker.name")
+                    " WHERE Booking.confirmed = 1"
+                    " GROUP BY Booking.requested_date")
         res = db.engine.execute(stmt)
 
         lst = []
