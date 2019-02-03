@@ -61,15 +61,34 @@ def user_register():
     flash('User created')
     return redirect(url_for("user_login"))
 
-@app.route("/account/<customer_id>/", methods=["GET", "POST"])
+@app.route("/accounts/<customer_id>/", methods=["GET", "POST"])
 def customer_information(customer_id):
     form = NewCustomerForm()
     customer = Customer.query.filter_by(id=customer_id).first()
     account = Account.query.filter_by(id=customer.account_id).first()
-    form.username.data = account.username
-    form.name.data = customer.name
-    form.email.data = customer.email
-    form.address.data = customer.address
-    form.phone.data = customer.phone
-    # POST-toiminnot!
-    return render_template("account/modinfo.html", form = form, customer = customer)
+    if request.method == "GET":
+        form.username.data = account.username
+        form.name.data = customer.name
+        form.email.data = customer.email
+        form.address.data = customer.address
+        form.phone.data = customer.phone
+        form.password.data = "12345"
+        form.confirm_password.data = "12345"
+        return render_template("account/modinfo.html", form = form, customer = customer)
+    if not form.validate():
+        return render_template("account/modinfo.html", form = form, customer = customer)
+    if form.password.data != "12345":
+        account.password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+    account.username = form.username.data
+    customer.name = form.name.data
+    customer.email = form.email.data
+    customer.address = form.address.data
+    customer.phone = form.phone.data
+    db.session().commit()
+    flash("Customer information successfully updated.")
+    return render_template("account/modinfo.html", form = form, customer = Customer.query.filter_by(id=customer_id).first(), account = Account.query.filter_by(id=customer.account_id).first())
+
+@app.route("/accounts")
+def customer_listing():
+    customers = Customer.query.order_by(Customer.name).all()
+    return render_template("account/accounts.html", customers = customers)

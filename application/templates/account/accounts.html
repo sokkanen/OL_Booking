@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+
+<h2>Customers: </h2>
+
+<ul>
+    {% for customer in customers %}
+    <li><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
