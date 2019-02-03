@@ -27,7 +27,7 @@ def booking_index():
 def booking_set_confirmed(booking_id):
     b = Booking.query.get(booking_id)
     w_id = Worker.query.filter_by(name=request.form['assign']).first().id
-    b.confirmed = True
+    b.confirmed = 1
     b.worker_id = w_id
     db.session().commit()
     return redirect(url_for("booking_index"))
@@ -49,7 +49,6 @@ def cal_index():
     dates = First_And_Last(year, month)
     first = dates.get_first()
     last = dates.get_last()
-    print("AJAT ON TÄSSÄ NYT SITTEN!!! : " , first, " " , last)
     lst = []
     books = Booking.find_bookings_with_workers_and_duration(first, last)
     for week in list(calendar.monthcalendar(year, month)):
@@ -60,10 +59,9 @@ def cal_index():
             for book in books:
                 if str(day) == book[0]:
                     if (book[1] == None):
-                        newday.append("U/K")
+                        newday.append("U/K: " + book[2])
                     else:
-                        newday.append(book[1])
-                    newday.append(book[2])
+                        newday.append(book[1] + ": "+ book[2])
             newday.append("No reservations")
             newweek.append(newday)
         lst.append(newweek)

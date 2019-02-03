@@ -25,7 +25,11 @@
         {% endfor %}
         <td>{{ booking.requested_date }}</td>
         <td><textarea readonly rows="3" cols="50">{{ booking.notes }}</textarea></td>
-        <td>{{ booking.confirmed }}</td>
+        {% if booking.confirmed == 1 %}
+        <td>Confirmed</td>
+        {% else %}
+        <td>Not confirmed</td>
+        {% endif %}
         <td>
             {% for service in services %}
             {% if service.id == booking.service_id %}
@@ -92,7 +96,11 @@
                 {% endfor %}
                 <td>{{ booking.requested_date }}</td>
                 <td><textarea readonly rows="3" cols="50">{{ booking.notes }}</textarea></td>
-                <td>{{ booking.confirmed }}</td>
+                {% if booking.confirmed == 1 %}
+                <td>Confirmed</td>
+                {% else %}
+                <td>Not confirmed</td>
+                {% endif %}
                 <td>
                     {% for service in services %}
                     {% if service.id == booking.service_id %}

@@ -6,7 +6,7 @@ from datetime import datetime, date, timedelta
 class Booking(Base):
 
     notes = db.Column(db.String(150), nullable=False)
-    confirmed = db.Column(db.Boolean, nullable=False)
+    confirmed = db.Column(db.Integer, nullable=False)
     requested_date = db.Column(db.DateTime, nullable=False)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
     worker_id = db.Column(db.Integer, db.ForeignKey('worker.id'))
