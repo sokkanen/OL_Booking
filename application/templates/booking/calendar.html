@@ -19,6 +19,11 @@
                 </form>
             </td>
             <td>
+                <form method="POST" action="{{ url_for('current_time') }}">
+                    <input type="submit" value="current time"/>
+                </form>
+            </td>
+            <td>
                 <form method="POST" action="{{ url_for('next_month') }}">
                     <input type="submit" value="next month"/>
                 </form>
@@ -27,7 +32,7 @@
         </table>
     <div>
       <table>
-          <tr>
+            <tr>
               {% for name in daynames %}
               {% if name == '|SU|' %}
               <td><h3 style="color: red">{{ name }}</h3></td>
@@ -39,12 +44,16 @@
           {% for week in days %}
         <tr>
           {% for day in week %}
-            {% if day != 0%}
-              <td>{{ day  }}</td>
+            {% if day[0] != 0 %}
+            {% if day[1] == 'No reservations'%}
+            <td><h4 title="{{day[1]}}">{{day[0]}}<h4></td>
             {% else %}
-              <td></td>
-          {% endif %}
-          {% endfor %}
+            <td><h4 style="background-color:yellow;" title="Reservation: {{day[1]}}, {{day[2]}}">{{day[0]}}<h4></td>
+            {% endif %}
+            {% else %}
+            <td></td>
+            {% endif %}
+            {% endfor %}
         </tr>
         {% endfor %}
       </table>

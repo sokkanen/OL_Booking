@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user
-
+from flask_login import login_required
 from application import app, db, bcrypt
 from application.account.models import Account
 from application.customer.models import Customer
@@ -62,12 +62,17 @@ def user_register():
     return redirect(url_for("user_login"))
 
 @app.route("/accounts/<customer_id>/", methods=["GET", "POST"])
+@login_required
 def customer_information(customer_id):
     form = NewCustomerForm()
     customer = Customer.query.filter_by(id=customer_id).first()
-    account = Account.query.filter_by(id=customer.account_id).first()
+    if customer.account_id != 0:
+        account = Account.query.filter_by(id=customer.account_id).first()
     if request.method == "GET":
-        form.username.data = account.username
+        if customer.account_id != 0:
+            form.username.data = account.username
+        else:
+            form.username.data = "not registered"
         form.name.data = customer.name
         form.email.data = customer.email
         form.address.data = customer.address
@@ -77,9 +82,10 @@ def customer_information(customer_id):
         return render_template("account/modinfo.html", form = form, customer = customer)
     if not form.validate():
         return render_template("account/modinfo.html", form = form, customer = customer)
-    if form.password.data != "12345":
+    if form.password.data != "12345" and customer.account_id != 0:
         account.password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-    account.username = form.username.data
+    if customer.account_id != 0:
+        account.username = form.username.data
     customer.name = form.name.data
     customer.email = form.email.data
     customer.address = form.address.data
@@ -89,6 +95,7 @@ def customer_information(customer_id):
     return render_template("account/modinfo.html", form = form, customer = Customer.query.filter_by(id=customer_id).first(), account = Account.query.filter_by(id=customer.account_id).first())
 
 @app.route("/accounts")
+@login_required
 def customer_listing():
     customers = Customer.query.order_by(Customer.name).all()
     return render_template("account/accounts.html", customers = customers)

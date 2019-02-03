@@ -1,14 +1,16 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from application.booking.models import Booking
 from application.service.models import Service
 from application.worker.models import Worker
 from application.customer.models import Customer
 from application.booking.forms import BookingForm
-from application.booking.cal import Month_And_Year
+from application.customer.forms import NewCustomerForm
+from application.booking.cal import Month_And_Year, First_And_Last
 import calendar
+from calendar import monthrange
 
 current = Month_And_Year()
 daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
@@ -44,10 +46,32 @@ def booking_remove(booking_id):
 def cal_index():
     year = current.get_year()
     month = current.get_month()
+    dates = First_And_Last(year, month)
+    first = dates.get_first()
+    last = dates.get_last()
+    print("AJAT ON TÄSSÄ NYT SITTEN!!! : " , first, " " , last)
     lst = []
-    for day in list(calendar.monthcalendar(year, month)):
-        lst.append(day)
-    return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = BookingForm())
+    books = Booking.find_bookings_with_workers_and_duration(first, last)
+    for week in list(calendar.monthcalendar(year, month)):
+        newweek = []
+        for day in week:
+            newday = []
+            newday.append(day)
+            for book in books:
+                if str(day) == book[0]:
+                    if (book[1] == None):
+                        newday.append("U/K")
+                    else:
+                        newday.append(book[1])
+                    newday.append(book[2])
+            newday.append("No reservations")
+            newweek.append(newday)
+        lst.append(newweek)
+    if (current_user.is_authenticated):
+        return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = BookingForm())
+    else:
+        cform = NewCustomerForm()
+        return render_template("booking/unreg_calendar.html", year = year, month = month , days = lst, daynames = daynames, form = BookingForm(), cform = cform)
 
 @app.route("/calendar/prev/", methods=["POST"])
 def prev_month():
@@ -57,6 +81,11 @@ def prev_month():
 @app.route("/calendar/next/", methods=["POST"])
 def next_month():
     current.next_month()
+    return redirect(url_for("cal_index"))
+
+@app.route("/calendar/now/", methods=["POST"])
+def current_time():
+    current.now()
     return redirect(url_for("cal_index"))
 
 @app.route("/calendar", methods=["POST"])
@@ -76,7 +105,14 @@ def booking_create():
         if (current_user.is_authenticated):
             customer_id = Customer.query.filter_by(account_id=current_user.id).first().id
         else:
-            customer_id = 0
+            name = request.form['name']
+            email = request.form['email']
+            address = request.form['address']
+            phone = request.form['phone']
+            c = Customer(name, email, address, phone, 0)
+            db.session().add(c)
+            db.session().commit()
+            customer_id = Customer.query.filter_by(name=name).first().id
         b = Booking(notes, False, dateAndTime, customer_id, service_id)
         db.session().add(b)
         db.session().commit()

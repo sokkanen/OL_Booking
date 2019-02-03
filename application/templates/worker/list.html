@@ -13,10 +13,10 @@
         {% for worker in workers %} 
             <tr>
                 <form method="POST" action="{{ url_for('worker_modify', worker_id=worker.id) }}">
-                    <td><input type="text" name="name" value='{{ worker.name }}'/></td>
+                    <td>{{ worker.name }}</td>
                     {% for account in accounts %}
                     {% if account.id == worker.account_id %}
-                    <td><input type="text" name="admin" value='{{ account.role }}'/></td>
+                    <td>{{ account.role }}</td>
                     {% endif %}
                     {% endfor %}
                     <td>
@@ -26,9 +26,11 @@
                         {% endfor %}
                         </select>
                     </td>     
-                    <td><input type="submit" value="Modify worker"/></td>
-                    <td><input type="reset"></td>
+                    <td><input type="submit" value="Change role"/></td>
                 </form>
+                <form method="POST" action="{{ url_for('worker_delete', worker_id=worker.id) }}">  
+                    <td><input type="submit" value="Delete worker"/></td>
+                    </form>
             </tr>
         {% endfor %}
         {% else %}

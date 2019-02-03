@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div>
+    <h1>
+        "Company name's" booking calendar for 
+        {{ month }}
+         /
+        {{ year }}
+        
+    </h1>
+        <table>
+          <tr>
+            <td>
+                <form method="POST" action="{{ url_for('prev_month') }}">
+                    <input type="submit" value="previous month"/>
+                </form>
+            </td>
+            <td>
+                    <form method="POST" action="{{ url_for('current_time') }}">
+                        <input type="submit" value="current time"/>
+                    </form>
+            </td>
+            <td>
+                <form method="POST" action="{{ url_for('next_month') }}">
+                    <input type="submit" value="next month"/>
+                </form>
+            </td>
+          </tr>
+        </table>
+    <div>
+            <table>
+                    <tr>
+                      {% for name in daynames %}
+                      {% if name == '|SU|' %}
+                      <td><h3 style="color: red">{{ name }}</h3></td>
+                      {% else %}
+                      <td><h3>{{ name }}</h3></td>
+                      {% endif %}
+                      {% endfor %}
+                    </tr>
+                  {% for week in days %}
+                <tr>
+                  {% for day in week %}
+                    {% if day[0] != 0 %}
+                    {% if day[1] == 'No reservations'%}
+                    <td><h4 title="{{day[1]}}">{{day[0]}}<h4></td>
+                    {% else %}
+                    <td><h4 style="background-color:yellow;" title="Reservation: {{day[1]}}, {{day[2]}}">{{day[0]}}<h4></td>
+                    {% endif %}
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+              </table>
+      <tr>
+          {{ form.date.label}}
+      </tr>
+      <tr>
+          <td>{{ form.date}}</td>
+          <td>
+          <ul>
+              {% for error in form.date.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+          </ul>
+          </td>
+      </tr>
+      <tr>
+        <td>{{ form.service.label}}</td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.service }}</br>
+        </td>
+        <td>
+            <ul>
+                {% for error in form.service.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+        </tr>
+        <tr>
+          <td>{{ form.notes.label}}</td>
+        </tr>
+        <tr>
+          <td>
+              {{ form.notes}}</br>
+          </td>
+          <td>
+              <ul>
+                  {% for error in form.notes.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+              </ul>
+          </td>
+        </tr>
+        <tr>
+            <td>{{ cform.name.label}}</td>
+        </tr>
+        <tr>
+            <td>{{ cform.name}}</br></td>
+                <td>
+                    <ul>
+                        {% for error in cform.name.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>{{ cform.email.label}}</td>
+        </tr>
+        <tr>
+            <td>{{ cform.email}}</br></td>
+            <td>
+                    <ul>
+                        {% for error in cform.email.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+            </td>
+        </tr>
+        <tr>
+                <td>{{ cform.address.label}}</td>
+            </tr>
+            <tr>
+                <td>{{ cform.address}}</br></td>
+                <td>
+                        <ul>
+                            {% for error in cform.address.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                </td>
+        </tr>
+        <tr>
+            <td>{{ cform.phone.label}}</td>
+        </tr>
+        <tr>
+            <td>{{ cform.phone}}</br></td>
+            <td>
+                <ul>
+                    {% for error in cform.phone.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+  <input type="submit" name="add_booking" value="Book service"/>
+  <input type="reset">
+</form>
+{% endblock %}
+</div>

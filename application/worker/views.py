@@ -1,10 +1,11 @@
 from application import app, db, bcrypt
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from datetime import datetime, date
 from flask_login import login_required
 from application.worker.models import Worker
 from application.service.models import Service
 from application.account.models import Account
+from application.booking.models import Booking
 from application.worker.forms import WorkerForm
 from application.service.forms import ServiceForm, Service_Worker_Form
 
@@ -17,10 +18,25 @@ def worker_index():
 @login_required
 def worker_modify(worker_id):
     w = Worker.query.get(worker_id)
-    # TARVITSEE SÄÄTÄÄ JA RAKENTAA
-    #b.confirmed = True
-    #db.session().commit()
-    return redirect(url_for("booking_index"))
+    a = Account.query.get(w.account_id)
+    if a.role == 'Admin':
+        a.role = 'Worker'
+    else:
+        a.role = 'Admin'
+    db.session().add(a)
+    db.session().commit()
+    flash("Role changed")
+    return redirect(url_for("worker_index"))
+
+@app.route("/worker/del/<worker_id>/", methods=["POST"])
+@login_required
+def worker_delete(worker_id):
+    w = Worker.query.get(worker_id)
+    w_id = worker_id
+    db.session.delete(w)
+    db.session().commit()
+    flash("Worker successfully removed.")
+    return redirect(url_for("worker_index"))
 
 @app.route("/worker", methods=["POST"])
 @login_required
