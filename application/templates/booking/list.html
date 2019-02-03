@@ -4,7 +4,7 @@
 <div>
     <h1>Booking management</h1>
 </div>
-    <h3>Upcoming bookings: </h3>
+    <h3>New bookings: </h3>
 <table>
     <tr>
         <th>Customer</th>
@@ -12,8 +12,7 @@
         <th>Notes from the customer:</th>
         <th>Confirmed</th>
         <th>Service</th>
-        <th>Service provider</th>
-        <th>Assign and confirm</th>
+        <th>Assign and confirm service provider</th>
         <th>Remove</th>
     </tr>
     {% if bookings is defined and bookings|length > 0 %}
@@ -42,7 +41,8 @@
                     {% endif %}
                 {% endfor %}
             {% else %}
-            <select name="workerlist" form="assign">
+            <form method="POST" action="{{ url_for('booking_set_confirmed', booking_id=booking.id) }}">
+            <select name="assign">
                 {% for worker in workers %}
                     {% for service in worker.services %}
                     {% if service.id == booking.service_id %}
@@ -51,12 +51,9 @@
                     {% endfor %}
                 {% endfor %}
             </select>
-            {% endif %}
-        </td>
-        <td>
-            <form method="POST" id="assign" action="{{ url_for('booking_set_confirmed', booking_id=booking.id) }}">
-                <input type="submit" value="Assign and confirm"/>
+            <input type="submit" value="Assign and confirm"/>
             </form>
+            {% endif %}
         </td>
         <td>
             <form method="POST" action="{{ url_for('booking_remove', booking_id=booking.id) }}">
@@ -70,10 +67,63 @@
             <tr>
                     <td></td>
                     <td></td>
-                    <td><h3 style="color:red;"> No bookings found </h3></td>
+                    <td><h3 style="color:red;"> No new bookings found </h3></td>
             </tr>
     {% endif %}
     </table></b>
     <h3>Confirmed and assigned bookings:</h3>
+    <table>
+            <tr>
+                <th>Customer</th>
+                <th>Requested time</th>
+                <th>Notes from the customer:</th>
+                <th>Confirmed</th>
+                <th>Service</th>
+                <th>Service provider</th>
+                <th>Remove</th>
+            </tr>
+            {% if cbookings is defined and cbookings|length > 0 %}
+            {% for booking in cbookings %}
+            <tr>
+                {% for customer in customers %}
+                {% if customer.id == booking.customer_id %}
+                <td> <a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a></td>
+                {% endif %}
+                {% endfor %}
+                <td>{{ booking.requested_date }}</td>
+                <td><textarea readonly rows="3" cols="50">{{ booking.notes }}</textarea></td>
+                <td>{{ booking.confirmed }}</td>
+                <td>
+                    {% for service in services %}
+                    {% if service.id == booking.service_id %}
+                    {{ service.name }}
+                    {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% if booking.worker_id != 0 %}
+                        {% for worker in workers %}
+                            {% if worker.id == booking.worker_id %}
+                                {{ worker.name }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('booking_remove', booking_id=booking.id) }}">
+                        <input type="submit" value="Remove booking"/>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+                    <tr></tr>
+                    <tr>
+                            <td></td>
+                            <td></td>
+                            <td><h3 style="color:red;"> No new bookings found </h3></td>
+                    </tr>
+            {% endif %}
+            </table></b>
 
 {% endblock %}

@@ -16,17 +16,18 @@ daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
 @app.route("/bookings", methods=["GET"])
 @login_required
 def booking_index():
-    ### Haettava käyttäjä
-    ### Eroteltava vanhat ja uudet varaukset.
-    return render_template("booking/list.html", bookings = Booking.query.all(), services = Service.query.all(), workers = Worker.query.all(), customers = Customer.query.all())
+    cbookings = Booking.query.filter_by(confirmed=1).all()
+    bookings = Booking.query.filter_by(confirmed=0).all()
+    return render_template("booking/list.html", bookings = bookings, cbookings = cbookings, services = Service.query.all(), workers = Worker.query.all(), customers = Customer.query.all())
 
 @app.route("/bookings/<booking_id>/", methods=["POST"])
 @login_required
 def booking_set_confirmed(booking_id):
     b = Booking.query.get(booking_id)
+    w_id = Worker.query.filter_by(name=request.form['assign']).first().id
     b.confirmed = True
+    b.worker_id = w_id
     db.session().commit()
-
     return redirect(url_for("booking_index"))
 
 @app.route("/bookings/del/<booking_id>/", methods=["POST"])
@@ -35,6 +36,7 @@ def booking_remove(booking_id):
     b = Booking.query.get(booking_id)
     db.session.delete(b)
     db.session().commit()
+    flash("Booking successfully removed")
     
     return redirect(url_for("booking_index"))
 
