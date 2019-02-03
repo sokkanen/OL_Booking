@@ -12,7 +12,9 @@ tarjoamiaan palveluita.
 Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tarkastelun..
 
 #### Testitunnukset ####
-Ohjelman tämänhetkinen versio ei vaadi testitunnuksia. Kaikki toiminnallisuudet saa vielä toistaiseksi näkymään rekisteröitymisen kautta.
+
+Käyttäjätunnus: 'admin'
+Salasana:	'admin'
 
 #### Linkit ####
 
