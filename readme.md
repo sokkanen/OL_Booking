@@ -13,8 +13,8 @@ Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tar
 
 #### Testitunnukset ####
 
-Käyttäjätunnus: 'admin'
-Salasana:	'admin'
+* Käyttäjätunnus: 'admin'
+* Salasana:	'admin'
 
 #### Linkit ####
 
