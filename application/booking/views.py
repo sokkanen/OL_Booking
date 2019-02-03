@@ -111,7 +111,7 @@ def booking_create():
             db.session().add(c)
             db.session().commit()
             customer_id = Customer.query.filter_by(name=name).first().id
-        b = Booking(notes, False, dateAndTime, customer_id, service_id)
+        b = Booking(notes, 0, dateAndTime, customer_id, service_id)
         db.session().add(b)
         db.session().commit()
         flash('Booking successfully submitted.')
