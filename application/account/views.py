@@ -20,6 +20,7 @@ def user_login():
         return render_template("account/loginform.html", form = form,
                                error = "No such username or password")
     candidate = form.password.data
+    candidate.encode('utf-8')
     pw_matches = bcrypt.check_password_hash(account.password, candidate)
     
     if pw_matches != True:
