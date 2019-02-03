@@ -18,7 +18,7 @@ def worker_query():
     return Worker.query
 
 class Service_Worker_Form(FlaskForm):
-    workers_list = QuerySelectField(query_factory=worker_query, allow_blank=True, get_label='name')
+    workers_list = QuerySelectField(query_factory=worker_query, get_label='name')
 
     class Meta:
         csrf = False

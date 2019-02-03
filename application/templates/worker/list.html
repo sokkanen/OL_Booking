@@ -6,7 +6,7 @@
 <table>
     <tr>
         <th>Name</th>
-        <th>Is admin</th>
+        <th>Role</th>
         <th>Services</th>
     </tr>
     {% if workers is defined and workers|length > 0 %}
@@ -14,7 +14,11 @@
             <tr>
                 <form method="POST" action="{{ url_for('worker_modify', worker_id=worker.id) }}">
                     <td><input type="text" name="name" value='{{ worker.name }}'/></td>
-                    <td><input type="text" name="admin" value='{{ worker.isAdmin }}'/></td>
+                    {% for account in accounts %}
+                    {% if account.id == worker.account_id %}
+                    <td><input type="text" name="admin" value='{{ account.role }}'/></td>
+                    {% endif %}
+                    {% endfor %}
                     <td>
                         <select>
                         {% for service in worker.services%}

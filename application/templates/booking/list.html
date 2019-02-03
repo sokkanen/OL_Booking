@@ -19,7 +19,11 @@
     {% if bookings is defined and bookings|length > 0 %}
     {% for booking in bookings %}
     <tr>
-        <td> Not implemented </td>
+        {% for customer in customers %}
+        {% if customer.id == booking.customer_id %}
+        <td> <a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a></td>
+        {% endif %}
+        {% endfor %}
         <td>{{ booking.requested_date }}</td>
         <td><textarea readonly rows="3" cols="50">{{ booking.notes }}</textarea></td>
         <td>{{ booking.confirmed }}</td>
@@ -70,6 +74,6 @@
             </tr>
     {% endif %}
     </table></b>
-    <h3>Passed bookings:</h3>
+    <h3>Confirmed and assigned bookings:</h3>
 
 {% endblock %}

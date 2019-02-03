@@ -5,12 +5,14 @@ class Account(Base):
 
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
+    role = db.Column(db.String(10), nullable=False)
     linked_worker = db.relationship('Worker', backref='account', uselist=False, lazy=True)
     linked_customer = db.relationship('Customer', backref='account', uselist=False, lazy=True)
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, role):
         self.username = username
         self.password = password
+        self.role = role
 
     def get_id(self):
         return self.id
@@ -24,9 +26,6 @@ class Account(Base):
     def is_authenticated(self):
         return True
 
-# Erillisenä tauluna?
-class Role(db.Model):
-    __tablename = 'roles'
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(20), unique=True)
+    def get_role(self):
+        return self.role
 

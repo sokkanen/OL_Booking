@@ -2,14 +2,14 @@
   
 {% block body %}
 
-<h3>Register:</h3>
+<h3>Customer information:</h3>
 <form method="POST" action="{{ url_for('user_register') }}">
     <table>
         <tr>
           {{ form.name.label}}
         </tr>
         <tr>
-          <td>{{ form.name}}</td></br>
+          <td>{{ form.name }}</td></br>
           <td>
           <ul>
               {% for error in form.name.errors %}
@@ -32,7 +32,7 @@
             </td>
         </tr>
         <tr>
-          <td>{{ form.password.label}}</td>
+          <td>New Password</td>
         </tr>
         <tr>
           <td>
@@ -47,7 +47,7 @@
           </td>
         </tr>
         <tr>
-            <td>{{ form.confirm_password.label}}</td>
+            <td>Repeat new password:</td>
         </tr>
         <tr>
                 <td>
@@ -107,7 +107,8 @@
                 </td>
         </tr>
     </table>
-  <input type="submit" name="user_register "value="Sign up!"/>
+  <input type="submit" name="user_register "value="Modify"/>
+  <input type="reset">
 </form>
 
 {% endblock %}

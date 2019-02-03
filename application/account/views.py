@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user
 
-from application import app, db
+from application import app, db, bcrypt
 from application.account.models import Account
 from application.customer.models import Customer
 from application.account.forms import LoginForm
@@ -15,8 +15,14 @@ def user_login():
     form = LoginForm(request.form)
     # mahdolliset validoinnit
 
-    account = Account.query.filter_by(username=form.username.data, password=form.password.data).first()
+    account = Account.query.filter_by(username=form.username.data).first()
     if not account:
+        return render_template("account/loginform.html", form = form,
+                               error = "No such username or password")
+    candidate = form.password.data
+    pw_matches = bcrypt.check_password_hash(account.password, candidate)
+    
+    if pw_matches != True:
         return render_template("account/loginform.html", form = form,
                                error = "No such username or password")
 
@@ -39,27 +45,31 @@ def user_register():
     if not form.validate():
         return render_template("account/register.html", form = form)
 
-    password = form.password.data
+    pwhash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
     username = form.username.data
-    account = Account(username, password)
+    account = Account(username, pwhash, 'Customer')
     db.session().add(account)
-    db.session().commit() # Luodaan ensin Account
-    account_id = Account.query.filter_by(username=form.username.data, password=form.password.data).first().id
+    db.session().commit()
+    account_id = Account.query.filter_by(username=form.username.data, password=pwhash).first().id
     name = form.name.data
     email = form.email.data
     address = form.address.data
     phone = form.phone.data
     customer = Customer(name, email, address, phone, account_id)
     db.session().add(customer)
-    db.session().commit() # Luodaan Customer, jossa viite äsken luotuun Accountiin.
+    db.session().commit()
     flash('User created')
     return redirect(url_for("user_login"))
 
-# ASIAKASSIVU
-# Puuttuu template
-# Puuttuu linkkaaminen /Bookings -sivulta.
-# Tähän myös asiakastietojen muokkaaminen.
 @app.route("/account/<customer_id>/", methods=["GET", "POST"])
 def customer_information(customer_id):
+    form = NewCustomerForm()
     customer = Customer.query.filter_by(id=customer_id).first()
-    return render_template("account/customer.html", customer = customer)
+    account = Account.query.filter_by(id=customer.account_id).first()
+    form.username.data = account.username
+    form.name.data = customer.name
+    form.email.data = customer.email
+    form.address.data = customer.address
+    form.phone.data = customer.phone
+    # POST-toiminnot!
+    return render_template("account/modinfo.html", form = form, customer = customer)

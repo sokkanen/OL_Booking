@@ -1,4 +1,6 @@
 from flask import Flask
+from flask_bcrypt import Bcrypt
+
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
@@ -12,6 +14,7 @@ else:
     app.config["SQLALCHEMY_ECHO"] = True
 
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 
 from application import views
 
@@ -25,6 +28,7 @@ from application.service import models
 from application.customer import models
 
 from application.account import models
+from application.account.models import Account
 from application.account import views
 
 
@@ -49,3 +53,10 @@ try:
     db.create_all()
 except:
     pass
+
+account_id = Account.query.filter_by(username='admin').first()
+if not account_id:
+    pw_hash = bcrypt.generate_password_hash('admin')
+    testuser = Account('admin', pw_hash, 'Admin')
+    db.session().add(testuser)
+    db.session().commit()

@@ -8,12 +8,10 @@ worker_service = db.Table('worker_service',
 
 class Worker(BaseWithName):
     
-    isAdmin = db.Column(db.Boolean, nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
     services = db.relationship('Service', secondary=worker_service, lazy='subquery',
         backref=db.backref('worker', lazy=True))
 
-    def __init__(self, name, isAdmin, account_id):
+    def __init__(self, name, account_id):
         self.name = name
-        self.isAdmin = isAdmin
         self.account_id = account_id

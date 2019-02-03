@@ -1,4 +1,4 @@
-from application import app, db
+from application import app, db, bcrypt
 from flask import render_template, request, redirect, url_for
 from datetime import datetime, date
 from flask_login import login_required
@@ -11,7 +11,7 @@ from application.service.forms import ServiceForm, Service_Worker_Form
 @app.route("/worker", methods=["GET"])
 @login_required
 def worker_index():
-    return render_template("worker/list.html", workers = Worker.query.all(), services = Service.query.all(), wform = WorkerForm(), sform = ServiceForm(), swform = Service_Worker_Form())
+    return render_template("worker/list.html", workers = Worker.query.all(), services = Service.query.all(), accounts = Account.query.all(), wform = WorkerForm(), sform = ServiceForm(), swform = Service_Worker_Form())
 
 @app.route("/worker/<worker_id>/", methods=["POST"])
 @login_required
@@ -29,19 +29,20 @@ def worker_create():
     if not form.validate():
         return render_template("worker/list.html", workers = Worker.query.all(), services = Service.query.all(), wform = form, sform = ServiceForm(), swform = Service_Worker_Form())
     
-    password = form.password.data
+    pwhash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
     username = form.username.data
-    account = Account(username, password)
+    isAdmin = form.role.data
+    role = ''
+    if isAdmin == "True":
+        role = 'Admin'
+    else:
+        role = 'Worker'
+    account = Account(username, pwhash, role)
     db.session().add(account)
     db.session().commit()
-    account_id = Account.query.filter_by(username=form.username.data, password=form.password.data).first().id
+    account_id = Account.query.filter_by(username=form.username.data).first().id
     name = form.name.data
-    isAdmin = form.role.data
-    if isAdmin == "True":
-        isAdmin = True
-    else:
-        isAdmin = False
-    worker = Worker(name, isAdmin, account_id)
+    worker = Worker(name, account_id)
     db.session().add(worker)
     db.session().commit()
     return redirect(url_for("worker_index"))

@@ -72,7 +72,7 @@ def booking_create():
         notes = form.notes.data
         service_id = form.service.data.id
         if (current_user.is_authenticated):
-            customer_id = current_user.id
+            customer_id = Customer.query.filter_by(account_id=current_user.id).first().id
         else:
             customer_id = 0
         b = Booking(notes, False, dateAndTime, customer_id, service_id)
