@@ -30,16 +30,18 @@
           </tr>
         </table>
     <div>
-            <table>
+            <table class="table">
+                <thead class="thead-dark">
                     <tr>
                       {% for name in daynames %}
                       {% if name == '|SU|' %}
-                      <td><h3 style="color: red">{{ name }}</h3></td>
+                      <th><h3 style="color: red">{{ name }}</h3></th>
                       {% else %}
-                      <td><h3>{{ name }}</h3></td>
+                      <th><h3>{{ name }}</h3></th>
                       {% endif %}
                       {% endfor %}
                     </tr>
+                </thead>
                   {% for week in days %}
                   <tr>
                         {% for day in week %}
