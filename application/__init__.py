@@ -53,10 +53,3 @@ try:
     db.create_all()
 except:
     pass
-
-account_id = Account.query.filter_by(username='admin').first()
-if not account_id:
-    pw_hash = bcrypt.generate_password_hash('admin')
-    testuser = Account('admin', pw_hash, 'Admin')
-    db.session().add(testuser)
-    db.session().commit()

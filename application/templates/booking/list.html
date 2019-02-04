@@ -38,7 +38,7 @@
             {% endfor %}
         </td>
         <td>
-            {% if booking.worker_id != 0 %}
+            {% if booking.worker_id|int < 0 %}
                 {% for worker in workers %}
                     {% if worker.id == booking.worker_id %}
                         {{ worker.name }}

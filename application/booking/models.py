@@ -19,7 +19,6 @@ class Booking(Base):
         self.done = False
         self.customer_id = customer_id
         self.service_id = service_id
-        self.worker_id = 0
 
     @staticmethod
     def find_bookings_with_workers_and_duration(first, last):
