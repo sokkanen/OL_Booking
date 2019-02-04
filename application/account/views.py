@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from application import app, db, bcrypt, login_required
 from application.account.models import Account
 from application.customer.models import Customer
@@ -56,7 +56,8 @@ def user_register():
     email = form.email.data
     address = form.address.data
     phone = form.phone.data
-    customer = Customer(name, email, address, phone, account_id)
+    customer = Customer(name, email, address, phone)
+    customer.account_id = account_id
     db.session().add(customer)
     db.session().commit()
     flash('User created')
@@ -65,13 +66,17 @@ def user_register():
 @app.route("/accounts/<customer_id>/", methods=["GET", "POST"])
 @login_required(role="CUSTOMER")
 def customer_information(customer_id):
-    #### TÄHÄN VARMISTUS, ETTÄ VAIN OMAA VOI MUOKATA JOS EI OLE ADMIN!
-    form = NewCustomerForm()
+    if request.method == "POST" and current_user.get_role() == "WORKER":
+        return redirect(url_for("user_login"))
     customer = Customer.query.filter_by(id=customer_id).first()
-    if customer.account_id != 0:
+    if current_user.get_role() == "CUSTOMER":
+        if customer.account.id != current_user.get_id():
+            return redirect(url_for("user_login"))
+    form = NewCustomerForm()
+    if customer.account_id is not None:
         account = Account.query.filter_by(id=customer.account_id).first()
     if request.method == "GET":
-        if customer.account_id != 0:
+        if customer.account_id is not None:
             form.username.data = account.username
         else:
             form.username.data = "not registered"
@@ -97,10 +102,14 @@ def customer_information(customer_id):
     return render_template("account/modinfo.html", form = form, customer = Customer.query.filter_by(id=customer_id).first(), account = Account.query.filter_by(id=customer.account_id).first())
 
 @app.route("/accounts")
-@login_required(role="ADMIN")
+@login_required(role="CUSTOMER")
 def customer_listing():
-    customers = Customer.query.order_by(Customer.name).all()
-    return render_template("account/accounts.html", customers = customers)
+    if current_user.get_role() == "CUSTOMER":
+        customers = Customer.query.filter_by(account_id=current_user.get_id()).first()
+        return render_template("account/accounts.html", customers = customers)
+    else:
+        customers = Customer.query.order_by(Customer.name).all()
+        return render_template("account/accounts.html", customers = customers)
 
 @app.route("/accounts/del/<customer_id>/", methods=["POST"])
 @login_required(role="ADMIN")

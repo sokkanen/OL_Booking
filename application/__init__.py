@@ -26,7 +26,7 @@ login_manager = LoginManager()
 login_manager.setup_app(app)
 
 login_manager.login_view = "user_login"
-login_manager.login_message = "Please login to use this functionality. If you keep seeing this message, you don't have the rights to view this resource."
+login_manager.login_message = "Please login. If you keep seeing this message, you don't have the rights to use or view this resource."
 
 # Roolit
 

@@ -45,3 +45,23 @@ class Booking(Base):
                 line.append(y_string + " - " + e_string)
                 lst.append(line)
         return lst
+
+    @staticmethod
+    def find_confimed_bookings_for_worker(worker_id):
+        stmt = text("SELECT * FROM Booking WHERE confirmed = 1 "
+                    "AND worker_id = :x")
+        res = db.engine.execute(stmt, x=worker_id)
+        cbookings = []
+        for result in res:
+            cbookings.append(result)
+        return cbookings
+
+    @staticmethod
+    def find_confirmed_bookings_for_customer(customer_id):
+        stmt = text("SELECT * FROM Booking WHERE confirmed = 1"
+        " AND customer_id = :x")
+        res = db.engine.execute(stmt, x=customer_id)
+        cbookings = []
+        for result in res:
+            cbookings.append(result)
+        return cbookings

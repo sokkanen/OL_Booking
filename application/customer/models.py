@@ -9,9 +9,8 @@ class Customer(BaseWithName):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
     bookings = db.relationship('Booking', backref='customer', lazy=True)
 
-    def __init__(self, name, email, address, phone, account_id):
+    def __init__(self, name, email, address, phone):
         self.name = name
         self.email = email
         self.address = address
         self.phone = phone
-        self.account_id = account_id
