@@ -32,7 +32,7 @@ class Booking(Base):
         lst = []
         for x in res:
             time_to_string = str(x[0])
-            y = datetime.strptime(time_to_string, "%Y-%m-%d %H:%M:%S.%f")
+            y = datetime.strptime(time_to_string, "%Y-%m-%d %H:%M:%S")
             if (y > first and y < last):
                 y_string = y.strftime("%Y-%m-%d %H:%M")
                 endtime = y + timedelta(hours=x[2]) + timedelta(minutes=x[3])
