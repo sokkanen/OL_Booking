@@ -1,9 +1,9 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user
-from flask_login import login_required
-from application import app, db, bcrypt
+from application import app, db, bcrypt, login_required
 from application.account.models import Account
 from application.customer.models import Customer
+from application.booking.models import Booking
 from application.account.forms import LoginForm
 from application.customer.forms import NewCustomerForm
 
@@ -48,7 +48,7 @@ def user_register():
 
     pwhash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
     username = form.username.data
-    account = Account(username, pwhash, 'Customer')
+    account = Account(username, pwhash, 'CUSTOMER')
     db.session().add(account)
     db.session().commit()
     account_id = Account.query.filter_by(username=form.username.data, password=pwhash).first().id
@@ -63,8 +63,9 @@ def user_register():
     return redirect(url_for("user_login"))
 
 @app.route("/accounts/<customer_id>/", methods=["GET", "POST"])
-@login_required
+@login_required(role="CUSTOMER")
 def customer_information(customer_id):
+    #### TÄHÄN VARMISTUS, ETTÄ VAIN OMAA VOI MUOKATA JOS EI OLE ADMIN!
     form = NewCustomerForm()
     customer = Customer.query.filter_by(id=customer_id).first()
     if customer.account_id != 0:
@@ -96,7 +97,23 @@ def customer_information(customer_id):
     return render_template("account/modinfo.html", form = form, customer = Customer.query.filter_by(id=customer_id).first(), account = Account.query.filter_by(id=customer.account_id).first())
 
 @app.route("/accounts")
-@login_required
+@login_required(role="ADMIN")
 def customer_listing():
     customers = Customer.query.order_by(Customer.name).all()
     return render_template("account/accounts.html", customers = customers)
+
+@app.route("/accounts/del/<customer_id>/", methods=["POST"])
+@login_required(role="ADMIN")
+def customer_remove(customer_id):
+    c = Customer.query.filter(Customer.id == customer_id).first()
+    del_b = Booking.__table__.delete().where(Booking.customer_id == customer_id) # Poistetaan varaukset
+    del_c = Customer.__table__.delete().where(Customer.id == customer_id) # Poistetaan asiakas
+    del_a = Account.__table__.delete().where(Account.id == c.account_id) # Poistetaan tili
+    db.session.execute(del_b)
+    db.session.execute(del_c)
+    db.session.execute(del_a)
+    db.session().commit()
+    flash("Customer successfully removed")
+    
+    return redirect(url_for("customer_listing"))
+    

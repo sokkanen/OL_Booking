@@ -1,6 +1,6 @@
-from application import app, db
+from application import app, db, login_required
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_required, current_user
+from flask_login import current_user
 from datetime import datetime, date, timedelta
 from application.booking.models import Booking
 from application.service.models import Service
@@ -16,14 +16,15 @@ current = Month_And_Year()
 daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
 
 @app.route("/bookings", methods=["GET"])
-@login_required
+@login_required(role="CUSTOMER")
+### TÄHÄN ERI ROOLIEN NÄKYMÄT.
 def booking_index():
     cbookings = Booking.query.filter_by(confirmed=1).all()
     bookings = Booking.query.filter_by(confirmed=0).all()
     return render_template("booking/list.html", bookings = bookings, cbookings = cbookings, services = Service.query.all(), workers = Worker.query.all(), customers = Customer.query.all())
 
 @app.route("/bookings/<booking_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def booking_set_confirmed(booking_id):
     b = Booking.query.get(booking_id)
     w_id = Worker.query.filter_by(name=request.form['assign']).first().id
@@ -33,7 +34,7 @@ def booking_set_confirmed(booking_id):
     return redirect(url_for("booking_index"))
 
 @app.route("/bookings/del/<booking_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def booking_remove(booking_id):
     b = Booking.query.get(booking_id)
     db.session.delete(b)
@@ -59,7 +60,7 @@ def cal_index():
             for book in books:
                 if str(day) == book[0]:
                     if (book[1] == None):
-                        newday.append("U/K: " + book[2])
+                        newday.append("Ex-worker: " + book[2])
                     else:
                         newday.append(book[1] + ": "+ book[2])
             newday.append("No reservations")

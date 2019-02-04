@@ -16,6 +16,56 @@ else:
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
+# Kirjautuminen.
+
+from os import urandom
+app.config["SECRET_KEY"] = urandom(32)
+
+from flask_login import LoginManager, current_user
+login_manager = LoginManager()
+login_manager.setup_app(app)
+
+login_manager.login_view = "user_login"
+login_manager.login_message = "Please login to use this functionality. If you keep seeing this message, you don't have the rights to view this resource."
+
+# Roolit
+
+from functools import wraps
+
+def login_required(role="ANY"):
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
+            if not current_user:
+                return login_manager.unauthorized()
+          
+            if not current_user.is_authenticated:
+                return login_manager.unauthorized()
+            
+            unauthorized = False
+
+            if role != "ANY":
+                unauthorized = True
+
+            if current_user.get_role() == "ADMIN":
+                unauthorized = False
+
+            if role == "CUSTOMER" and current_user.get_role() == "WORKER":
+                unauthorized = False
+
+            if current_user.get_role() == role:
+                unauthorized = False
+
+            if unauthorized:
+                return login_manager.unauthorized()
+            
+            return fn(*args, **kwargs)
+        return decorated_view
+    return wrapper
+
+
+# Ohjelman sisäiset kohteet
+
 from application import views
 
 from application.booking import views
@@ -28,21 +78,10 @@ from application.service import models
 from application.customer import models
 
 from application.account import models
-from application.account.models import Account
 from application.account import views
 
-
-# Kirjautuminen.
+# Kirjautuminen 2
 from application.account.models import Account
-from os import urandom
-app.config["SECRET_KEY"] = urandom(32)
-
-from flask_login import LoginManager
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-login_manager.login_view = "user_login"
-login_manager.login_message = "Please login to use this functionality"
 
 @login_manager.user_loader
 def load_account(account_id):

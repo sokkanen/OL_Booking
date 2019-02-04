@@ -6,7 +6,11 @@
 
 <ul>
     {% for customer in customers %}
-    <li><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a></li>
+    <li><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a>
+    <form method="POST" action="{{ url_for('customer_remove', customer_id=customer.id) }}">
+        <input type="submit" value="Remove customer"/>
+    </form>
+    </li>
     {% endfor %}
 </ul>
 
