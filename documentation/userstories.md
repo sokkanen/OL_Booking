@@ -1,25 +1,36 @@
 User Storyt
 ---------------------
 
-### Asiakas ###
+### Rekisteröitymätön asiakas ###
+
+* Asiakkaana haluan, että voin tehdä varaukseni ilman rekisteröitymistä mihinkään palveluun.
+* Asiakkaana haluan tilata tai varata palveluita, jotta saan tarpeeni tyydytettyä
+* Asiakkaana haluan nähdä ne ajankohdat, jolloin palveluntarjoajat ovat varattuina, jotta tiedän ajoittaa oman varaukseni.
+* Asiakkaana haluan, että tietojani käsitellään luottamuksellisesti, jotta tietoni eivät joudu vääriin käsiin
+
+
+### Rekisteröitynyt asiakas ###
 
 * Asiakkaana haluan tilata tai varata palveluita, jotta saan tarpeeni tyydytettyä
 * Asiakkaana haluan nähdä ne ajankohdat, jolloin palveluntarjoajat ovat varattuina, jotta tiedän ajoittaa oman varaukseni.
 * Asiakkaana haluan voida rekisteröityä varausjärjestelmään, jotta voin tarkastella tilauksiani
 * Asiakkaana haluan, että näen varausjärjestelmästä kun tilaukseni on vahvistettu, jotta tiedän tilauksen olevan käsittelyssä.
 * Asiakkaana haluan, että tietojani käsitellään luottamuksellisesti, jotta tietoni eivät joudu vääriin käsiin
+* Asiakkaana haluan, että voin muokata tai poistaa minusta tallennettuja tietoja.
 
 ### Työntekijä ###
 
-* Työntekijänä haluan, että voin listata järjestelmään tarjoamiani palveluita, jotta ihmiset voivat varata niitä.
-* Työntekijänä haluan nähdä minulle tulleet tilaukset, jotta voin tehdä työni suunnitelmallisesti.
+* Työntekijänä haluan, että järjestelmä listaa tarjoamani palvelut, jotta voin tarjota niitä varattavaksi.
+* Työntekijänä haluan nähdä minulle tehtäväksi annetut varaukset, jotta voin tehdä työni suunnitelmallisesti.
 * Työntekijänä haluan nähdä tilauksen tehneen asiakkaan tiedot, jotta voin olla häneen yhteydessä.
-* Työntekijänä haluan, että voin vahvistaa tai hylätä minulle tulleita tilauksia, jotta voin hallita ajankäyttöäni. 
+* Työntekijänä haluan, että asiakkaat näkevät järjestelmästä mikäli olen jollakin ajanhetkellä varattuna, jotta minun palveluitani haluavat asiakkaat saavat niitä.
+* Työntekijänä haluan tarkastella asiakkaideni tietoja.
 
-### Ylläpitäjä ###
+### Ylläpitäjä / Esimies ###
 
 * Ylläpitäjänä haluan voida lisätä järjstelmään uusia ylläpitäjiä.
 * Ylläpitäjänä haluan voida lisätä ja poistaa työntekijöitä järjestelmästä.
-* Ylläpitäjänä haluan nähdä kaikki järjestelmään tulleet tilaukset, jotta voin reagoida mahdollisiin väärinkäytöksiin.
+* Ylläpitäjänä haluan, että voin lisätä järjestelmään yrityksen tarjoamia palveluita, ja määrittää ketkä työntekijöistä niitä tarjoavat.
+* Ylläpitäjänä haluan nähdä kaikki järjestelmään tulleet tilaukset, jotta voin antaa tilauksia tehtäväksi työntekijöilleni.
 * Ylläpitäjänä haluan, että voin hallinnoida kaikkia tilauksia.
-* Ylläpitäjänä haluan nähdä tilastotietoa järjestelmän käytöstä, jotta voin tehdä analyysiä tarvittavasta palvelinkapasiteetista.
+* Ylläpitäjänä haluan, että voin hallinnoida kaikkia järjestelmässä olevia asiakastietoja.

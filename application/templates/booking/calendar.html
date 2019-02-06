@@ -3,118 +3,129 @@
 {% block body %}
 
 <div>
-    <h1>
-        
-        "Company name's" booking calendar for 
-        {{ month }}
-         /
-        {{ year }}
-        
-    </h1>
-        <table>
-          <tr>
-            <td>
-                <form method="POST" action="{{ url_for('prev_month') }}">
-                    <input type="submit" value="previous month"/>
-                </form>
-            </td>
-            <td>
-                <form method="POST" action="{{ url_for('current_time') }}">
-                    <input type="submit" value="current time"/>
-                </form>
-            </td>
-            <td>
-                <form method="POST" action="{{ url_for('next_month') }}">
-                    <input type="submit" value="next month"/>
-                </form>
-            </td>
-          </tr>
-        </table>
-    <div>
-        <table class="table">
-            <thead class="thead-dark">
-            <tr>
-              {% for name in daynames %}
-              {% if name == '|SU|' %}
-              <th><h3 style="color: red">{{ name }}</h3></th>
-              {% else %}
-              <th><h3>{{ name }}</h3></th>
-              {% endif %}
-              {% endfor %}
-            </tr>
-            </thead>
-          {% for week in days %}
-        <tr>
-          {% for day in week %}
-            {% if day[0] != 0 %}
-            {% if day[1] == 'No reservations'%}
-            <td><h4 title="{{day[1]}}">{{day[0]}}<h4></td>
-            {% else %}
-            <td><h4 style="background-color:yellow;" title="
-                {% for d in day %}
-                {% if d != 'No reservations'%}
-                {{ d }}
-                {% endif %}
-                {% endfor %}
-                ">{{day[0]}}<h4></td>
-            {% endif %}
-            {% else %}
-            <td></td>
-            {% endif %}
-            {% endfor %}
-        </tr>
-        {% endfor %}
-      </table>
+        <h1 class="text-center">
+            "Company name's" booking calendar for 
+            {{ month }}
+             /
+            {{ year }}
+            
+        </h1></br>
+            <table class="container bg-faded">
+              <tr>
+                <td>
+                    <form method="POST" action="{{ url_for('prev_month') }}">
+                        <input type="submit" class="btn btn-dark btn-lg" value="previous month"/>
+                    </form>
+                </td>
+                <td>
+                        <form method="POST" action="{{ url_for('current_time') }}">
+                            <input type="submit" class="btn btn-dark btn-lg" value="current time"/>
+                        </form>
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('next_month') }}">
+                        <input type="submit" class="btn btn-dark btn-lg" value="next month"/>
+                    </form>
+                </td>
+              </tr>
+            </table>
+        </br>
+        <div class="container bg-faded">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                          {% for name in daynames %}
+                          {% if name == '|SU|' %}
+                          <th><h3 style="color: red">{{ name }}</h3></th>
+                          {% else %}
+                          <th><h3>{{ name }}</h3></th>
+                          {% endif %}
+                          {% endfor %}
+                        </tr>
+                    </thead>
+                      {% for week in days %}
+                      <tr>
+                            {% for day in week %}
+                              {% if day[0] != '00' %}
+                              {% if day[1] == 'No reservations'%}
+    
+                            <td><form method="POST" action="{{ url_for('set_day', day=day[0]) }}">
+                                <input type="submit" class="btn btn-secondary btn-lg" title="{{day[1]}}" value="{{day[0]}}"/>
+                            </form></td>
+    
+                              {% else %}
+                            <td><form method="POST" action="{{ url_for('set_day', day=day[0]) }}">
+                                <input type="submit" class="btn btn-warning btn-lg" style="background-color:yellow;" title="
+                                {% for d in day %}
+                                {% if d != 'No reservations'%}
+                                {{ d }}
+                                {% endif %}
+                                {% endfor %}
+                                " value="{{day[0]}}"/>
+                            </form></td>
+                              {% endif %}
+                              {% else %}
+                              <td></td>
+                              {% endif %}
+                              {% endfor %}
+                          </tr>
+                    {% endfor %}
+                  </table>
+                  <h5 class="text-center">Dates with reservations on a yellow background</h5>
+        </div></br>
+        <form class="form-control form-control-lg" method="POST" action="{{ url_for('unreg_booking_create') }}">
+        <div>
+            <font size="5">
+                    <table>
+                            <tr>
+                                {{ form.date.label}}
+                            </tr>
+                            <tr>
+                                <td>{{ form.date}}</td>
+                                <td>
+                                <ul>
+                                    {% for error in form.date.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>{{ form.service.label}}</td>
+                            </tr>
+                            <tr>
+                              <td class="dropdown-toggle">
+                                  {{ form.service }}</br>
+                              </td>
+                              <td>
+                                  <ul>
+                                      {% for error in form.service.errors %}
+                                      <li>{{ error }}</li>
+                                      {% endfor %}
+                                  </ul>
+                              </td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.notes.label}}</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                    {{ form.notes}}</br>
+                                </td>
+                                <td>
+                                    <ul>
+                                        {% for error in form.notes.errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                              </tr>
+                          </table>
+      <input type="submit" class="btn btn-outline-success btn-lg" name="ureg_add_booking" value="Book service"/>
+      <input type="reset" class="btn btn-outline-danger btn-lg">
+    </font>
     </div>
-    <br/>
-  <form method="POST" action="{{ url_for('booking_create') }}">
-    <table>
-      <tr>
-          {{ form.date.label}}
-      </tr>
-      <tr>
-          <td>{{ form.date}}</td>
-          <td>
-          <ul>
-              {% for error in form.date.errors %}
-              <li>{{ error }}</li>
-              {% endfor %}
-          </ul>
-          </td>
-      </tr>
-      <tr>
-        <td>{{ form.service.label}}</td>
-      </tr>
-      <tr>
-        <td>
-            {{ form.service }}</br>
-        </td>
-        <td>
-            <ul>
-                {% for error in form.service.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        </td>
-      </tr>
-      <tr>
-          <td>{{ form.notes.label}}</td>
-        </tr>
-        <tr>
-          <td>
-              {{ form.notes}}</br>
-          </td>
-          <td>
-              <ul>
-                  {% for error in form.notes.errors %}
-                  <li>{{ error }}</li>
-                  {% endfor %}
-              </ul>
-          </td>
-        </tr>
-    </table>
-  <input type="submit" name="add_booking" value="Book service"/>
-  <input type="reset">
-</form>
-</div>
+    </form>
+    </br>
+    </div>
 {% endblock %}

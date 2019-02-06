@@ -5,19 +5,19 @@
 <h2>Customers: </h2>
 {% if customers.name is defined %}
 <ul>
-    <li>
+    <li class="form-control">
         <a href="{{ url_for('customer_information', customer_id = customers.id) }}">{{ customers.name }}</a>
-        <form method="POST" action="{{ url_for('customer_remove', customer_id=customers.id) }}">
-                <input type="submit" value="Remove customer"/>
+        <form method="POST"   action="{{ url_for('customer_remove', customer_id=customers.id) }}">
+                <input type="submit" class="btn btn-outline-danger" value="Remove account"/>
             </form>
     </li>
 </ul>
 {% else %}
 <ul>
     {% for customer in customers %}
-    <li><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a>
+    <li class="form-control"><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a>
     <form method="POST" action="{{ url_for('customer_remove', customer_id=customer.id) }}">
-        <input type="submit" value="Remove customer"/>
+        <input type="submit" class="btn btn-outline-danger" value="Remove customer"/>
     </form>
     </li>
     {% endfor %}

@@ -2,6 +2,8 @@
   
 {% block body %}
         <h1>Worker and service management</h1>
+
+        <font size="5">        
         <h2><u>Workers:</u></h2>
 <table>
     <tr>
@@ -20,16 +22,16 @@
                     {% endif %}
                     {% endfor %}
                     <td>
-                        <select>
+                        <select class="btn btn-outline-secondary dropdown-toggle">
                         {% for service in worker.services%}
                         <option value="{{ service.name}}">{{ service.name }}</option>
                         {% endfor %}
                         </select>
                     </td>     
-                    <td><input type="submit" value="Change role"/></td>
+                    <td><input type="submit" class="btn btn-outline-warning" value="Change role"/></td>
                 </form>
                 <form method="POST" action="{{ url_for('worker_delete', worker_id=worker.id) }}">  
-                    <td><input type="submit" value="Delete worker"/></td>
+                    <td><input type="submit" class="btn btn-outline-danger" value="Delete worker"/></td>
                     </form>
             </tr>
         {% endfor %}
@@ -41,11 +43,12 @@
                     <td><h3 style="color:red;"> No workers added yet </h3></td>
             </tr>
             {% endif %}
-</table></b>
+       
+        </table></b>
 
 </br>
 <h3>Add a worker</h3>
-<form method="POST" action="{{ url_for('worker_create') }}">
+<form method="POST" class="form-group" action="{{ url_for('worker_create') }}">
     <table>
         <tr>
           {{ wform.name.label}}
@@ -112,8 +115,8 @@
                         </td>
                 </tr>
     </table>
-  <input type="submit" name="add_worker "value="Add worker"/>
-  <input type="reset">
+  <input type="submit" name="add_worker " class="btn btn-outline-success btn-lg" value="Add worker"/>
+  <input type="reset" class="btn btn-outline-warning btn-lg">
 </form>
 </br>
 <h2><u>Services:</u></h2>
@@ -134,8 +137,8 @@
             <td>{{ (service.cost_per_hour) * (service.duration_hrs) + ((service.cost_per_hour) * (service.duration_mins) / 60) }} €</td>
             <td>
                 <form method="POST" action="{{ url_for('worker_assign', service_id=service.id) }}">
-                {{ swform.workers_list }}
-                <input type="submit" name="assign_worker "value="Assign worker"/>
+                <div class="btn-group">{{ swform.workers_list }}</div>
+                <input type="submit" name="assign_worker " class="btn btn-outline-success btn-lg" value="Assign worker"/>
                 </form>
             </td>
         </tr>
@@ -149,7 +152,7 @@
         {% endif %}
 </table></b>
 <h3>Add a Service</h3>
-<form method="POST" action="{{ url_for('service_create') }}">
+<form method="POST" class="form-group" action="{{ url_for('service_create') }}">
     <table>
         <tr>
           {{ sform.name.label}}
@@ -199,8 +202,9 @@
             <td>{{ sform.cost_per_hour}}</td>
         </tr>
     </table>
-  <input type="submit" name="add_service "value="Add service"/>
-  <input type="reset">
+  <input type="submit" name="add_service " class="btn btn-outline-success btn-lg" value="Add service"/>
+  <input type="reset" class="btn btn-outline-warning btn-lg">
 </form>
+</font>
 
 {% endblock %}

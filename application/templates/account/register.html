@@ -2,8 +2,8 @@
   
 {% block body %}
 
-<h3>Register:</h3>
-<form method="POST" action="{{ url_for('user_register') }}">
+<h3><b>Register:</b></h3>
+<form method="POST" class="form-control form-control-lg" action="{{ url_for('user_register') }}">
     <table>
         <tr>
           {{ form.name.label}}
@@ -107,7 +107,7 @@
                 </td>
         </tr>
     </table>
-  <input type="submit" name="user_register "value="Sign up!"/>
+  <input type="submit" class="btn btn-outline-success btn-lg" name="user_register "value="Sign up!"/>
 </form>
 
 {% endblock %}

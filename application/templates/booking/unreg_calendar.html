@@ -3,33 +3,34 @@
 {% block body %}
 
 <div>
-    <h1>
+    <h1 class="text-center">
         "Company name's" booking calendar for 
         {{ month }}
          /
         {{ year }}
         
-    </h1>
-        <table>
+    </h1></br>
+        <table class="container bg-faded">
           <tr>
             <td>
                 <form method="POST" action="{{ url_for('prev_month') }}">
-                    <input type="submit" value="previous month"/>
+                    <input type="submit" class="btn btn-dark btn-lg" value="previous month"/>
                 </form>
             </td>
             <td>
                     <form method="POST" action="{{ url_for('current_time') }}">
-                        <input type="submit" value="current time"/>
+                        <input type="submit" class="btn btn-dark btn-lg" value="current time"/>
                     </form>
             </td>
             <td>
                 <form method="POST" action="{{ url_for('next_month') }}">
-                    <input type="submit" value="next month"/>
+                    <input type="submit" class="btn btn-dark btn-lg" value="next month"/>
                 </form>
             </td>
           </tr>
         </table>
-    <div>
+    </br>
+    <div class="container bg-faded">
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -45,17 +46,23 @@
                   {% for week in days %}
                   <tr>
                         {% for day in week %}
-                          {% if day[0] != 0 %}
+                          {% if day[0] != '00' %}
                           {% if day[1] == 'No reservations'%}
-                          <td><h4 title="{{day[1]}}">{{day[0]}}<h4></td>
+
+                        <td><form method="POST" action="{{ url_for('set_day', day=day[0]) }}">
+                            <input type="submit" class="btn btn-secondary btn-lg" title="{{day[1]}}" value="{{day[0]}}"/>
+                        </form></td>
+
                           {% else %}
-                          <td><h4 style="background-color:yellow;" title="
-                              {% for d in day %}
-                              {% if d != 'No reservations'%}
-                              {{ d }}
-                              {% endif %}
-                              {% endfor %}
-                              ">{{day[0]}}<h4></td>
+                        <td><form method="POST" action="{{ url_for('set_day', day=day[0]) }}">
+                            <input type="submit" class="btn btn-warning btn-lg" style="background-color:yellow;" title="
+                            {% for d in day %}
+                            {% if d != 'No reservations'%}
+                            {{ d }}
+                            {% endif %}
+                            {% endfor %}
+                            " value="{{day[0]}}"/>
+                        </form></td>
                           {% endif %}
                           {% else %}
                           <td></td>
@@ -64,14 +71,17 @@
                       </tr>
                 {% endfor %}
               </table>
+              <h5 class="text-center">Dates with reservations on a yellow background</h5>
     </div></br>
-    <form method="POST" action="{{ url_for('unreg_booking_create') }}">
+    <form class="form-control form-control-lg" method="POST" action="{{ url_for('unreg_booking_create') }}">
+    <div>
+        <font size="5">
         <table>
       <tr>
           {{ form.date.label}}
       </tr>
       <tr>
-          <td>{{ form.date}}</td>
+        <td>{{ form.date}}</td>
           <td>
           <ul>
               {% for error in form.date.errors %}
@@ -84,7 +94,7 @@
         <td>{{ form.service.label}}</td>
       </tr>
       <tr>
-        <td>
+        <td class="dropdown-toggle">
             {{ form.service }}</br>
         </td>
         <td>
@@ -100,7 +110,7 @@
         </tr>
         <tr>
           <td>
-              {{ form.notes}}</br>
+                {{ form.notes}}</br>
           </td>
           <td>
               <ul>
@@ -163,8 +173,11 @@
             </td>
         </tr>
     </table>
-  <input type="submit" name="ureg_add_booking" value="Book service"/>
-  <input type="reset">
+  <input type="submit" class="btn btn-outline-success btn-lg" name="ureg_add_booking" value="Book service"/>
+  <input type="reset" class="btn btn-outline-danger btn-lg">
+</font>
+</div>
 </form>
+</br>
 </div>
 {% endblock %}

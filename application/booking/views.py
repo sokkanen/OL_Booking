@@ -8,12 +8,13 @@ from application.worker.models import Worker
 from application.customer.models import Customer
 from application.booking.forms import BookingForm, UnregisteredBookingForm
 from application.customer.forms import NewCustomerForm
-from application.booking.cal import Month_And_Year, First_And_Last
+from application.booking.cal import Month_And_Year, First_And_Last, Days_of_the_Month, Date_From_String
 import calendar
 from calendar import monthrange
 
 current = Month_And_Year()
 daynames = ['|MO|', '|TU|', '|WE|', '|TH|', '|FR|', '|SA|', '|SU|']
+req_day = 0
 
 @app.route("/bookings", methods=["GET"])
 @login_required(role="ANY")
@@ -59,32 +60,21 @@ def booking_remove(booking_id):
 
 @app.route("/calendar")
 def cal_index():
+    global req_day
+    form = BookingForm()
+    urform = UnregisteredBookingForm()
+    if req_day != 0:
+        form.date.data = req_day
+        urform.date.data = req_day
+        req_day = 0
     year = current.get_year()
     month = current.get_month()
-    dates = First_And_Last(year, month)
-    first = dates.get_first()
-    last = dates.get_last()
-    lst = []
-    books = Booking.find_bookings_with_workers_and_duration(first, last)
-    for week in list(calendar.monthcalendar(year, month)):
-        newweek = []
-        for day in week:
-            newday = []
-            newday.append(day)
-            for book in books:
-                if str(day) == book[0]:
-                    if (book[1] == None):
-                        newday.append("Ex-worker: " + book[2])
-                    else:
-                        newday.append(book[1] + ": "+ book[2])
-            newday.append("No reservations")
-            newweek.append(newday)
-        lst.append(newweek)
+    days = Days_of_the_Month(year, month)
+    lst = days.get_days()
     if current_user.is_authenticated:
-        return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = BookingForm())
+        return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = form)
     else:
-        cform = NewCustomerForm()
-        return render_template("booking/unreg_calendar.html", year = year, month = month , days = lst, daynames = daynames, form = UnregisteredBookingForm())
+        return render_template("booking/unreg_calendar.html", year = year, month = month , days = lst, daynames = daynames, form = urform)
 
 @app.route("/calendar/prev/", methods=["POST"])
 def prev_month():
@@ -101,31 +91,22 @@ def current_time():
     current.now()
     return redirect(url_for("cal_index"))
 
+@app.route("/calendar/setday/<day>", methods=["POST"])
+def set_day(day):
+    global req_day
+    times = Date_From_String(current.get_year(), current.get_month(), day)
+    timestr = times.get_daytime_object()
+    req_day = timestr
+    return redirect(url_for("cal_index"))
+
 @app.route("/calendar", methods=["POST"])
 def booking_create():
     form = BookingForm(request.form)
     if not form.validate():
         year = current.get_year()
         month = current.get_month()
-        dates = First_And_Last(year, month)
-        first = dates.get_first()
-        last = dates.get_last()
-        lst = []
-        books = Booking.find_bookings_with_workers_and_duration(first, last)
-        for week in list(calendar.monthcalendar(year, month)):
-            newweek = []
-            for day in week:
-                newday = []
-                newday.append(day)
-                for book in books:
-                    if str(day) == book[0]:
-                        if (book[1] == None):
-                            newday.append("Ex-worker: " + book[2])
-                        else:
-                            newday.append(book[1] + ": "+ book[2])
-                newday.append("No reservations")
-                newweek.append(newday)
-            lst.append(newweek)
+        days = Days_of_the_Month(year, month)
+        lst = days.get_days()
         return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = form)
     else:
         dateAndTime = form.date.data
@@ -144,25 +125,8 @@ def unreg_booking_create():
     if not form.validate():
         year = current.get_year()
         month = current.get_month()
-        dates = First_And_Last(year, month)
-        first = dates.get_first()
-        last = dates.get_last()
-        lst = []
-        books = Booking.find_bookings_with_workers_and_duration(first, last)
-        for week in list(calendar.monthcalendar(year, month)):
-            newweek = []
-            for day in week:
-                newday = []
-                newday.append(day)
-                for book in books:
-                    if str(day) == book[0]:
-                        if (book[1] == None):
-                            newday.append("Ex-worker: " + book[2])
-                        else:
-                            newday.append(book[1] + ": "+ book[2])
-                newday.append("No reservations")
-                newweek.append(newday)
-            lst.append(newweek)
+        days = Days_of_the_Month(year, month)
+        lst = days.get_days()
         return render_template("booking/unreg_calendar.html", year = year, month = month , days = lst, daynames = daynames, form = form)
     else:
         dateAndTime = form.date.data
