@@ -9,7 +9,7 @@
           {{ form.name.label}}
         </tr>
         <tr>
-          <td>{{ form.name}}</td></br>
+          <td>{{ form.name(class_="form-control")}}</td></br>
           <td>
           <ul>
               {% for error in form.name.errors %}
@@ -22,7 +22,7 @@
             <td>{{ form.username.label}} </td>
         </tr>
         <tr>   
-            <td>{{ form.username}}</td>
+            <td>{{ form.username(class_="form-control")}}</td>
             <td>
             <ul>
                 {% for error in form.username.errors %}
@@ -36,7 +36,7 @@
         </tr>
         <tr>
           <td>
-              {{ form.password}}</br>
+              {{ form.password(class_="form-control")}}</br>
           </td>
           <td>
               <ul>
@@ -51,7 +51,7 @@
         </tr>
         <tr>
                 <td>
-                    {{ form.confirm_password}}</br>
+                    {{ form.confirm_password(class_="form-control")}}</br>
                 </td>
                 <td>
                     <ul>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
                 <td>
-                        {{ form.email}}</br>
+                        {{ form.email(class_="form-control")}}</br>
                 </td>
                 <td>
                     <ul>
@@ -81,7 +81,7 @@
         </tr>
         <tr>
                 <td>
-                        {{ form.address}}</br>
+                        {{ form.address(class_="form-control")}}</br>
                 </td>
                 <td>
                     <ul>
@@ -96,7 +96,7 @@
         </tr>
         <tr>
                 <td>
-                        {{ form.phone}}</br>
+                        {{ form.phone(class_="form-control")}}</br>
                 </td>
                 <td>
                     <ul>

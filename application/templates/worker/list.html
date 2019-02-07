@@ -54,7 +54,7 @@
           {{ wform.name.label}}
         </tr>
         <tr>
-          <td>{{ wform.name}}</td></br>
+          <td>{{ wform.name(class_="form-control")}}</td></br>
           <td>
           <ul>
               {% for error in wform.name.errors %}
@@ -67,7 +67,7 @@
             <td>{{ wform.username.label}} </td>
         </tr>
         <tr>   
-            <td>{{ wform.username}}</td>
+            <td>{{ wform.username(class_="form-control")}}</td>
             <td>
             <ul>
                 {% for error in wform.username.errors %}
@@ -81,7 +81,7 @@
         </tr>
         <tr>
           <td>
-              {{ wform.password}}</br>
+              {{ wform.password(class_="form-control")}}
           </td>
           <td>
               <ul>
@@ -96,7 +96,7 @@
         </tr>
               <tr>
                 <td>
-                    {{ wform.confirm_password}}</br>
+                    {{ wform.confirm_password(class_="form-control")}}
                 </td>
                 <td>
                     <ul>
@@ -111,7 +111,7 @@
                 </tr>
                       <tr>
                         <td>
-                            {{ wform.role}}
+                            {{ wform.role(class_="form-check")}}
                         </td>
                 </tr>
     </table>
@@ -137,7 +137,7 @@
             <td>{{ (service.cost_per_hour) * (service.duration_hrs) + ((service.cost_per_hour) * (service.duration_mins) / 60) }} €</td>
             <td>
                 <form method="POST" action="{{ url_for('worker_assign', service_id=service.id) }}">
-                <div class="btn-group">{{ swform.workers_list }}</div>
+                <div class="btn-group">{{ swform.workers_list(class_="form-control form-control-lg") }}</div>
                 <input type="submit" name="assign_worker " class="btn btn-outline-success btn-lg" value="Assign worker"/>
                 </form>
             </td>
@@ -158,7 +158,7 @@
           {{ sform.name.label}}
         </tr>
         <tr>
-            <td>{{ sform.name}}</td>
+            <td>{{ sform.name(class_="form-control")}}</td>
             <td>
                 <ul>
                 {% for error in sform.name.errors %}
@@ -171,7 +171,7 @@
             <td>{{ sform.duration_hrs.label }}</td>
         </tr>
         <tr>
-            <td>{{ sform.duration_hrs}}</td>
+            <td>{{ sform.duration_hrs(class_="form-control")}}</td>
             <td>
                 <ul>
                 {% for error in sform.duration_hrs.errors %}
@@ -185,7 +185,7 @@
         </tr>
         <tr>
             <td>
-                {{ sform.duration_mins}}</br>
+                {{ sform.duration_mins(class_="form-control")}}
             </td>
             <td>
                 <ul>
@@ -199,12 +199,14 @@
             <td>{{ sform.cost_per_hour.label }}</td>
         </tr>
         <tr>
-            <td>{{ sform.cost_per_hour}}</td>
+            <td>{{ sform.cost_per_hour(class_="form-control")}}</td>
         </tr>
     </table>
   <input type="submit" name="add_service " class="btn btn-outline-success btn-lg" value="Add service"/>
   <input type="reset" class="btn btn-outline-warning btn-lg">
 </form>
+</br>
+</br>
 </font>
 
 {% endblock %}

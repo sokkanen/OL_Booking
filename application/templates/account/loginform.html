@@ -1,15 +1,21 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h3><b>Login:</b></h3>
+
+
+<div class="row align-items-center">
+        <div class="col-3"></div>
 <font color="red">{{ error }}</font> 
-<form method="POST" class="form-control form-control-lg" action="{{ url_for('user_login') }}">
+<form method="POST" class="form-group" action="{{ url_for('user_login') }}">
     <table>
+        <tr>
+                <h3><b>Login:</b></h3>
+        </tr>
         <tr>
           {{ form.username.label}}
         </tr>
         <tr>
-            <td>{{ form.username}}</td>
+            <td>{{ form.username(class_="form-control")}}</td>
             <td>
                 <ul>
                 {% for error in form.username.errors %}
@@ -22,7 +28,7 @@
             <td>{{ form.password.label }}</td>
         </tr>
         <tr>
-            <td>{{ form.password}}</td>
+            <td>{{ form.password(class_="form-control")}}</td>
             <td>
                 <ul>
                 {% for error in form.password.errors %}
@@ -35,5 +41,7 @@
   <input type="submit" class="btn btn-outline-success btn-lg" name="user_login" value="Login"/>
   <input type="reset" class="btn btn-outline-danger btn-lg">
 </form>
+</div>
+</div>
 
 {% endblock %}

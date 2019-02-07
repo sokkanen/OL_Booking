@@ -15,9 +15,9 @@
 {% else %}
 <ul>
     {% for customer in customers %}
-    <li class="form-control"><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a>
-    <form method="POST" action="{{ url_for('customer_remove', customer_id=customer.id) }}">
-        <input type="submit" class="btn btn-outline-danger" value="Remove customer"/>
+    <li class="form-control"><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name}}</a>
+    <form method="POST" class="col-sm" action="{{ url_for('customer_remove', customer_id=customer.id) }}">
+        <input type="submit" class="btn btn-outline-danger btn-sm" value="Remove customer"/>
     </form>
     </li>
     {% endfor %}

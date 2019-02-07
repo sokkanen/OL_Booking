@@ -81,7 +81,7 @@
                                 {{ form.date.label}}
                             </tr>
                             <tr>
-                                <td>{{ form.date}}</td>
+                                <td>{{ form.date(class_="form-control")}}</td>
                                 <td>
                                 <ul>
                                     {% for error in form.date.errors %}
@@ -95,7 +95,7 @@
                             </tr>
                             <tr>
                               <td>
-                                  {{ form.service(class_="form-control") }}</br>
+                                  {{ form.service(class_="form-control") }}
                               </td>
                               <td>
                                   <ul>
@@ -110,7 +110,7 @@
                               </tr>
                               <tr>
                                 <td>
-                                    {{ form.notes}}</br>
+                                    {{ form.notes(class_="form-control")}}</br>
                                 </td>
                                 <td>
                                     <ul>
