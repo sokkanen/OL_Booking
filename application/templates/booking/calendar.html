@@ -94,8 +94,8 @@
                               <td>{{ form.service.label}}</td>
                             </tr>
                             <tr>
-                              <td class="dropdown-toggle">
-                                  {{ form.service }}</br>
+                              <td>
+                                  {{ form.service(class_="form-control") }}</br>
                               </td>
                               <td>
                                   <ul>
@@ -124,6 +124,8 @@
       <input type="submit" class="btn btn-outline-success btn-lg" name="ureg_add_booking" value="Book service"/>
       <input type="reset" class="btn btn-outline-danger btn-lg">
     </font>
+</br>
+</br>
     </div>
     </form>
     </br>
