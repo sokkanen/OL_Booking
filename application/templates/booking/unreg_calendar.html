@@ -73,7 +73,7 @@
               </table>
               <h5 class="text-center">Dates with reservations on a yellow background</h5>
     </div></br>
-    <form class="form-control form-control-lg" method="POST" action="{{ url_for('unreg_booking_create') }}">
+    <form class="form-control" method="POST" action="{{ url_for('unreg_booking_create') }}">
     <div>
         <font size="5">
         <table>
@@ -81,7 +81,7 @@
           {{ form.date.label}}
       </tr>
       <tr>
-        <td>{{ form.date}}</td>
+        <td>{{ form.date(class_="form-control")}}</td>
           <td>
           <ul>
               {% for error in form.date.errors %}
@@ -94,8 +94,8 @@
         <td>{{ form.service.label}}</td>
       </tr>
       <tr>
-        <td class="dropdown-toggle">
-            {{ form.service }}</br>
+        <td>
+            {{ form.service(class_="form-control") }}
         </td>
         <td>
             <ul>
@@ -110,7 +110,7 @@
         </tr>
         <tr>
           <td>
-                {{ form.notes}}</br>
+                {{ form.notes(class_="form-control")}}
           </td>
           <td>
               <ul>
@@ -124,7 +124,7 @@
             <td>{{ form.name.label}}</td>
         </tr>
         <tr>
-            <td>{{ form.name}}</br></td>
+            <td>{{ form.name(class_="form-control")}}</td>
                 <td>
                     <ul>
                         {% for error in form.name.errors %}
@@ -137,7 +137,7 @@
             <td>{{ form.email.label}}</td>
         </tr>
         <tr>
-            <td>{{ form.email}}</br></td>
+            <td>{{ form.email(class_="form-control")}}</td>
             <td>
                     <ul>
                         {% for error in form.email.errors %}
@@ -150,7 +150,7 @@
                 <td>{{ form.address.label}}</td>
             </tr>
             <tr>
-                <td>{{ form.address}}</br></td>
+                <td>{{ form.address(class_="form-control")}}</td>
                 <td>
                         <ul>
                             {% for error in form.address.errors %}
@@ -163,7 +163,7 @@
             <td>{{ form.phone.label}}</td>
         </tr>
         <tr>
-            <td>{{ form.phone}}</br></td>
+            <td>{{ form.phone(class_="form-control")}}</td>
             <td>
                 <ul>
                     {% for error in form.phone.errors %}
@@ -178,6 +178,7 @@
 </font>
 </div>
 </form>
+</br>
 </br>
 </div>
 {% endblock %}
