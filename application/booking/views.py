@@ -145,3 +145,8 @@ def unreg_booking_create():
         db.session().commit()
         flash('Booking successfully submitted.')
     return redirect(url_for("cal_index"))
+
+@app.route("/bookings/statistics")
+@login_required(role="ADMIN")
+def booking_statistics():
+    return render_template("booking/statistics.html")

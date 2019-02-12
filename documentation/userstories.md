@@ -34,3 +34,4 @@ User Storyt
 * Ylläpitäjänä haluan nähdä kaikki järjestelmään tulleet tilaukset, jotta voin antaa tilauksia tehtäväksi työntekijöilleni.
 * Ylläpitäjänä haluan, että voin hallinnoida kaikkia tilauksia.
 * Ylläpitäjänä haluan, että voin hallinnoida kaikkia järjestelmässä olevia asiakastietoja.
+* Ylläpitäjänä haluan nähdä statistiikkaa varausjärjestelmän käyttöön ja varauksiin liittyen, jotta voin käyttää tietoa markkinoinnissa ja työntekijöiden vuorosuunnittelussa.
