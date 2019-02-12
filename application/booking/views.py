@@ -149,4 +149,7 @@ def unreg_booking_create():
 @app.route("/bookings/statistics")
 @login_required(role="ADMIN")
 def booking_statistics():
-    return render_template("booking/statistics.html")
+    vat = Booking.total_revenue_or_vat_for_year(current.get_year(), 24)
+    total = Booking.total_revenue_or_vat_for_year(current.get_year(), 0)
+    
+    return render_template("booking/statistics.html", total=total, vat = vat, year=current.get_year())

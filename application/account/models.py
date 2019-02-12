@@ -3,7 +3,7 @@ from application.models import Base
 
 class Account(Base):
 
-    username = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False, unique=True)
     password = db.Column(db.String(144), nullable=False)
     role = db.Column(db.String(10), nullable=False)
     linked_worker = db.relationship('Worker', backref='account', uselist=False, lazy=True)

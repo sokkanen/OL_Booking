@@ -41,7 +41,9 @@
           <td>
               <ul>
                   {% for error in form.password.errors %}
-                  <li>{{ error }}</li>
+                  <div class="badge badge-info">
+                    <li>{{ error }}</li>
+                  </div>
                   {% endfor %}
               </ul>
           </td>
@@ -56,7 +58,9 @@
                 <td>
                     <ul>
                         {% for error in form.confirm_password.errors %}
-                        <li>{{ error }}</li>
+                        <div class="badge badge-info">
+                            <li>{{ error }}</li>
+                        </div>
                         {% endfor %}
                     </ul>
                 </td>
