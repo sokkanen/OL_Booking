@@ -11,7 +11,7 @@ sudo apt-get install python3
 
 ### Paikallisesti toimivan ohjelmiston asennus
 
-* Lataa ohjelman viimeisin versio zip-tiedostona Githubista [Klik](http://linkkiohjemanzippiin.com) ja pura zip-tiedosto haluamaasi kansioon.
+* Lataa ohjelman viimeisin versio zip-tiedostona Githubista kohdasta [Download](https://github.com/sokkanen/TSOHA_OL_Booking) ja pura zip-tiedosto haluamaasi kansioon.
 * Mene komentorivillä ohjelman kansioon, ja luo ohjelmalle virtuaaliympäristö komennolla "python3 -m venv venv"
 * Aktivoi virtuaaliympäristö komennolla "source venv/bin/activate" 
 * Lataa ohjelman tarvitsemat riippuvuudet komennolla "pip install -r requirements.txt"
@@ -23,8 +23,7 @@ Ohjelma toimii localhostin portissa 5000. (Selaimella: http://localhost:5000)
 
 * Toimi kuten paikallisesti toimivan ohjelmiston kanssa, mutta älä käynnistä ohjelmaa.
 * Varmista, ettei requirements.txt -tiedostossa ole listattuna "pkg-resources==0.0.0" -riviä. Jos on, poista.
-* Lisätään Procfile -tiedosto, jonka perusteella Heroku käynnistää ohjelman.
-* Procfilen lisääminen onnistuu Linux:n terminaalissa seuraavalla komennolla:
+* Lisätään Procfile -tiedosto, jonka perusteella Heroku käynnistää ohjelman. Procfilen lisääminen onnistuu Linux:n terminaalissa seuraavalla komennolla:
 ```
 echo "web: gunicorn --preload --workers 1 hello:app" > Procfile
 ```
@@ -65,5 +64,7 @@ heroku pg:psql
 ```
 INSERT INTO account (username, password, role) VALUES ('testi', '$2b$12$J0lGxspdYNnc9XxqmijUs.z0mGMyZauQoMqATVsAre6AjCCVWy45G', 'ADMIN')
 ```
-
+```
+\q
+```
 Nyt ohjelmaan on mahdollista kirjautua Herokussa käyttäjätunnuksella "testi" ja salasanalla "testi"
