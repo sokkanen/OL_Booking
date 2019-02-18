@@ -116,3 +116,4 @@ dmypy.json
 .pyre/
 
 olbooking.db
+ol_old.db
