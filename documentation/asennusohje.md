@@ -3,7 +3,10 @@
 ### Esitoimet
 
 * Ohjelmaa käyttävällä tietokoneella tulee olla asennettuna Python 3.
-Ubuntussa Python 3:n asentaminen onnistuu pääkäyttäjäoikeuksilla komennolla "sudo apt-get install python3" 
+Ubuntussa Python 3:n asentaminen onnistuu pääkäyttäjäoikeuksilla komennolla:
+```
+sudo apt-get install python3
+```
 * Verkkoon (Heroku) siirrettäessä, käyttäjälle on a) Herokun käyttäjätunnus b) [Herokun komentorivityökalut](https://devcenter.heroku.com/articles/heroku-cli "Heroku CLI")
 
 ### Paikallisesti toimivan ohjelmiston asennus
@@ -25,9 +28,9 @@ Ohjelma toimii localhostin portissa 5000. (Selaimella: http://localhost:5000)
 ```
 echo "web: gunicorn --preload --workers 1 hello:app" > Procfile
 ```
-* Luodaan Herokuun sovellukselle paikka komennolla:
+* Luodaan Herokuun sovellukselle paikka komennolla. Kirjoita haluamasi nimi "projektin_nimi" paikalle:
 ```
-heroku create *projektin_nimi*
+heroku create projektin_nimi
 ```
 * Luo ohjelmalle versionhallinta komennolla:
 ```
@@ -35,7 +38,7 @@ git init
 ```
 * Muodostetaan juuri luodusta Herokun osoitteesta etärepositorio komennolla:
 ```
-git remote add heroku https://git.heroku.com/*projektin_nimi*.git
+git remote add heroku https://git.heroku.com/projektin_nimi.git
 ```
 * Lähetetään ohjelma Herokuun:
 ```
