@@ -67,4 +67,4 @@ INSERT INTO account (username, password, role) VALUES ('testi', '$2b$12$J0lGxspd
 ```
 \q
 ```
-Nyt ohjelmaan on mahdollista kirjautua Herokussa käyttäjätunnuksella "testi" ja salasanalla "testi"
+Nyt ohjelmaan on mahdollista kirjautua Herokussa osoitteessa: https://projektin_nimi.herokuapp.com/ käyttäjätunnuksella "testi" ja salasanalla "testi"
