@@ -85,7 +85,9 @@
                                 <td>
                                 <ul>
                                     {% for error in form.date.errors %}
-                                    <li>{{ error }}</li>
+                                    <div class="badge badge-info">
+                                            <li>{{ error }}</li>
+                                    </div>
                                     {% endfor %}
                                 </ul>
                                 </td>
@@ -100,7 +102,9 @@
                               <td>
                                   <ul>
                                       {% for error in form.service.errors %}
-                                      <li>{{ error }}</li>
+                                      <div class="badge badge-info">
+                                            <li>{{ error }}</li>
+                                    </div>
                                       {% endfor %}
                                   </ul>
                               </td>
@@ -115,7 +119,9 @@
                                 <td>
                                     <ul>
                                         {% for error in form.notes.errors %}
-                                        <li>{{ error }}</li>
+                                        <div class="badge badge-info">
+                                                <li>{{ error }}</li>
+                                        </div>
                                         {% endfor %}
                                     </ul>
                                 </td>

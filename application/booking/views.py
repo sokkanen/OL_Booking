@@ -6,7 +6,7 @@ from application.booking.models import Booking
 from application.service.models import Service
 from application.worker.models import Worker
 from application.customer.models import Customer
-from application.booking.forms import BookingForm, UnregisteredBookingForm
+from application.booking.forms import BookingForm, UnregisteredBookingForm, BookingStatisticsForm
 from application.customer.forms import NewCustomerForm
 from application.booking.cal import Month_And_Year, First_And_Last, Days_of_the_Month, Date_From_String
 import calendar
@@ -146,10 +146,21 @@ def unreg_booking_create():
         flash('Booking successfully submitted.')
     return redirect(url_for("cal_index"))
 
-@app.route("/bookings/statistics")
+@app.route("/bookings/statistics", methods=["GET", "POST"])
 @login_required(role="ADMIN")
 def booking_statistics():
-    vat = Booking.total_revenue_or_vat_for_year(current.get_year(), 24)
-    total = Booking.total_revenue_or_vat_for_year(current.get_year(), 0)
-    
-    return render_template("booking/statistics.html", total=total, vat = vat, year=current.get_year())
+    vat_for_year = Booking.total_revenue_or_vat_for_year(current.get_year(), 24)
+    total_for_year = Booking.total_revenue_or_vat_for_year(current.get_year(), 0)
+    if request.method == "GET":
+        return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=BookingStatisticsForm())
+    else:
+        form = BookingStatisticsForm(request.form)  
+        if not form.validate():
+            return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=form)
+        vat_for_year_month = Booking.total_revenue_or_vat_for_year_month(form.year.data, form.month.data, 24)
+        total_for_year_month = Booking.total_revenue_or_vat_for_year_month(form.year.data, form.month.data, 0)
+        ayear = form.year.data
+        amonth = form.month.data
+        totalBook = Booking.total_bookings_for_year_month(form.year.data, form.month.data)
+        return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=BookingStatisticsForm(), ar=total_for_year_month, av=vat_for_year_month, ayear=ayear, amonth=amonth, totalBook=totalBook)
+

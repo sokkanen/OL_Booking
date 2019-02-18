@@ -4,8 +4,7 @@
 
 
 <div class="row align-items-center">
-        <div class="col-3"></div>
-<font color="red">{{ error }}</font> 
+<div class="col-3"></div>
 <form method="POST" class="form-group" action="{{ url_for('user_login') }}">
     <table>
         <tr>
@@ -19,7 +18,9 @@
             <td>
                 <ul>
                 {% for error in form.username.errors %}
-                <li>{{ error }}</li>
+                <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                 {% endfor %}
                 </ul>
             </td>
@@ -32,7 +33,9 @@
             <td>
                 <ul>
                 {% for error in form.password.errors %}
-                <li>{{ error }}</li>
+                <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                 {% endfor %}
                 </ul>
             </td>
@@ -41,6 +44,7 @@
   <input type="submit" class="btn btn-outline-success btn-lg" name="user_login" value="Login"/>
   <input type="reset" class="btn btn-outline-danger btn-lg">
 </form>
+<div><font color="red">{{ error }}</font></div>
 </div>
 </div>
 

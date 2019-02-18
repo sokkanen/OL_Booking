@@ -58,7 +58,9 @@
           <td>
           <ul>
               {% for error in wform.name.errors %}
-              <li>{{ error }}</li>
+              <div class="badge badge-info">
+                    <li>{{ error }}</li>
+            </div>
               {% endfor %}
           </ul>
           </td>
@@ -71,7 +73,9 @@
             <td>
             <ul>
                 {% for error in wform.username.errors %}
-                <li>{{ error }}</li>
+                <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                 {% endfor %}
             </ul>
             </td>
@@ -86,7 +90,9 @@
           <td>
               <ul>
                   {% for error in wform.password.errors %}
-                  <li>{{ error }}</li>
+                  <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                   {% endfor %}
               </ul>
           </td>
@@ -101,7 +107,9 @@
                 <td>
                     <ul>
                         {% for error in wform.confirm_password.errors %}
-                        <li>{{ error }}</li>
+                        <div class="badge badge-info">
+                                <li>{{ error }}</li>
+                        </div>
                         {% endfor %}
                     </ul>
                 </td>
@@ -162,7 +170,9 @@
             <td>
                 <ul>
                 {% for error in sform.name.errors %}
-                <li>{{ error }}</li>
+                <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                 {% endfor %}
                 </ul>
             </td>
@@ -175,7 +185,9 @@
             <td>
                 <ul>
                 {% for error in sform.duration_hrs.errors %}
-                <li>{{ error }}</li>
+                <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                 {% endfor %}
                 </ul>
             </td>
@@ -190,7 +202,9 @@
             <td>
                 <ul>
                 {% for error in sform.duration_mins.errors %}
-                <li>{{ error }}</li>
+                <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                 {% endfor %}
                 </ul>
             </td>

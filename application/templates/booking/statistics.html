@@ -2,17 +2,66 @@
 
 {% block body %}
 <h1 class="text-center">
-    Stats stats stats
+    Booking statistics
 </h1>
 <br/>
+<div class="container bg-faded">
 <h3>
-    Statistiikkaa!
+    <u>Estimates for {{year}}</u>
 </h3></br>
 <p>
-    Total estimated revenue for {{year}}: {{total}} €
+    Total estimated revenue for {{year}}:<b>  {{total}} €</b>
 </p>
 <p>
-    Total estimated Vat for {{year}}: {{vat}} €
+    Total estimated Vat (24%) for {{year}}:<b> {{vat}} €</b>
 </p>
+</div>
+<div class="container bg-faded">
+<h3>
+    <u>Get monthly data: </u>
+</h3>
+<form class="form-control form-control-lg" method="POST" action="{{ url_for('booking_statistics') }}">
+<table>
+    <tr>
+        <td><b>{{ form.year.label }}</b></td>
+        <td>{{ form.year(class_="form-control")}}</td>
+        <td>
+        <ul>
+            {% for error in form.year.errors %}
+            <div class="badge badge-info">
+                    <li>{{ error }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><b>{{ form.month.label }}</b></td>
+        <td>{{ form.month(class_="form-control")}}</td>
+        <td>
+        <ul>
+            {% for error in form.month.errors %}
+            <div class="badge badge-info">
+                    <li>{{ error }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        </td>
+    </tr>
+</table>
+<input type="submit" class="btn btn-outline-success btn-lg" name="get_monthly_statistics" value="Get information"/>
+</form>
+<div>
+        <p>
+            Total estimated revenue for {{amonth}} / {{ayear}}:<b>  {{ar}} €</b>
+        </p>
+        <p>
+            Total estimated Vat (24%) for {{ amonth }} / {{ayear}}:<b> {{av}} €</b>
+        </p>
+        <p>
+            Total bookings in {{ amonth }} / {{ayear}}:<b> {{totalBook}}</b>
+        </p>
+</div>
+</div>
 
 {% endblock %}

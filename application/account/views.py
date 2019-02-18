@@ -13,7 +13,6 @@ def user_login():
         return render_template("account/loginform.html", form = LoginForm())
 
     form = LoginForm(request.form)
-    # mahdolliset validoinnit
 
     account = Account.query.filter_by(username=form.username.data).first()
     if not account:

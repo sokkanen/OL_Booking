@@ -13,7 +13,9 @@
           <td>
           <ul>
               {% for error in form.name.errors %}
-              <li>{{ error }}</li>
+              <div class="badge badge-info">
+                    <li>{{ error }}</li>
+                </div>
               {% endfor %}
           </ul>
           </td>
@@ -26,7 +28,9 @@
             <td>
             <ul>
                 {% for error in form.username.errors %}
-                <li>{{ error }}</li>
+                <div class="badge badge-info">
+                        <li>{{ error }}</li>
+                </div>
                 {% endfor %}
             </ul>
             </td>
@@ -75,7 +79,9 @@
                 <td>
                     <ul>
                             {% for error in form.email.errors %}
-                        <li>{{ error }}</li>
+                            <div class="badge badge-info">
+                                    <li>{{ error }}</li>
+                            </div>
                             {% endfor %}
                     </ul>
                 </td>
@@ -90,7 +96,9 @@
                 <td>
                     <ul>
                             {% for error in form.address.errors %}
-                        <li>{{ error }}</li>
+                            <div class="badge badge-info">
+                                    <li>{{ error }}</li>
+                            </div>
                             {% endfor %}
                     </ul>
                 </td>
@@ -105,7 +113,9 @@
                 <td>
                     <ul>
                             {% for error in form.phone.errors %}
-                        <li>{{ error }}</li>
+                            <div class="badge badge-info">
+                                    <li>{{ error }}</li>
+                            </div>
                             {% endfor %}
                     </ul>
                 </td>

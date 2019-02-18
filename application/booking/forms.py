@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField, SelectField, StringField, validators, ValidationError
+from wtforms import TextAreaField, SelectField, StringField, IntegerField, validators, ValidationError
 from wtforms.fields.html5 import DateTimeLocalField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.fields.html5 import EmailField
@@ -32,5 +32,12 @@ class UnregisteredBookingForm(FlaskForm):
     address = StringField("Address : ", [InputRequired(), validators.Length(min=5, max=100)])
     phone = StringField("Phone : ", [InputRequired(), validators.Length(min=5, max=20)])
 
+    class Meta:
+        csrf = False
+
+class BookingStatisticsForm(FlaskForm):
+    year = IntegerField("Year", [InputRequired(), validators.NumberRange(min=2018, max=2100)])
+    month = IntegerField("Month", [InputRequired(), validators.NumberRange(min=1, max=12)])
+    
     class Meta:
         csrf = False
