@@ -17,6 +17,8 @@ Esimiehelle tai ylläpitäjälle ohjelmisto mahdollistaa tehtyjen varausten hyv�
 
 [Ohjelman asennusohje](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/asennusohje.md)
 
+[Arkkitehtuuri- ja tietokantakuvaus](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/arkkitehtuuri.md)
+
 #### Demo ####
 
 [Ohjelman viimeisin versio Herokussa](https://ol-booking.herokuapp.com)
