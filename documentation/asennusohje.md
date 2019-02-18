@@ -1,13 +1,13 @@
 # Ohjelmiston asennusohje
 
-### Esitoimet
+### Esitoimet ja oletukset
 
 * Ohjelmaa käyttävällä tietokoneella tulee olla asennettuna Python 3.
 Ubuntussa Python 3:n asentaminen onnistuu pääkäyttäjäoikeuksilla komennolla:
 ```
 sudo apt-get install python3
 ```
-* Verkkoon (Heroku) siirrettäessä, käyttäjälle on a) Herokun käyttäjätunnus b) [Herokun komentorivityökalut](https://devcenter.heroku.com/articles/heroku-cli "Heroku CLI")
+* Verkkoon (Heroku) siirrettäessä, käyttäjällä on a) Herokun käyttäjätunnus b) Asennettuna [Herokun komentorivityökalut](https://devcenter.heroku.com/articles/heroku-cli "Heroku CLI")
 
 ### Paikallisesti toimivan ohjelmiston asennus
 
