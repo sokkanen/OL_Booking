@@ -3,13 +3,11 @@
 ### Yleistä 
 
 OL Booking on tarkoitettu pienen yrityksen, kuten parturin tai kiinteistöhuollon, tarpeisiin.
-Ohjelma mahdollistaa asiakkaalle palvelun varaamisen ja vapaiden palveluaikojen tarkastelun.
+Ohjelma mahdollistaa sekä rekisteröityneelle, että rekisteröitymättömälle asiakkaalle palvelun varaamisen ja vapaiden palveluaikojen tarkastelun.
 
-Työntekijälle ohjelmisto mahdollistaa tehtyjen varausten hyväksymisen tai hylkäämisen sekä viestin lähettämisen
-palvelun varanneelle asiakkaalle. Työntekijä voi myös lisätä omaan kalenteriinsa varattuja aikoja ja hallinnoida 
-tarjoamiaan palveluita.
+Työntekijälle ohjelmisto mahdollistaa hänelle tehtäväksi annettujen töiden sekä asiakastietojen tarkastelun.
 
-Ylläpitäjälle ohjelmisto mahdollistaa kaikkien työntekijöiden varausten tarkastelun..
+Esimiehelle tai ylläpitäjälle ohjelmisto mahdollistaa tehtyjen varausten hyväksymisen ja tehtäväksi antamisen tai hylkäämisen. Esimiehen on myös mahdollista lisätä ohjelmistoon työntekijöitä ja palveluita sekä hallinnoida asiakastietoja. Esimiehelle on tarjolla myös statistiikkaa palveluun tehdyistä varauksista. 
 
 #### Testitunnukset ####
 
