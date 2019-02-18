@@ -9,17 +9,21 @@ Työntekijälle ohjelmisto mahdollistaa hänelle tehtäväksi annettujen töiden
 
 Esimiehelle tai ylläpitäjälle ohjelmisto mahdollistaa tehtyjen varausten hyväksymisen ja tehtäväksi antamisen tai hylkäämisen. Esimiehen on myös mahdollista lisätä ohjelmistoon työntekijöitä ja palveluita sekä hallinnoida asiakastietoja. Esimiehelle on tarjolla myös statistiikkaa palveluun tehdyistä varauksista. 
 
-#### Testitunnukset ####
-
-* Käyttäjätunnus: 'admin'
-* Salasana:	'admin'
-
-#### Linkit ####
+#### Dokumentaatio ####
 
 [Kuva tietokannan hahmotelmasta](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta_alustava.png)
 
 [User storyt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md)
 
-[Ohjelman tämänhetkinen versio Herokussa](https://ol-booking.herokuapp.com)
+[Ohjelman asennusohje](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/asennusohje.md)
+
+#### Demo ####
+
+[Ohjelman viimeisin versio Herokussa](https://ol-booking.herokuapp.com)
+
+Voit kokeilla ohjelmaa testitunnuksilla:
+
+* Käyttäjätunnus: 'admin'
+* Salasana:	'admin'
 
 Huom! Ohjelman varaustoimintoon liittyvä kalenteri ei toimi Mozilla Firefoxilla!
