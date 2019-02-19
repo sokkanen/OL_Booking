@@ -19,10 +19,11 @@ Asiakkaana haluan, että...
 
 ### Työntekijä ###
 Työntekijänä haluan, että...
-* .. järjestelmä listaa tarjoamani palvelut, jotta voin tarjota niitä varattavaksi.
+* .. järjestelmä listaa tarjoamani palvelut, jotta asiakkaat voivat varata niitä.
 * .. näen minulle tehtäväksi annetut varaukset, jotta voin tehdä työni suunnitelmallisesti.
 * .. näen tilauksen tehneen asiakkaan tiedot, jotta voin olla häneen yhteydessä.
 * .. asiakkaat näkevät järjestelmästä mikäli olen jollakin ajanhetkellä varattuna, jotta minun palveluitani haluavat asiakkaat saavat niitä.
+* .. voin lisätä järjestelmään työntekijävarauksen, jotta voin esimerkiksi merkitä kalenteriin vapaapäiväni.
 * .. voin tarkastella asiakkaideni tietoja.
 
 ### Ylläpitäjä / Esimies ###
@@ -32,6 +33,7 @@ Ylläpitäjänä tai esimiehenä haluan, että...
 * .. voin ylentää työntekijän järjestelmässä esimieheksi / ylläpitäjäksi
 * .. voin lisätä järjestelmään yrityksen tarjoamia palveluita, ja määrittää ketkä työntekijöistä niitä tarjoavat.
 * .. näen kaikki järjestelmään tulleet tilaukset, jotta voin antaa tilauksia tehtäväksi työntekijöilleni.
+* .. voin lisätä järjestelmään työntekijävarauksen, jotta voin esimerkiksi merkitä kalenteriin vapaapäiväni.
 * .. voin hallinnoida kaikkia tilauksia.
 * .. voin hallinnoida kaikkia järjestelmässä olevia asiakastietoja.
 * .. näen halutessani statistiikkaa - kuten arviot tuloista ja maksettavista arvonlisäveroista - varauksiin liittyen.
