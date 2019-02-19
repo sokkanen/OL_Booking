@@ -13,7 +13,7 @@ Esimiehelle tai ylläpitäjälle ohjelmisto mahdollistaa tehtyjen varausten hyv�
 
 [Kuva tietokannan hahmotelmasta](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta_alustava.png)
 
-[User storyt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md)
+[User storyt keskeisimpine SQL-lauseineen](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md)
 
 [Ohjelman asennusohje](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/asennusohje.md)
 
