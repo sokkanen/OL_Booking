@@ -73,4 +73,7 @@ WHERE account.id = ?
 SELECT SUM(cost_per_hour * duration_hrs) + SUM(cost_per_hour * duration_mins / 60) FROM Service JOIN Booking ON Service.id = booking.service_id WHERE Booking.requested_date > ? and Booking.requested_date < ?
 2019-02-19 23:48:19,151 INFO sqlalchemy.engine.base.Engine (datetime.date(2019, 1, 1), datetime.date(2019, 12, 31))
 ```
+```
+SELECT COUNT(id) FROM Booking WHERE Booking.requested_date > ? and Booking.requested_date < ?
+```
 * .. ne käyttäjät, joilla ei ole riittäviä oikeuksia, eivät pääse näkemään kaikkia tilauksia, asiakkaita tai statistiikkaa, eivätkä muokkaamaan työntekijä- tai palvelutietoja.
