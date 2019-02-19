@@ -38,6 +38,11 @@ Ylläpitäjänä tai esimiehenä haluan, että...
 * .. voin lisätä ja poistaa työntekijöitä järjestelmästä.
 * .. voin ylentää työntekijän järjestelmässä esimieheksi / ylläpitäjäksi
 * .. voin lisätä järjestelmään yrityksen tarjoamia palveluita, ja määrittää ketkä työntekijöistä niitä tarjoavat.
+```
+SELECT service.id AS service_id, service.date_created AS service_date_created, service.date_modified AS service_date_modified, service.name AS service_name, service.duration_hrs AS service_duration_hrs, service.duration_mins AS service_duration_mins, service.cost_per_hour AS service_cost_per_hour, anon_1.worker_id AS anon_1_worker_id 
+FROM (SELECT worker.id AS worker_id 
+FROM worker) AS anon_1 JOIN worker_service AS worker_service_1 ON anon_1.worker_id = worker_service_1.worker_id JOIN service ON service.id = worker_service_1.service_id ORDER BY anon_1.worker_id
+```
 * .. näen kaikki järjestelmään tulleet tilaukset, jotta voin antaa tilauksia tehtäväksi työntekijöilleni.
 * .. voin lisätä järjestelmään työntekijävarauksen, jotta voin esimerkiksi merkitä kalenteriin vapaapäiväni.
 * .. voin hallinnoida kaikkia tilauksia.
