@@ -19,7 +19,7 @@ Ensikirjautuminen:
 * Käyttäjätunnus: 'testi'
 * Salasana: 'testi'
 
-Kun ohjelma on otettu käyttöön ja ohjelmaan on luotu haluttu käyttäjätunnus, on suositeltavaa poistaa testikäyttäjä manuaalisesti seuraavin komennoin ohjelman kansiosta (\Ohjelman_polku\application\) käsin.
+Kun ohjelma on otettu käyttöön ja ohjelmaan on luotu haluttu pääkäyttäjätunnus, on suositeltavaa poistaa testikäyttäjä manuaalisesti seuraavin komennoin ohjelman kansiosta (\Ohjelman_polku\application\) käsin.
 ```
 sqlite3 olbooking.db
 ```
