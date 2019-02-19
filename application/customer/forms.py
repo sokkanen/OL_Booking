@@ -11,7 +11,7 @@ def validate_username(form, field):
 
 class NewCustomerForm(FlaskForm):
     username = StringField("Username: ", [InputRequired(), validators.Length(min=3, max=30), validate_username])
-    password = StringField('Password:', [InputRequired(), validators.Length(min=6, max=100), EqualTo('confirm_password', message='Passwords must match')], widget=PasswordInput(hide_value=False))
+    password = StringField('Password:', [InputRequired(), validators.Length(min=5, max=100), EqualTo('confirm_password', message='Passwords must match')], widget=PasswordInput(hide_value=False))
     confirm_password = StringField('Repeat Password:', widget=PasswordInput(hide_value=False))
     name = StringField("Name: ", [InputRequired(), validators.Length(min=3, max=50)])
     email = EmailField('Email: ', [InputRequired(), validators.DataRequired(), validators.Email()])

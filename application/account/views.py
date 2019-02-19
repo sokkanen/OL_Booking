@@ -90,7 +90,7 @@ def customer_information(customer_id):
         return render_template("account/modinfo.html", form = form, customer = customer)
     if form.password.data != "12345" and customer.account_id != 0:
         account.password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-    if customer.account_id != 0:
+    if customer.account_id != None:
         account.username = form.username.data
     customer.name = form.name.data
     customer.email = form.email.data
@@ -116,10 +116,11 @@ def customer_remove(customer_id):
     c = Customer.query.filter(Customer.id == customer_id).first()
     del_b = Booking.__table__.delete().where(Booking.customer_id == customer_id) # Poistetaan varaukset
     del_c = Customer.__table__.delete().where(Customer.id == customer_id) # Poistetaan asiakas
-    del_a = Account.__table__.delete().where(Account.id == c.account_id) # Poistetaan tili
     db.session.execute(del_b)
     db.session.execute(del_c)
-    db.session.execute(del_a)
+    if c.account_id != None:
+        del_a = Account.__table__.delete().where(Account.id == c.account_id) # Poistetaan tili
+        db.session.execute(del_a)
     db.session().commit()
     flash("Customer successfully removed")
     
