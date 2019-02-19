@@ -6,12 +6,18 @@ Rekisteröitymättömänä asiakkaana haluan, että...
 * .. voin tehdä varaukseni ilman rekisteröitymistä.
 * .. voin tilata tai varata palveluita tarpeideni mukaan.
 * .. näen ne ajankohdat, jolloin palveluntarjoajat ovat varattuina, jotta tiedän ajoittaa oman varaukseni.
+```
+SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins FROM Booking LEFT JOIN Worker ON Worker.id = Booking.worker_id LEFT JOIN Service ON Booking.service_id = Service.id WHERE Booking.confirmed = 1 GROUP BY Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins
+```
 * .. tietojani käsitellään luottamuksellisesti, jotta tietoni eivät joudu vääriin käsiin
 
 ### Rekisteröitynyt asiakas ###
 Asiakkaana haluan, että...
 * .. voin tilata tai varata palveluita tarpeideni mukaisesti
 * .. näen ne ajankohdat, jolloin palveluntarjoajat ovat varattuina, jotta tiedän ajoittaa oman varaukseni.
+```
+SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins FROM Booking LEFT JOIN Worker ON Worker.id = Booking.worker_id LEFT JOIN Service ON Booking.service_id = Service.id WHERE Booking.confirmed = 1 GROUP BY Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins
+```
 * .. voin rekisteröityä varausjärjestelmään, jotta voin tarkastella tilauksiani
 * .. näen varausjärjestelmästä kun tilaukseni on vahvistettu, jotta tiedän tilauksen olevan käsittelyssä.
 * .. tietojani käsitellään luottamuksellisesti, jotta tietoni eivät joudu vääriin käsiin
