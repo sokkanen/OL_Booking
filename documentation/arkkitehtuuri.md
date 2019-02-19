@@ -2,9 +2,37 @@
 
 ## Yleistä
 
-Ol-Booking:n keskeisimmät toteutusvälineet ovat Python 3, [Flask](http://flask.pocoo.org/docs/1.0/) ja [Jinja2](http://jinja.pocoo.org/docs/2.10/). Muut ohjelman riippuvuudet on listattu [requirements.txt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/requirements.txt) -tiedostossa.
+Ol-Booking on kirjoitettu Pythonilla. Keskeisimmät riippuvuudet ovat [Flask](http://flask.pocoo.org/docs/1.0/) ja [Jinja2](http://jinja.pocoo.org/docs/2.10/). Muut ohjelman riippuvuudet on listattu [requirements.txt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/requirements.txt) -tiedostossa.
 
-## Tietokannan CREATE TABLE -lauseet tauluittain
+Ohjelmassa on neljä käyttäjäroolia. Nämä ovat:
+* Pääkäyttäjä (Admin)
+* Työntekijä (Worker)
+* Rekisteröitynyt asiakas (Customer) ja
+* Rekisteröitymätön asiakas.
+
+Ohjelma rajaa / tarjoaa palveluita käyttäjäroolin perusteella. Tarkemmat käyttäjäroolien kuvaukset löytyvät [user stories](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md) -tiedostosta.
+## Tietokanta
+
+Ohjelma käyttää paikallisesti SQlite -tietokannanhallintaa. Paikallinen tietokanta luodaan ohjelman ensimmäisen käynnistyksen yhteydessä tiedostoon olbooking.db. Ohjelmaan luodaan käynnistyksen yhteydessä ensimmäinen käyttäjä, jolla ohjelman käytön voi aloittaa.
+
+Ensikirjautuminen:
+* Käyttäjätunnus: 'testi'
+* Salasana: 'testi'
+
+Kun ohjelma on otettu käyttöön ja ohjelmaan on luotu haluttu käyttäjätunnus, on suositeltavaa poistaa testikäyttäjä manuaalisesti seuraavin komennoin ohjelman kansiosta (\Ohjelman_polku\application\) käsin.
+```
+sqlite3 olbooking.db
+```
+```
+DELETE FROM Account WHERE id = 1;
+```
+```
+.exit
+```
+
+Herokussa ohjelma käyttää PostgreSQL:aa.
+
+### Tietokannan CREATE TABLE -lauseet tauluittain
 
 #### Service
 ```
