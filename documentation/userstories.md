@@ -42,9 +42,10 @@ Ylläpitäjänä tai esimiehenä haluan, että...
 * .. voin ylentää työntekijän järjestelmässä esimieheksi / ylläpitäjäksi
 * .. voin lisätä järjestelmään yrityksen tarjoamia palveluita, ja määrittää ketkä työntekijöistä niitä tarjoavat.
 ```
-SELECT service.id AS service_id, service.date_created AS service_date_created, service.date_modified AS service_date_modified, service.name AS service_name, service.duration_hrs AS service_duration_hrs, service.duration_mins AS service_duration_mins, service.cost_per_hour AS service_cost_per_hour, anon_1.worker_id AS anon_1_worker_id 
-FROM (SELECT worker.id AS worker_id 
-FROM worker) AS anon_1 JOIN worker_service AS worker_service_1 ON anon_1.worker_id = worker_service_1.worker_id JOIN service ON service.id = worker_service_1.service_id ORDER BY anon_1.worker_id
+INSERT INTO service (date_created, date_modified, name, duration_hrs, duration_mins, cost_per_hour) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, ?)
+```
+```
+INSERT INTO worker_service (worker_id, service_id) VALUES (?, ?)
 ```
 * .. näen kaikki järjestelmään tulleet tilaukset, jotta voin antaa tilauksia tehtäväksi työntekijöilleni.
 ```
