@@ -27,6 +27,9 @@ SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.durati
 Työntekijänä haluan, että...
 * .. järjestelmä listaa tarjoamani palvelut, jotta asiakkaat voivat varata niitä.
 * .. näen minulle tehtäväksi annetut varaukset, jotta voin tehdä työni suunnitelmallisesti.
+```
+SELECT * FROM Booking WHERE confirmed = 1 AND worker_id = ?
+```
 * .. näen tilauksen tehneen asiakkaan tiedot, jotta voin olla häneen yhteydessä.
 * .. asiakkaat näkevät järjestelmästä mikäli olen jollakin ajanhetkellä varattuna, jotta minun palveluitani haluavat asiakkaat saavat niitä.
 * .. voin lisätä järjestelmään työntekijävarauksen, jotta voin esimerkiksi merkitä kalenteriin vapaapäiväni.
@@ -44,9 +47,26 @@ FROM (SELECT worker.id AS worker_id
 FROM worker) AS anon_1 JOIN worker_service AS worker_service_1 ON anon_1.worker_id = worker_service_1.worker_id JOIN service ON service.id = worker_service_1.service_id ORDER BY anon_1.worker_id
 ```
 * .. näen kaikki järjestelmään tulleet tilaukset, jotta voin antaa tilauksia tehtäväksi työntekijöilleni.
+```
+SELECT booking.id AS booking_id, booking.date_created AS booking_date_created, booking.date_modified AS booking_date_modified, booking.notes AS booking_notes, booking.confirmed AS booking_confirmed, booking.requested_date AS booking_requested_date, booking.customer_id AS booking_customer_id, booking.worker_id AS booking_worker_id, booking.service_id AS booking_service_id 
+FROM booking 
+WHERE booking.confirmed = 0
+```
 * .. voin lisätä järjestelmään työntekijävarauksen, jotta voin esimerkiksi merkitä kalenteriin vapaapäiväni.
+```
+INSERT INTO booking (date_created, date_modified, notes, confirmed, requested_date, customer_id, worker_id, service_id) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?, ?)
+```
 * .. voin hallinnoida kaikkia tilauksia.
 * .. voin hallinnoida kaikkia järjestelmässä olevia asiakastietoja.
+```
+SELECT customer.id AS customer_id, customer.date_created AS customer_date_created, customer.date_modified AS customer_date_modified, customer.name AS customer_name, customer.email AS customer_email, customer.address AS customer_address, customer.phone AS customer_phone, customer.account_id AS customer_account_id 
+FROM customer ORDER BY customer.name
+```
+```
+SELECT account.id AS account_id, account.date_created AS account_date_created, account.date_modified AS account_date_modified, account.username AS account_username, account.password AS account_password, account.role AS account_role 
+FROM account 
+WHERE account.id = ?
+```
 * .. näen halutessani statistiikkaa - kuten arviot tuloista ja maksettavista arvonlisäveroista - varauksiin liittyen.
 ```
 SELECT SUM(cost_per_hour * duration_hrs) + SUM(cost_per_hour * duration_mins / 60) FROM Service JOIN Booking ON Service.id = booking.service_id WHERE Booking.requested_date > ? and Booking.requested_date < ?
