@@ -1,4 +1,8 @@
-# Arkkitehtuurikuvaus
+# Arkkitehtuuri- ja tietokantakuvaus
+
+## Yleistä
+
+Ol-Booking:n keskeisimmät toteutusvälineet ovat Python 3, [Flask](http://flask.pocoo.org/docs/1.0/) ja [Jinja2](http://jinja.pocoo.org/docs/2.10/). Muut ohjelman riippuvuudet on listattu [requirements.txt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/requirements.txt) -tiedostossa.
 
 ## Tietokannan CREATE TABLE -lauseet tauluittain
 
