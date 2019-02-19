@@ -23,6 +23,9 @@
         <td> <a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a></td>
         {% endif %}
         {% endfor %}
+        {% if booking.customer_id is none %}
+        <td>Added by staff</td>
+        {% endif %}
         <td>{{ booking.requested_date }}</td>
         <td><textarea readonly rows="3" cols="50" class="form-control">{{ booking.notes }}</textarea></td>
         {% if booking.confirmed == 1 %}
@@ -94,6 +97,9 @@
                 <td> <a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name }}</a></td>
                 {% endif %}
                 {% endfor %}
+                {% if booking.customer_id is none %}
+                <td>Added by staff</td>
+                {% endif %}
                 <td>{{ booking.requested_date }}</td>
                 <td><textarea readonly rows="3" cols="50" class="form-control">{{ booking.notes }}</textarea></td>
                 {% if booking.confirmed == 1 %}

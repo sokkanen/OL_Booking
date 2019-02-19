@@ -9,11 +9,11 @@ class Booking(Base):
     notes = db.Column(db.String(150), nullable=False)
     confirmed = db.Column(db.Integer, nullable=False)
     requested_date = db.Column(db.DateTime, nullable=False)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
     worker_id = db.Column(db.Integer, db.ForeignKey('worker.id'))
     service_id = db.Column(db.Integer, db.ForeignKey('service.id'), nullable=False)
 
-    def __init__(self, notes, confirmed, requested_date, customer_id, service_id):
+    def __init__(self, notes, confirmed, requested_date, service_id, customer_id=None):
         self.notes = notes
         self.confirmed = confirmed
         self.requested_date = requested_date

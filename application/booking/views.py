@@ -112,10 +112,15 @@ def booking_create():
         dateAndTime = form.date.data
         notes = form.notes.data
         service_id = form.service.data.id
-        customer_id = Customer.query.filter_by(account_id=current_user.id).first().id
-        b = Booking(notes, 0, dateAndTime, customer_id, service_id)
-        db.session().add(b)
-        db.session().commit()
+        if current_user.get_role() == "CUSTOMER":
+            customer_id = Customer.query.filter_by(account_id=current_user.id).first().id
+            b = Booking(notes, 0, dateAndTime, service_id, customer_id)
+            db.session().add(b)
+            db.session().commit()
+        else:
+            b = Booking(notes, 0, dateAndTime, service_id)
+            db.session().add(b)
+            db.session().commit()
         flash('Booking successfully submitted.')
     return redirect(url_for("cal_index"))
 
@@ -140,7 +145,7 @@ def unreg_booking_create():
         db.session().add(c)
         db.session().commit()
         customer_id = Customer.query.filter(Customer.name == name).first().id
-        b = Booking(notes, 0, dateAndTime, customer_id, service_id)
+        b = Booking(notes, 0, dateAndTime, service_id, customer_id)
         db.session().add(b)
         db.session().commit()
         flash('Booking successfully submitted.')
