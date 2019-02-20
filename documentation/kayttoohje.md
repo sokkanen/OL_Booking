@@ -158,6 +158,8 @@ Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmää
 
 Varauksen vahvistaminen ja tehtäväksi antaminen onnistuu valitsemalla työntekijä alasvetovalikosta ja painamalla "Assign and confirm" -painiketta. Huomioi, että tilattu palvelu on oltava työntekijän tarjoamien palveluiden joukossa, jotta tilauksen voi antaa halutulle työntekijälle tehtäväksi.
 
+Asiakkaan tekemässä varauksessa on linkki varauksen tehneen asiakkaan tietoihin. Työntekijän tai pääkäyttäjän tekemässä varauksessa on linkin kohdalla teksti "Added by staff", jolloin mahdolliset tarkennukset varaukseen tulee antaa viestikentässä (Note)
+
 Sekä vahvistetun, että vahvistamattoman varauksen voi poistaa "Remove booking" -painikkeesta.
 
 #### Statistiikka
