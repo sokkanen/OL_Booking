@@ -95,19 +95,19 @@ Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmää
 
 Työntekijän näkymässä keskeisimmät hallintanäkymät on koottu ohjelman alapalkkiin.
 
-![Staff resources]()
+![Staff resources](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/staff_resources.jpg)
 
 #### Vahvistettujen varausten tarkastelu
 
 Alapalkin painiketta "View bookings" (tai yläpalkin "My Bookings") painamalla, työntekijä pääsee tarkastelemaan hänelle tehtäväksi annettuja ja vahvistettuja varauksia. Työntekijä ei voi poistaa varauksia järjestelmästä.
 
-![worker_bookings]()
+![worker_bookings](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/worker_bookings.jpg)
 _________
 #### Asiakastietojen tarkastelu
 
 Alapalkin painiketta "Customer information" (tai yläpalkin "My account") painamalla, työntekijä pääsee tarkastelemaan asiakastietoja. Työntekijä ei voi poistaa tai muokata järjestelmään tallennettuja asiakastietoja.
 
-![worker_customers]()
+![customer_view](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/customer_view.jpg)
 
 ## Pääkäyttäjä
 
