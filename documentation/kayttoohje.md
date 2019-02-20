@@ -166,5 +166,5 @@ Sekä vahvistetun, että vahvistamattoman varauksen voi poistaa "Remove booking"
 
 ![admin_stats](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_stats.jpg)
 
-Pääkäyttäjälle tarjotaa statistiikkaa varauksista. Vahvistetuista varauksista lasketaan kuluvalle vuodelle tuottoarvio sekä arvio maksettavasta arvolisäveron määrästä (Suomi, 24%). Pääkäyttäjä voi myös hakea statistiikkaa vuoden (2018-2100) ja kuukauden (1-12) perusteella. Tällöin hänelle tarjotaan kuukauden tuotto- ja alv-arviot sekä ko. kuukauden varausten lukumäärä.
+Pääkäyttäjälle tarjotaan statistiikkaa varauksista. Vahvistetuista varauksista lasketaan kuluvalle vuodelle tuottoarvio sekä arvio maksettavasta arvolisäveron määrästä (Suomi, 24%). Pääkäyttäjä voi myös hakea statistiikkaa vuoden (2018-2100) ja kuukauden (1-12) perusteella. Tällöin hänelle tarjotaan kuukauden tuotto- ja alv-arviot sekä ko. kuukauden varausten lukumäärä.
 
