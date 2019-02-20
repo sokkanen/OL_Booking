@@ -52,11 +52,22 @@ Varaus suoritetaan "Book service" -painikkeesta. Kentät saa tyhjennettyä "Rese
 
 ![reg_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/reg_booking.jpg)
 
+Varauksen kentät ovat seuraavat:
+* Päivä ja aika: Päivän voi valita painamalla päivämäärän painiketta tai (selaimesta riippuen) suoraan kentästä. Järjestelmä ei anna tehdä varausta menneille päiville.
+* Service: Alasvetovalikosta valitaan palvelu, jonka asiakas haluaa varata.
+* Notes: Viesti palveluntuottajalle. Kenttä ei ole pakollinen, max 150 merkkiä.
+
+Varaus tehdään painamalla "Book service" -painiketta. Kenttien arvot nollataan "Reset" -painikkeesta.
+
 #### Vahvistettujen varausten tarkastelu
 
 Yläpalkin painiketta "My Bookings" painamalla, asiakas pääsee tarkastelemaan varauksiaan. Asiakkaalle näytetään varaukset, jotka ovat hänen tekemiään ja vahvistettuja pääkäyttäjän toimesta.
 
 ![cust_bookings](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_bookings.jpg)
+
+Asiakas ei voi poistaa varausta järjestelmästä.
+
+_______
 
 #### Omat tiedot
 
