@@ -90,11 +90,11 @@ def load_account(account_id):
 # Luo taulut
 try:
     db.create_all()
-    pwhash = bcrypt.generate_password_hash('testi').decode('utf-8')
-    username = 'testi'
-    role = 'ADMIN'
-    account = Account(username, pwhash, role)
-    db.session().add(account)
-    db.session().commit()
+#    pwhash = bcrypt.generate_password_hash('testi').decode('utf-8')
+#    username = 'testi'
+#    role = 'ADMIN'
+#    account = Account(username, pwhash, role)
+#    db.session().add(account)
+#    db.session().commit()
 except:
     pass
