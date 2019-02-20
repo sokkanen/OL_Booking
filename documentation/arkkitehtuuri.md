@@ -13,6 +13,10 @@ Ohjelmassa on neljä käyttäjäroolia. Nämä ovat:
 Ohjelma rajaa / tarjoaa palveluita käyttäjäroolin perusteella. Tarkemmat käyttäjäroolien kuvaukset löytyvät [user stories](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md) -tiedostosta.
 ## Tietokanta
 
+#### Tietokantakaavio
+
+![database](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta.jpg)
+
 Ohjelma käyttää paikallisesti SQlite -tietokannanhallintaa. Paikallinen tietokanta luodaan ohjelman ensimmäisen käynnistyksen yhteydessä tiedostoon olbooking.db. Ohjelmaan luodaan käynnistyksen yhteydessä ensimmäinen käyttäjä, jolla ohjelman käytön voi aloittaa.
 
 Ensikirjautuminen:
@@ -24,13 +28,24 @@ Kun ohjelma on otettu käyttöön ja ohjelmaan on luotu haluttu pääkäyttäjä
 sqlite3 olbooking.db
 ```
 ```
-DELETE FROM Account WHERE id = 1;
+DELETE FROM Account WHERE username = 'testi';
 ```
 ```
 .exit
 ```
 
 Herokussa ohjelma käyttää PostgreSQL:aa.
+
+Herokussa toimivan ohjelman testikäyttäjän poistaminen onnistuu ohjelman paikallisesti kansiosta (\Ohjelman_polku\) seuraavin komentorivikomennoin:
+```
+heroku pg:psql
+```
+```
+DELETE FROM aaccount WHERE username = 'testi';
+```
+```
+\q
+```
 
 ### Tietokannan CREATE TABLE -lauseet tauluittain
 
@@ -116,8 +131,6 @@ CREATE TABLE worker_service (
 	)
 ```
 ## Ohjelman rakenne
-
-#### Tietokantakaavio
 
 #### Tiedostorakenne
 
