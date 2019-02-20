@@ -7,7 +7,8 @@ Ohjelman etusivu näyttää seuraavalta.
 ![frontpage](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/frontpage.jpg)
 
 Etusivulta pääsee ilman rekisteröitymistä kolmeen näkymään:
-* Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen rekisteröitymättömänä asiakkaana.
+* Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen myös rekisteröitymättömänä asiakkaana.
+___________
 * Register (linkki yläpalkissa oikealla). Register-sivulla on mahdollista luoda uusi asiakastili.
 
 ![register](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/register.jpg)
