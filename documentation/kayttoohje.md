@@ -14,8 +14,6 @@ Ohjelman etusivu näyttää seuraavalta.
 ![frontpage](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/frontpage.jpg)
 
 Etusivulta pääsee ilman rekisteröitymistä näkymiin Booking, Login ja Register.
-
-* Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen myös rekisteröitymättömänä asiakkaana.
 ___________
 * Register (linkki yläpalkissa oikealla). Register-sivulla on mahdollista luoda uusi asiakastili.
 
@@ -32,10 +30,12 @@ ___________
 * Login (linkki yläpalkissa oikealla). Kirjautuminen kaikille käyttäjäryhmille aiemmin luodulla käyttäjätunnuksella.
 
 ![login](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/login.jpg)
+___________
+* Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen myös rekisteröitymättömänä asiakkaana.
 
 ## Rekisteröitymätön asiakas
 
-Viemällä hiiren kursorin päivämäärän kohdalle, asiakas näkee tällä hetkellä järjestelmässä olevat, vahvistetut varaukset ko. päivälle.
+Viemällä Booking-näkymässä hiiren kursorin päivämäärän kohdalle, näkee asiakas tällä hetkellä järjestelmässä olevat, vahvistetut varaukset ko. päivälle.
 
 ![unreg_booking_res](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking_res.jpg)
 __________
@@ -121,7 +121,12 @@ _________
 ![admin_worker_service](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_workerservice.jpg)
 
 Työntekijä- ja palveluhallinnan tarjoamat toiminnallisuudet:
-* Työntekijän ja pääkäyttäjän lisääminen
+* Työntekijän ja pääkäyttäjän lisääminen. Kentät ovat seuraavat:
+   * Name: Työntekijän nimi. Kenttä on pakollinen, 3-50 merkkiä.
+   * Username: Työntekijän käyttäjätunnus. Kenttä on pakollinen, 3-50 merkkiä.
+   * Password ja Repeat password: Työntekijän salasana. Pakollinen, 5-100 merkkiä.
+   * Role: Lisättävän työntekijän rooli. Worker (työntekijä) tai Admin (pääkäyttäjä).
+   Työntekijä lisätään "Add worker"-painikkeesta. Kentät tyhjennetään "Reset"-painikkeesta.
 * Työntekijän ja pääkäyttäjän roolin vaihtaminen
 * Palvelun lisääminen
 * Palvelun asettaminen työntekijälle
