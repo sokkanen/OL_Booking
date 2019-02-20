@@ -31,7 +31,7 @@ ___________
 
 ![login](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/login.jpg)
 ___________
-* Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen myös rekisteröitymättömänä asiakkaana.
+* Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen myös rekisteröitymättömänä asiakkaana. Booking-näkymässä voi vaihtaa kalenterikuukautta näkymän yläosan painikkeista "previous month", "current time" ja "next month". 
 
 ## Rekisteröitymätön asiakas
 
