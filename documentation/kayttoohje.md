@@ -93,7 +93,7 @@ Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmää
 
 ## Työntekijä
 
-Työntekijän näkymässä keskeisimmät hallintanäkymät on koottu ohjelman alapalkkiin.
+Työntekijän näkymässä keskeisimmät työhön liittyvät linkit on koottu ohjelman alapalkkiin.
 
 ![Staff resources](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/staff_resources.jpg)
 
