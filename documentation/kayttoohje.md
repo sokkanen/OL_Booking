@@ -21,7 +21,7 @@ Rekisteröitymisen kentät ovat seuraavat:
 * Address: Asikkaan osoite. Kenttä on pakollinen. 5-100 merkkiä.
 * Phone: Asiakkaan puhelinnumero. Kenttä on pakollinen, 5-20 merkkiä.-
 ___________
-* Login (linkki yläpalkissa oikealla). Login näkymässä tapahtuu kirjautuminen kaikille käyttäjäryhmille.
+* Login (linkki yläpalkissa oikealla). Kirjautuminen kaikille käyttäjäryhmille aiemmin luodulla käyttäjätunnuksella.
 
 ![login](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/login.jpg)
 
@@ -30,7 +30,7 @@ ___________
 Viemällä hiiren kursorin päivämäärän kohdalle, asiakas näkee tällä hetkellä järjestelmässä olevat, vahvistetut varaukset ko. päivälle.
 
 ![unreg_booking_res](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking_res.jpg)
-
+__________
 Rekisteröitymätön asiakas voi tehdä palveluvarauksen Booking-näkymässä.
 
 ![unreg_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking.jpg)
