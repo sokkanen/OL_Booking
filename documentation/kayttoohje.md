@@ -123,7 +123,7 @@ Pääkäyttäjän näkymässä keskeisimmät työhön liittyvät linkit on koott
 
 ![customer_view](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/customer_view.jpg)
 
-Pääkäyttäjä näkee kaikkien asiakkaiden tiedot. Pääkäyttäjällä on oikeus poistaa käyttäjiä järjestelmästä. Käyttäjä poistetaan "Remove" -painikkeesta.
+Pääkäyttäjä näkee kaikkien asiakkaiden tiedot. Pääkäyttäjällä on oikeus poistaa käyttäjiä järjestelmästä. Käyttäjä poistetaan "Remove customer" -painikkeesta.
 ________
 
 ![cust_information](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_info.jpg)
@@ -137,4 +137,6 @@ Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmää
 #### Statistiikka
 
 ![admin_stats](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_stats.jpg)
+
+Pääkäyttäjälle tarjotaa statistiikkaa varauksista. Vahvistetuista varauksista lasketaan kuluvalle vuodelle tuottoarvio sekä arvio maksettavasta arvolisäveron määrästä (Suomi, 24%). Pääkäyttäjä voi myös hakea statistiikkaa vuoden (2018-2100) ja kuukauden (1-12) perusteella. Tällöin hänelle tarjotaan kuukauden tuotto- ja alv-arviot sekä ko. kuukauden varausten lukumäärä.
 
