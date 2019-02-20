@@ -6,7 +6,8 @@ Ohjelman etusivu näyttää seuraavalta.
 
 ![frontpage](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/frontpage.jpg)
 
-Etusivulta pääsee ilman rekisteröitymistä kolmeen näkymään:
+Etusivulta pääsee ilman rekisteröitymistä näkymiin Booking, Login ja Register.
+
 * Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen myös rekisteröitymättömänä asiakkaana.
 ___________
 * Register (linkki yläpalkissa oikealla). Register-sivulla on mahdollista luoda uusi asiakastili.
@@ -84,6 +85,22 @@ Painamalla nimessään olevaa linkkiä, asiakas pääsee tarkastelemaan hänest�
 Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), käyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella.
 
 ## Työntekijä
+
+Työntekijän näkymässä keskeisimmät hallintanäkymät on koottu ohjelman alapalkkiin.
+
+![Staff resources]()
+
+#### Vahvistettujen varausten tarkastelu
+
+Alapalkin painiketta "View bookings" (tai yläpalkin "My Bookings") painamalla, työntekijä pääsee tarkastelemaan hänelle tehtäväksi annettuja ja vahvistettuja varauksia. Työntekijä ei voi poistaa varauksia järjestelmästä.
+
+![worker_bookings]()
+_________
+#### Asiakastietojen tarkastelu
+
+Alapalkin painiketta "Customer information" (tai yläpalkin "My account") painamalla, työntekijä pääsee tarkastelemaan asiakastietoja. Työntekijä ei voi poistaa tai muokata järjestelmään tallennettuja asiakastietoja.
+
+![worker_customers]()
 
 ## Pääkäyttäjä
 
