@@ -3,6 +3,7 @@
 ## Yleistä
 
 Ohjelman etusivu näyttää seuraavalta.
+
 ![frontpage](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/frontpage.jpg)
 
 Etusivulta pääsee ilman rekisteröitymistä kolmeen näkymään:
@@ -15,9 +16,11 @@ Etusivulta pääsee ilman rekisteröitymistä kolmeen näkymään:
 ## Rekisteröitymätön asiakas
 
 Viemällä hiiren kursorin päivämäärän kohdalle, asiakas näkee tällä hetkellä järjestelmässä olevat, vahvistetut varaukset ko. päivälle.
+
 ![unreg_booking_res](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking_res.jpg)
 
 Rekisteröitymätön asiakas voi tehdä palveluvarauksen Booking-näkymässä.
+
 ![unreg_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking.jpg)
 
 Varauksen kentät ovat seuraavat:
@@ -39,9 +42,23 @@ Varaus suoritetaan "Book service" -painikkeesta. Kentät saa tyhjennettyä "Rese
 
 #### Palveluvaraus
 
+[]
+
 #### Vahvistettujen varausten tarkastelu
 
+![cust_bookings](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_bookings.jpg)
+
 #### Omat tiedot
+
+Yläpalkin painiketta "My Accout" painamalla pääsee katsomaan ja muokkaamaan omia käyttäjätietojaan.
+
+Näkymä avautuu käyttäjätunnukseen liittyvien asiakastietojen listaan. Asiakas ei voi poistaa itseään järjestelmästä, vaan nämä oikeudet on annettu ainoastaan pääkäyttäjälle.
+
+![cust_related_accout](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_related_account.jpg)
+
+Painamalla nimessään olevaa linkkiä, asiakas pääsee tarkastelemaan hänestä talletettuja tietoja. 
+
+![cust_information](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_info.jpg)
 
 ## Työntekijä
 
