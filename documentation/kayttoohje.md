@@ -18,7 +18,7 @@ Viemällä hiiren kursorin päivämäärän kohdalle, asiakas näkee tällä het
 ![unreg_booking_res](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking_res.jpg)
 
 Rekisteröitymätön asiakas voi tehdä palveluvarauksen Booking-näkymässä.
-![unreg_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking_res.jpg)
+![unreg_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking.jpg)
 
 Varauksen kentät ovat seuraavat:
 * Päivä ja aika: Päivän voi valita painamalla päivämäärän painiketta tai (selaimesta riippuen) suoraan kentästä. Järjestelmä ei anna tehdä varausta menneille päiville.
