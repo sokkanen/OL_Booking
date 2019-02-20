@@ -113,13 +113,28 @@ Alapalkin painiketta "Customer information" (tai yläpalkin "My account") painam
 
 Pääkäyttäjän näkymässä keskeisimmät työhön liittyvät linkit on koottu ohjelman alapalkkiin.
 
-![Admin_resources]()
+![Admin_resources](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_resources.jpg)
 
 #### Työntekijä- ja palveluhallinta
 
+![admin_worker_service](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_workerservice.jpg)
+
 #### Asiakastietojen tarkastelu ja muokkaus
+
+![customer_view](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/customer_view.jpg)
+
+Pääkäyttäjä näkee kaikkien asiakkaiden tiedot. Pääkäyttäjällä on oikeus poistaa käyttäjiä järjestelmästä. Käyttäjä poistetaan "Remove" -painikkeesta.
+________
+
+![cust_information](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_info.jpg)
+
+Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), pääkäyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella.
 
 #### Varausten vahvistaminen / tehtäväksi antaminen ja poistaminen
 
+![admin_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_booking.jpg)
+
 #### Statistiikka
+
+![admin_stats](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_stats.jpg)
 
