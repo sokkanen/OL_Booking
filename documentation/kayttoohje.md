@@ -9,6 +9,17 @@ Ohjelman etusivu näyttää seuraavalta.
 Etusivulta pääsee ilman rekisteröitymistä kolmeen näkymään:
 * Booking (linkki yläpalkissa). Booking-näkymässä voi tehdä varauksen rekisteröitymättömänä asiakkaana.
 * Register (linkki yläpalkissa oikealla). Register-sivulla on mahdollista luoda uusi asiakastili.
+
+![register](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/register.jpg)
+
+Rekisteröitymisen kentät ovat seuraavat:
+* Name: Asiakkaan nimi. Kenttä on pakollinen, 3-50 merkkiä.
+* Username: Käyttäjätunnus järjestelmään. Kenttä on pakollinen, 3-30 merkkiä.
+* Password ja Repeat password: Käyttäjän salasana. Pakollinen, 5-100 merkkiä.
+* Email: Asikkaan sähköpostiosoite. Kenttä on pakollinen. Kenttä tarkastaa, että syöte on validin muotoinen sähköpostiosoite.
+* Address: Asikkaan osoite. Kenttä on pakollinen. 5-100 merkkiä.
+* Phone: Asiakkaan puhelinnumero. Kenttä on pakollinen, 5-20 merkkiä.-
+___________
 * Login (linkki yläpalkissa oikealla). Login näkymässä tapahtuu kirjautuminen kaikille käyttäjäryhmille.
 
 ![login](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/login.jpg)
@@ -35,10 +46,6 @@ Varauksen kentät ovat seuraavat:
 Varaus suoritetaan "Book service" -painikkeesta. Kentät saa tyhjennettyä "Reset"-painikkeesta.
 
 ## Rekisteröitynyt asiakas
-
-#### Rekisteröityminen
-
-![register](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/register.jpg)
 
 #### Palveluvaraus
 
