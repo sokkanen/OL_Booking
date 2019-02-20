@@ -134,6 +134,10 @@ Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmää
 
 ![admin_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_booking.jpg)
 
+Varauksen vahvistaminen ja tehtäväksi antaminen onnistuu valitsemalla työntekijä alasvetovalikosta ja painamalla "Assign and confirm" -painiketta. Huomioi, että tilattu palvelu on oltava työntekijän tarjoamien palveluiden joukossa, jotta tilauksen voi antaa halutulle työntekijälle tehtäväksi.
+
+Sekä vahvistetun, että vahvistamattoman varauksen voi poistaa "Remove booking" -painikkeesta.
+
 #### Statistiikka
 
 ![admin_stats](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_stats.jpg)
