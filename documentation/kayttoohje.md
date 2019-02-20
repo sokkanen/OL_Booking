@@ -114,10 +114,18 @@ Alapalkin painiketta "Customer information" (tai yläpalkin "My account") painam
 Pääkäyttäjän näkymässä keskeisimmät työhön liittyvät linkit on koottu ohjelman alapalkkiin.
 
 ![Admin_resources](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_resources.jpg)
+_________
 
 #### Työntekijä- ja palveluhallinta
 
 ![admin_worker_service](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/admin_workerservice.jpg)
+
+Työntekijä- ja palveluhallinnan tarjoamat toiminnallisuudet:
+* Työntekijän ja pääkäyttäjän lisääminen
+* Työntekijän ja pääkäyttäjän roolin vaihtaminen
+* Palvelun lisääminen
+* Palvelun asettaminen työntekijälle
+* Työntekijän tai pääkäyttäjän poistaminen
 
 #### Asiakastietojen tarkastelu ja muokkaus
 
