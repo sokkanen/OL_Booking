@@ -2,7 +2,7 @@
 
 ## Yleistä
 
-Ol-Booking on kirjoitettu Pythonilla. Keskeisimmät riippuvuudet ovat [Flask](http://flask.pocoo.org/docs/1.0/) ja [Jinja2](http://jinja.pocoo.org/docs/2.10/). Muut ohjelman riippuvuudet on listattu [requirements.txt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/requirements.txt) -tiedostossa.
+Ol-Booking on kirjoitettu Pythonilla ja HTML:llä. Keskeisimmät riippuvuudet ovat [Flask](http://flask.pocoo.org/docs/1.0/) ja [Jinja2](http://jinja.pocoo.org/docs/2.10/). Muut ohjelman riippuvuudet on listattu [requirements.txt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/requirements.txt) -tiedostossa.
 
 Ohjelmassa on neljä käyttäjäroolia. Nämä ovat:
 * Pääkäyttäjä (Admin)
@@ -12,6 +12,10 @@ Ohjelmassa on neljä käyttäjäroolia. Nämä ovat:
 
 Ohjelma rajaa / tarjoaa palveluita käyttäjäroolin perusteella. Tarkemmat käyttäjäroolien kuvaukset löytyvät [user stories](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md) -tiedostosta.
 ## Tietokanta
+
+#### Tietokantakaavio
+
+![database](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta.jpg)
 
 Ohjelma käyttää paikallisesti SQlite -tietokannanhallintaa. Paikallinen tietokanta luodaan ohjelman ensimmäisen käynnistyksen yhteydessä tiedostoon olbooking.db. Ohjelmaan luodaan käynnistyksen yhteydessä ensimmäinen käyttäjä, jolla ohjelman käytön voi aloittaa.
 
@@ -24,13 +28,24 @@ Kun ohjelma on otettu käyttöön ja ohjelmaan on luotu haluttu pääkäyttäjä
 sqlite3 olbooking.db
 ```
 ```
-DELETE FROM Account WHERE id = 1;
+DELETE FROM Account WHERE username = 'testi';
 ```
 ```
 .exit
 ```
 
 Herokussa ohjelma käyttää PostgreSQL:aa.
+
+Herokussa toimivan ohjelman testikäyttäjän poistaminen onnistuu ohjelman paikallisesti kansiosta (\Ohjelman_polku\) seuraavin komentorivikomennoin:
+```
+heroku pg:psql
+```
+```
+DELETE FROM aaccount WHERE username = 'testi';
+```
+```
+\q
+```
 
 ### Tietokannan CREATE TABLE -lauseet tauluittain
 
@@ -117,8 +132,6 @@ CREATE TABLE worker_service (
 ```
 ## Ohjelman rakenne
 
-#### Tietokantakaavio
-
 #### Tiedostorakenne
 
 Ohjelman tiedostorakenne keskeisimmiltä osiltaan on seuraava:
@@ -183,9 +196,11 @@ Ohjelman keskeisimmät kokonaisuudet ovat Account, Booking, Customer, Service ja
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
-### Käyttöliittymä
+* Palveluvalikoiman lisääminen ja hallinnointi on kankeahkoa. Nykyisessä ohjelmistoversiossa jokaiselle palvelulle täytyy luoda oma rivi tietokantaan (esim. haravointi 100m2 ja haravointi 200m2). Yksikön määrittäminen tekisi ohjelmasta verrattain monimutkaisen, sillä jokaiselle eri tyyppiselle palvelulle jouduttaisiin määrittämään myös yksikkö (selkähieronta 1h on paljon parempi kuin selkähieronta 100m2...).
+* Ohjelman nykyinen versio soveltuu pienyritykselle, jolla on verrattain vähän työntekijöitä, suppeahko palveluvalikoima ja vähän rekisteröityneitä asiakkaita. Nykyisessä muodossaan ohjelma ei palvele yhtään isomman yrityksen tarpeita. Isommalle tietomassalle tiedon filtteröinti ja valitseminen täytyisi rakentaa täysin toisella tulokulmalla.
 
-### Tietokanta
+## Jatkokehitysideat
 
-### Muuta
+* Ohjelmaan olisi verrattain helppoa luoda viestitoiminnallisuus, joka mahdollistaisi työntekijöiden ja asiakkaiden välisen viestinnän. Tämä on jätetty nykyisestä ohjelmaversiosta pois työn paisumisen välttämiseksi.
+* Toinen - vielä pidemmälle viety - lisäys olisi automaattinen sähköpostinlähetys asiakkaalle varauksesta, varauksen vahvistamisesta jne.
 
