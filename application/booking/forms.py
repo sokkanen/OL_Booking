@@ -27,7 +27,7 @@ class UnregisteredBookingForm(FlaskForm):
     date = DateTimeLocalField('Date and time: ',[InputRequired(), date_not_in_past],format='%Y-%m-%dT%H:%M')
     service = QuerySelectField(query_factory=service_query, get_label='name')
     notes = StringField("Notes: ", [validators.Length(max=150)])
-    name = StringField("Name: ", [InputRequired(), validators.Length(min=1, max=50)])
+    name = StringField("Name: ", [InputRequired(), validators.Length(min=3, max=50)])
     email = EmailField('Email: ', [InputRequired(), validators.DataRequired(), validators.Email()])
     address = StringField("Address : ", [InputRequired(), validators.Length(min=5, max=100)])
     phone = StringField("Phone : ", [InputRequired(), validators.Length(min=5, max=20)])
