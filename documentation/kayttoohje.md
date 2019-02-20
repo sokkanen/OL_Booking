@@ -133,7 +133,12 @@ Työntekijä- ja palveluhallinnan tarjoamat toiminnallisuudet:
 * Työntekijän tai pääkäyttäjän poistaminen
   * Painamalla työntekijän vieressä olevaa "Delete Worker" -painiketta.
 * Palvelun lisääminen
+   * Service: Palvelun nimi (Esim. Miesten hiustenleikkaus tai Lumenluonti 10m2). Kenttä on pakollinen, max 100 merkkiä.
+   * Duration hours: Kesto tunteina. Kenttä on pakollinen, 0-12.
+   * Duration minutes: Kesto minuutteina. Kenttä on pakollinen, 0-59.
+   * Cost per hour: Hinta. Pakollinen, 0-999€
 * Palvelun asettaminen työntekijälle
+  * Valitsemalla työntekijä palvelulistauksen alasvetovalikosta ja painamalla "Assign worker" -painiketta.
 
 
 #### Asiakastietojen tarkastelu ja muokkaus
