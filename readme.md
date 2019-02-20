@@ -11,8 +11,6 @@ Esimiehelle tai yll채pit채j채lle ohjelmisto mahdollistaa tehtyjen varausten hyv�
 
 #### Dokumentaatio ####
 
-[Kuva tietokannan hahmotelmasta](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/tietokanta_alustava.png)
-
 [User storyt keskeisimpine SQL-lauseineen](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/userstories.md)
 
 [Ohjelman asennusohje](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/asennusohje.md)
@@ -29,5 +27,3 @@ Voit kokeilla ohjelmaa testitunnuksilla:
 
 * K채ytt채j채tunnus: 'admin'
 * Salasana:	'admin'
-
-Huom! Ohjelman varaustoimintoon liittyv채 kalenteri ei toimi Mozilla Firefoxilla!
