@@ -2,7 +2,7 @@
 
 ## Yleistä
 
-Ol-Booking on kirjoitettu Pythonilla. Keskeisimmät riippuvuudet ovat [Flask](http://flask.pocoo.org/docs/1.0/) ja [Jinja2](http://jinja.pocoo.org/docs/2.10/). Muut ohjelman riippuvuudet on listattu [requirements.txt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/requirements.txt) -tiedostossa.
+Ol-Booking on kirjoitettu Pythonilla ja HTML:llä. Keskeisimmät riippuvuudet ovat [Flask](http://flask.pocoo.org/docs/1.0/) ja [Jinja2](http://jinja.pocoo.org/docs/2.10/). Muut ohjelman riippuvuudet on listattu [requirements.txt](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/requirements.txt) -tiedostossa.
 
 Ohjelmassa on neljä käyttäjäroolia. Nämä ovat:
 * Pääkäyttäjä (Admin)
