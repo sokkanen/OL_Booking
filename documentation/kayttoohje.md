@@ -111,3 +111,15 @@ Alapalkin painiketta "Customer information" (tai yläpalkin "My account") painam
 
 ## Pääkäyttäjä
 
+Pääkäyttäjän näkymässä keskeisimmät työhön liittyvät linkit on koottu ohjelman alapalkkiin.
+
+![Admin_resources]()
+
+#### Työntekijä- ja palveluhallinta
+
+#### Asiakastietojen tarkastelu ja muokkaus
+
+#### Varausten vahvistaminen / tehtäväksi antaminen ja poistaminen
+
+#### Statistiikka
+
