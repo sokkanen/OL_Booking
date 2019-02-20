@@ -46,6 +46,8 @@ Varaus suoritetaan "Book service" -painikkeesta. Kentät saa tyhjennettyä "Rese
 
 #### Vahvistettujen varausten tarkastelu
 
+Yläpalkin painiketta "My Bookings" painamalla, asiakas pääsee tarkastelemaan varauksiaan. Asiakkaalle näytetään varaukset, jotka ovat hänen tekemiään ja vahvistettuja pääkäyttäjän toimesta.
+
 ![cust_bookings](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_bookings.jpg)
 
 #### Omat tiedot
