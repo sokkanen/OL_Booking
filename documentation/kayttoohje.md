@@ -1,5 +1,12 @@
 # Käyttöohje
 
+Ohjeen sisällysluettelo:
+- Yleistä
+- Rekisteröitymätön asiakas
+- Rekisteröitynyt asiakas
+- Työntekijä
+- Pääkäyttäjä
+
 ## Yleistä
 
 Ohjelman etusivu näyttää seuraavalta.
