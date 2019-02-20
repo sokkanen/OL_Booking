@@ -41,7 +41,7 @@ Herokussa toimivan ohjelman testikäyttäjän poistaminen onnistuu ohjelman paik
 heroku pg:psql
 ```
 ```
-DELETE FROM aaccount WHERE username = 'testi';
+DELETE FROM account WHERE username = 'testi';
 ```
 ```
 \q
