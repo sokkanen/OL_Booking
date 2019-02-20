@@ -196,9 +196,11 @@ Ohjelman keskeisimmät kokonaisuudet ovat Account, Booking, Customer, Service ja
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
-### Käyttöliittymä
+* Palveluvalikoiman lisääminen ja hallinnointi on kankeahkoa. Nykyisessä ohjelmistoversiossa jokaiselle palvelulle täytyy luoda oma rivi tietokantaan (esim. haravointi 100m2 ja haravointi 200m2). Yksikön määrittäminen tekisi ohjelmasta verrattain monimutkaisen, sillä jokaiselle eri tyyppiselle palvelulle jouduttaisiin määrittämään myös yksikkö (selkähieronta 1h on paljon parempi kuin selkähieronta 100m2...).
+* Ohjelman nykyinen versio soveltuu pienyritykselle, jolla on verrattain vähän työntekijöitä, suppeahko palveluvalikoima ja vähän rekisteröityneitä asiakkaita. Nykyisessä muodossaan ohjelma ei palvele yhtään isomman yrityksen tarpeita. Isommalle tietomassalle tiedon filtteröinti ja valitseminen täytyisi rakentaa täysin toisella tulokulmalla.
 
-### Tietokanta
+## Jatkokehitysideat
 
-### Muuta
+* Ohjelmaan olisi verrattain helppoa luoda viestitoiminnallisuus, joka mahdollistaisi työntekijöiden ja asiakkaiden välisen viestinnän. Tämä on jätetty nykyisestä ohjelmaversiosta pois työn paisumisen välttämiseksi.
+* Toinen - vielä pidemmälle viety - lisäys olisi automaattinen sähköpostinlähetys asiakkaalle varauksesta, varauksen vahvistamisesta jne.
 
