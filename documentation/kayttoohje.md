@@ -126,11 +126,15 @@ Työntekijä- ja palveluhallinnan tarjoamat toiminnallisuudet:
    * Username: Työntekijän käyttäjätunnus. Kenttä on pakollinen, 3-50 merkkiä.
    * Password ja Repeat password: Työntekijän salasana. Pakollinen, 5-100 merkkiä.
    * Role: Lisättävän työntekijän rooli. Worker (työntekijä) tai Admin (pääkäyttäjä).
+   
    Työntekijä lisätään "Add worker"-painikkeesta. Kentät tyhjennetään "Reset"-painikkeesta.
 * Työntekijän ja pääkäyttäjän roolin vaihtaminen
+  * Painamalla työntekijän vieressä olevaa "Change role" -painiketta.
+* Työntekijän tai pääkäyttäjän poistaminen
+  * Painamalla työntekijän vieressä olevaa "Delete Worker" -painiketta.
 * Palvelun lisääminen
 * Palvelun asettaminen työntekijälle
-* Työntekijän tai pääkäyttäjän poistaminen
+
 
 #### Asiakastietojen tarkastelu ja muokkaus
 
