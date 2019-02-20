@@ -87,14 +87,17 @@ from application.account.models import Account
 def load_account(account_id):
     return Account.query.get(account_id)
 
-# Luo taulut
+# Luo taulut ja mahdollisesti testikäyttäjä
 try:
     db.create_all()
-#    pwhash = bcrypt.generate_password_hash('testi').decode('utf-8')
-#    username = 'testi'
-#    role = 'ADMIN'
-#    account = Account(username, pwhash, role)
-#    db.session().add(account)
-#    db.session().commit()
+    if db.session().query(Account).first() != None:
+        print("Table not empty. Testuser not created")
+    else:
+        username = 'testi'
+        pwhash = bcrypt.generate_password_hash('testi').decode('utf-8')
+        role = 'ADMIN'
+        account = Account(username, pwhash, role)
+        db.session().add(account)
+        db.session().commit()
 except:
     pass
