@@ -42,7 +42,7 @@ Varaus suoritetaan "Book service" -painikkeesta. Kentät saa tyhjennettyä "Rese
 
 #### Palveluvaraus
 
-[]
+![reg_booking](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/reg_booking.jpg)
 
 #### Vahvistettujen varausten tarkastelu
 
