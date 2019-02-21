@@ -32,11 +32,12 @@ class Booking(Base):
 
         lst = []
         for x in res:
+            print(x)
             time_to_string = str(x[0])
             splitted = time_to_string.split('.')
             time_to_string = splitted[0]
             y = datetime.strptime(time_to_string, "%Y-%m-%d %H:%M:%S")
-            if (y > first and y < last):
+            if (y.month == first.month and y.month == last.month):
                 y_string = y.strftime("%Y-%m-%d %H:%M")
                 endtime = y + timedelta(hours=x[2]) + timedelta(minutes=x[3])
                 e_string = endtime.strftime("%Y-%m-%d %H:%M")

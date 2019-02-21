@@ -36,8 +36,8 @@ class Month_And_Year:
 class First_And_Last:
     def __init__(self, year, month):
         self.my = Month_And_Year()
-        self.first = datetime.today().replace(year=year).replace(month=month).replace(day=1).replace(hour=00).replace(minute=00).replace(second=00)
-        self.last = datetime.today().replace(year=year).replace(month=month).replace(day=monthrange(self.my.get_year(), self.my.get_month())[1]).replace(hour=23).replace(minute=59)
+        self.first = datetime.today().replace(year=year).replace(month=month).replace(day=1).replace(hour=00).replace(minute=00).replace(second=00).replace(microsecond=00000)
+        self.last = datetime.today().replace(year=year).replace(month=month).replace(day=monthrange(self.my.get_year(), self.my.get_month())[1]).replace(hour=23).replace(minute=59).replace(second=0).replace(microsecond=00000)
 
     def plus_one(self):
         self.first.month + 1
@@ -70,13 +70,13 @@ class Days_of_the_Month():
                 if len(d) == 1:
                     d = '0' + d
                 newday.append(d)
+                newday.append('No reservations')
                 for book in books:
-                    if str(day) == book[0]:
+                    if d == book[0]:
                         if (book[1] == None):
-                            newday.append("Ex-worker: " + book[2])
+                            newday[1] = ("Ex-worker: " + book[2])
                         else:
-                            newday.append(book[1] + ": "+ book[2])
-                newday.append("No reservations")
+                            newday[1] = (book[1] + ": "+ book[2])
                 newweek.append(newday)
             lst.append(newweek)
         return lst
