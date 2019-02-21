@@ -69,31 +69,16 @@ class Booking(Base):
 
     @staticmethod
     def total_revenue_or_vat_for_year_month(year, month, vat):
-        lastDay = calendar.monthrange(year, month)[1]
-        start = date(year, month, 1)
-        end = date(year, month, lastDay)
-        stmt = text("SELECT SUM(cost_per_hour * duration_hrs) + SUM(cost_per_hour * duration_mins / 60) "
-        "FROM Service JOIN Booking ON Service.id = booking.service_id"
-        " WHERE Booking.requested_date > :x and Booking.requested_date < :y")
-        res = db.engine.execute(stmt, x=start, y=end)
-        pal = 0
-        if vat == 0:
-            for result in res:
-                pal = result[0]
-                if pal == None:
-                    return 0
-            return pal
-        for result in res:
-                pal = result[0]
-                if pal == None:
-                    return 0
-        return pal / 100 * vat
-        
-    @staticmethod
-    def total_revenue_or_vat_for_year(year, vat):
-        start = date(year, 1, 1)
-        end = date(year, 12, 31)
-        print(start)
+        start = 0
+        end = 0
+        # kuukausinumerolla 13 ilmaistaan, että halutaan vuosituotto
+        if month == 13:
+            start = date(year, 1, 1)
+            end = date(year, 12, 31)
+        else:
+            lastDay = calendar.monthrange(year, month)[1]
+            start = date(year, month, 1)
+            end = date(year, month, lastDay)
         stmt = text("SELECT SUM(cost_per_hour * duration_hrs) + SUM(cost_per_hour * duration_mins / 60) "
         "FROM Service JOIN Booking ON Service.id = booking.service_id"
         " WHERE Booking.requested_date > :x and Booking.requested_date < :y")

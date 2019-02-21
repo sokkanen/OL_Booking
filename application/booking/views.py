@@ -154,8 +154,8 @@ def unreg_booking_create():
 @app.route("/bookings/statistics", methods=["GET", "POST"])
 @login_required(role="ADMIN")
 def booking_statistics():
-    vat_for_year = Booking.total_revenue_or_vat_for_year(current.get_year(), 24)
-    total_for_year = Booking.total_revenue_or_vat_for_year(current.get_year(), 0)
+    vat_for_year = Booking.total_revenue_or_vat_for_year_month(current.get_year(),13, 24)
+    total_for_year = Booking.total_revenue_or_vat_for_year_month(current.get_year(),13, 0)
     if request.method == "GET":
         return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=BookingStatisticsForm())
     else:
