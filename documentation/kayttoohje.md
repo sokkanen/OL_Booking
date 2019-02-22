@@ -9,6 +9,12 @@ Ohjeen sisällysluettelo:
 
 ## Yleistä
 
+Ohjelma on tarkoitettu pienen yrityksen, kuten parturin tai kotipalveluyrityksen, tarpeisiin. Ohjelma mahdollistaa sekä rekisteröityneelle, että rekisteröitymättömälle asiakkaalle palvelun varaamisen ja vapaiden palveluaikojen tarkastelun.
+
+Työntekijälle ohjelmisto mahdollistaa hänelle tehtäväksi annettujen töiden sekä asiakastietojen tarkastelun.
+
+Esimiehelle tai ylläpitäjälle ohjelmisto mahdollistaa tehtyjen varausten hyväksymisen ja tehtäväksi antamisen tai hylkäämisen. Esimiehen on myös mahdollista lisätä ohjelmistoon työntekijöitä ja palveluita sekä hallinnoida asiakastietoja. Esimiehelle on tarjolla myös statistiikkaa palveluun tehdyistä varauksista.
+__________
 Ohjelman etusivu näyttää seuraavalta.
 
 ![frontpage](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/frontpage.jpg)
