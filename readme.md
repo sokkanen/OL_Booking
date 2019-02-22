@@ -2,7 +2,7 @@
 
 ### Yleistä 
 
-OL Booking on tarkoitettu pienen yrityksen, kuten parturin tai kiinteistöhuollon, tarpeisiin.
+OL Booking on tarkoitettu pienen yrityksen, kuten parturin tai kotipalveluyrityksen, tarpeisiin.
 Ohjelma mahdollistaa sekä rekisteröityneelle, että rekisteröitymättömälle asiakkaalle palvelun varaamisen ja vapaiden palveluaikojen tarkastelun.
 
 Työntekijälle ohjelmisto mahdollistaa hänelle tehtäväksi annettujen töiden sekä asiakastietojen tarkastelun.
