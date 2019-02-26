@@ -108,3 +108,15 @@ class Booking(Base):
             if result[0] == None:
                 return 0
             return result[0]
+
+    @staticmethod
+    def top3_services_of_all_time():
+        service = []
+        n = 1
+        stmt = text("SELECT COUNT(booking.id) AS amount, service.name as service "
+        "FROM booking INNER JOIN service ON service.id = booking.service_id "
+        " GROUP BY service.name HAVING COUNT(booking.id) > 0 ORDER BY COUNT(booking.id) DESC LIMIT 3")
+        res = db.engine.execute(stmt)
+        for serv in res:
+            service.append(serv)
+        return service
