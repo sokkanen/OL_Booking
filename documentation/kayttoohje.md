@@ -75,7 +75,7 @@ Varaus tehdään painamalla "Book service" -painiketta. Kenttien arvot nollataan
 
 #### Vahvistettujen varausten tarkastelu
 
-Yläpalkin painiketta "My Bookings" painamalla, asiakas pääsee tarkastelemaan varauksiaan. Asiakkaalle näytetään varaukset, jotka ovat hänen tekemiään ja vahvistettuja pääkäyttäjän toimesta.
+Yläpalkin painiketta "My Bookings" painamalla, asiakas pääsee tarkastelemaan varauksiaan. Asiakkaalle näytetään sekä vahvistetut, että vahvistamattomat varaukset.
 
 ![cust_bookings](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_bookings.jpg)
 
