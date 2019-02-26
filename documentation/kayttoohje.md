@@ -174,3 +174,5 @@ Sekä vahvistetun, että vahvistamattoman varauksen voi poistaa "Remove booking"
 
 Pääkäyttäjälle tarjotaan statistiikkaa varauksista. Vahvistetuista varauksista lasketaan kuluvalle vuodelle tuottoarvio sekä arvio maksettavasta arvolisäveron määrästä (Suomi, 24%). Pääkäyttäjä voi myös hakea statistiikkaa vuoden (2018-2100) ja kuukauden (1-12) perusteella. Tällöin hänelle tarjotaan kuukauden tuotto- ja alv-arviot sekä ko. kuukauden varausten lukumäärä.
 
+Statistiikassa on myös listattuna suosiojärjestyksessä 3 kaikkien aikojen varatuinta palvelua.
+
