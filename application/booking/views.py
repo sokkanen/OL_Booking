@@ -29,8 +29,8 @@ def booking_index():
     if current_user.get_role() == "CUSTOMER":
         aid = current_user.get_id()
         customer_id = Customer.query.filter_by(account_id = aid).first().id
-        cbookings = Booking.find_confirmed_bookings_for_customer(customer_id)
-        bookings = []
+        cbookings = Booking.find_bookings_for_customer(customer_id, 1) 
+        bookings = Booking.find_bookings_for_customer(customer_id, 0)
         return render_template("booking/list.html", bookings = bookings, cbookings = cbookings, services = Service.query.all(), workers = Worker.query.all(), customers = Customer.query.all())
     
     cbookings = Booking.query.filter_by(confirmed=1).all()

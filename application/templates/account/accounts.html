@@ -1,18 +1,15 @@
 {% extends "layout.html" %}
   
 {% block body %}
-
-<h2>Customers: </h2>
 {% if customers.name is defined %}
+<h2>My account(s): </h2>
 <ul>
     <li class="form-control">
         <a href="{{ url_for('customer_information', customer_id = customers.id) }}">{{ customers.name }}</a>
-        <form method="POST"   action="{{ url_for('customer_remove', customer_id=customers.id) }}">
-                <input type="submit" class="btn btn-outline-danger" value="Remove account"/>
-            </form>
     </li>
 </ul>
 {% else %}
+<h2>Customers: </h2>
 <ul>
     {% for customer in customers %}
     <li class="form-control"><a href="{{ url_for('customer_information', customer_id = customer.id) }}">{{ customer.name}}</a>

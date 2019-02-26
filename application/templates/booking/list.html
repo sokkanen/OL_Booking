@@ -12,8 +12,10 @@
         <th>Notes from the customer:</th>
         <th>Confirmed</th>
         <th>Service</th>
+        {% if current_user.is_authenticated and current_user.role == 'ADMIN' %}
         <th>Assign and confirm service provider</th>
         <th>Remove</th>
+        {% endif %}
     </tr>
     {% if bookings is defined and bookings|length > 0 %}
     {% for booking in bookings %}
@@ -40,6 +42,7 @@
             {% endif %}
             {% endfor %}
         </td>
+        {% if current_user.is_authenticated and current_user.role == 'ADMIN' %}
         <td>
             {% if booking.worker_id|int < 0 %}
                 {% for worker in workers %}
@@ -67,6 +70,7 @@
                 <input type="submit" class="btn btn-outline-danger" value="Remove booking"/>
             </form>
         </td>
+        {% endif %}
     </tr>
     {% endfor %}
     {% else %}
@@ -87,7 +91,9 @@
                 <th>Confirmed</th>
                 <th>Service</th>
                 <th>Service provider</th>
+                {% if current_user.is_authenticated and current_user.role == 'ADMIN' %}
                 <th>Remove</th>
+                {% endif %}
             </tr>
             {% if cbookings is defined and cbookings|length > 0 %}
             {% for booking in cbookings %}
@@ -123,11 +129,13 @@
                         {% endfor %}
                     {% endif %}
                 </td>
+                {% if current_user.is_authenticated and current_user.role == 'ADMIN' %}
                 <td>
                     <form method="POST" action="{{ url_for('booking_remove', booking_id=booking.id) }}">
                         <input type="submit" class="btn btn-outline-danger" value="Remove booking"/>
                     </form>
                 </td>
+                {% endif %}
             </tr>
             {% endfor %}
             {% else %}

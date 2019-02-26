@@ -17,16 +17,17 @@
     <body>
 
             <nav class="navbar sticky-top navbar-expand-md navbar-dark" style="background-color: #363534;"> 
-                    <a class="navbar-brand" href="#">OL-booking</a>
+                    <a class="navbar-brand" href="/">OL-booking</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                           <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a class="nav-link" href="/">Main page</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ url_for('cal_index') }}">Booking</a></li>
+                                {% if current_user.is_authenticated %}
                                 <li class="nav-item"><a class="nav-link" href="{{ url_for('customer_listing')}}">My account</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ url_for('booking_index') }}">My Bookings</a></li>
+                                {% endif %}
                           </ul>
                           <div class="form-inline mt-2 mt-md-0">
                         {% if current_user.is_authenticated %}

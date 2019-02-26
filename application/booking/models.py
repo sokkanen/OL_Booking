@@ -32,7 +32,6 @@ class Booking(Base):
 
         lst = []
         for x in res:
-            print(x)
             time_to_string = str(x[0])
             splitted = time_to_string.split('.')
             time_to_string = splitted[0]
@@ -59,10 +58,10 @@ class Booking(Base):
         return cbookings
 
     @staticmethod
-    def find_confirmed_bookings_for_customer(customer_id):
-        stmt = text("SELECT * FROM Booking WHERE confirmed = 1"
+    def find_bookings_for_customer(customer_id, confirmed):
+        stmt = text("SELECT * FROM Booking WHERE confirmed = :c"
         " AND customer_id = :x")
-        res = db.engine.execute(stmt, x=customer_id)
+        res = db.engine.execute(stmt, x=customer_id, c=confirmed)
         cbookings = []
         for result in res:
             cbookings.append(result)
