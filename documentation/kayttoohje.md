@@ -19,7 +19,7 @@ Ohjelman etusivu näyttää seuraavalta.
 
 ![frontpage](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/frontpage.jpg)
 
-Etusivulta pääsee ilman rekisteröitymistä näkymiin Booking, Login ja Register.
+Etusivulta pääsee ilman rekisteröitymistä ainoastaan näkymään Booking.
 ___________
 * Register (linkki yläpalkissa oikealla). Register-sivulla on mahdollista luoda uusi asiakastili.
 
