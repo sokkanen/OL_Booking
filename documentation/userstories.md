@@ -102,20 +102,24 @@ DELETE FROM customer WHERE customer.id = ?
 ```
 * .. näen halutessani statistiikkaa - kuten arviot tuloista ja maksettavista arvonlisäveroista - varauksiin liittyen.
 ```
-SELECT SUM(cost_per_hour * duration_hrs) + SUM(cost_per_hour * duration_mins / 60) FROM Service JOIN Booking ON Service.id = booking.service_id WHERE Booking.requested_date > ? and Booking.requested_date < ?
+SELECT SUM(cost_per_hour * duration_hrs) + SUM(cost_per_hour * duration_mins / 60) 
+FROM Service JOIN Booking ON Service.id = booking.service_id 
+WHERE Booking.requested_date > ? and Booking.requested_date < ?
 ```
 ```
 SELECT COUNT(id) FROM Booking WHERE Booking.requested_date > ? and Booking.requested_date < ?
 ```
 * näen mitkä 3 palvelua ovat kaikkein suosituimmat tilausmäärien perusteella:
 ```
-SELECT COUNT(booking.id) AS amount, service.name as service FROM booking INNER JOIN service ON service.id = booking.service_id  GROUP BY service.name HAVING COUNT(booking.id) > 0 ORDER BY COUNT(booking.id) DESC LIMIT 3
+SELECT COUNT(booking.id) AS amount, service.name as service FROM booking 
+INNER JOIN service ON service.id = booking.service_id  GROUP BY 
+service.name HAVING COUNT(booking.id) > 0 ORDER BY COUNT(booking.id) DESC LIMIT 3
 ```
 * näen top 3 asiakasta tilausmäärän ja tuoton perusteella:
 ```
 SELECT customer.name AS name, COUNT(*) as bookings, SUM(cost_per_hour * duration_hrs) +
-        SUM(cost_per_hour * duration_mins /60) as total FROM customer LEFT JOIN booking ON 
-        customer.id = booking.customer_id LEFT JOIN service ON booking.service_id = service.id 
-        WHERE customer.account_id != 0 GROUP BY customer.name ORDER BY bookings DESC LIMIT 3
+SUM(cost_per_hour * duration_mins /60) as total FROM customer LEFT JOIN booking ON 
+customer.id = booking.customer_id LEFT JOIN service ON booking.service_id = service.id 
+WHERE customer.account_id != 0 GROUP BY customer.name ORDER BY bookings DESC LIMIT 3
 ```
 * .. ne käyttäjät, joilla ei ole riittäviä oikeuksia, eivät pääse näkemään kaikkia tilauksia, asiakkaita tai statistiikkaa, eivätkä muokkaamaan työntekijä- tai palvelutietoja.
