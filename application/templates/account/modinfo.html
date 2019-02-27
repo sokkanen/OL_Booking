@@ -26,42 +26,43 @@
         </tr>
         <tr>
           <td>
-            <input class="form-control" type="text" placeholder={{form.username.data}} readonly>
-          </td> 
+          {{ form.username(class_="form-control", readonly=true) }}
+          </td>
         </tr>
         <tr>
           <td>New Password</td>
         </tr>
         <tr>
-          <td>
-              {{ form.password(class_="form-control")}}
-          </td>
-          <td>
-              <ul>
-                  {% for error in form.password.errors %}
-                  <div class="badge badge-info">
+        <td>
+        {{ form.password(class_="form-control")}}
+        </td>
+        <td>
+                <ul>
+                {% for error in form.password.errors %}
+                        <div class="badge badge-info">
                         <li>{{ error }}</li>
-                    </div>
-                  {% endfor %}
-              </ul>
-          </td>
+                        </div>
+                {% endfor %}
+                </ul>
+        </td>
         </tr>
         <tr>
-            <td>Repeat new password:</td>
+                <td>Repeat new password:</td>
         </tr>
         <tr>
                 <td>
-                    {{ form.confirm_password(class_="form-control")}}
+                        {{ form.confirm_password(class_="form-control")}}
                 </td>
                 <td>
-                    <ul>
+                        <ul>
                         {% for error in form.confirm_password.errors %}
                         <div class="badge badge-info">
                                 <li>{{ error }}</li>
                         </div>
                         {% endfor %}
-                    </ul>
-                </td>
+                        </ul>
+        </td>
+
         </tr>
         <tr>
                 <td>{{ form.email.label}}</td>

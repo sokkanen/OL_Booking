@@ -7,8 +7,9 @@ from application.account.models import Account
 from flask_login import current_user
 
 def validate_username(form, field):
-    if Account.query.filter(Account.username == field.data).count():
-        raise ValidationError('Please choose another username')
+    if not current_user.is_authenticated:
+        if Account.query.filter(Account.username == field.data).count():
+            raise ValidationError('Please choose another username')
 
 class NewCustomerForm(FlaskForm):
     username = StringField("Username: ", [InputRequired(), validators.Length(min=3, max=30), validate_username])

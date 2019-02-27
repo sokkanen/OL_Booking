@@ -78,7 +78,7 @@ def customer_information(customer_id):
         if customer.account_id is not None:
             form.username.data = account.username
         else:
-            form.username.data = "not registered"
+            form.username.data = "not_registered"
         form.name.data = customer.name
         form.email.data = customer.email
         form.address.data = customer.address
@@ -90,8 +90,6 @@ def customer_information(customer_id):
         return render_template("account/modinfo.html", form = form, customer = customer)
     if form.password.data != "12345" and customer.account_id != 0:
         account.password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-    if customer.account_id != None:
-        account.username = form.username.data
     customer.name = form.name.data
     customer.email = form.email.data
     customer.address = form.address.data
