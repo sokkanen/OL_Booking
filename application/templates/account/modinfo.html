@@ -24,17 +24,10 @@
         <tr>
             <td>{{ form.username.label}} </td>
         </tr>
-        <tr>   
-            <td>{{ form.username(class_="form-control")}}</td>
-            <td>
-            <ul>
-                {% for error in form.username.errors %}
-                <div class="badge badge-info">
-                        <li>{{ error }}</li>
-                </div>
-                {% endfor %}
-            </ul>
-            </td>
+        <tr>
+          <td>
+            <input class="form-control" type="text" placeholder={{form.username.data}} readonly>
+          </td> 
         </tr>
         <tr>
           <td>New Password</td>
