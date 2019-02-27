@@ -16,7 +16,7 @@ class NewCustomerForm(FlaskForm):
     password = StringField('Password:', [InputRequired(), validators.Length(min=5, max=100), EqualTo('confirm_password', message='Passwords must match')], widget=PasswordInput(hide_value=False))
     confirm_password = StringField('Repeat Password:', widget=PasswordInput(hide_value=False))
     name = StringField("Name: ", [InputRequired(), validators.Length(min=3, max=50)])
-    email = EmailField('Email: ', [InputRequired(), validators.DataRequired(), validators.Email()])
+    email = EmailField('Email: ', [InputRequired(), validators.DataRequired(), validators.Email(), validators.Length(min=5, max=50)])
     address = StringField("Address : ", [InputRequired(), validators.Length(min=5, max=100)])
     phone = StringField("Phone : ", [InputRequired(), validators.Length(min=5, max=20)])
 
