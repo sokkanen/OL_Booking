@@ -157,8 +157,9 @@ def booking_statistics():
     vat_for_year = Booking.total_revenue_or_vat_for_year_month(current.get_year(),13, 24)
     total_for_year = Booking.total_revenue_or_vat_for_year_month(current.get_year(),13, 0)
     alltime = Booking.top3_services_of_all_time()
+    top_customers = Booking.top3_customers()
     if request.method == "GET":
-        return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=BookingStatisticsForm(), alltime=alltime)
+        return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=BookingStatisticsForm(), alltime=alltime, top_customers=top_customers)
     else:
         form = BookingStatisticsForm(request.form)  
         if not form.validate():
@@ -169,5 +170,6 @@ def booking_statistics():
         amonth = form.month.data
         totalBook = Booking.total_bookings_for_year_month(form.year.data, form.month.data)
         alltime = Booking.top3_services_of_all_time()
-        return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=BookingStatisticsForm(), ar=total_for_year_month, av=vat_for_year_month, ayear=ayear, amonth=amonth, totalBook=totalBook, alltime=alltime)
+        top_customers = Booking.top3_customers()
+        return render_template("booking/statistics.html", total=total_for_year, vat = vat_for_year, year=current.get_year(), form=BookingStatisticsForm(), ar=total_for_year_month, av=vat_for_year_month, ayear=ayear, amonth=amonth, totalBook=totalBook, alltime=alltime, top_customers=top_customers)
 

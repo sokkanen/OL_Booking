@@ -111,7 +111,6 @@ class Booking(Base):
     @staticmethod
     def top3_services_of_all_time():
         service = []
-        n = 1
         stmt = text("SELECT COUNT(booking.id) AS amount, service.name as service "
         "FROM booking INNER JOIN service ON service.id = booking.service_id "
         " GROUP BY service.name HAVING COUNT(booking.id) > 0 ORDER BY COUNT(booking.id) DESC LIMIT 3")
@@ -119,3 +118,18 @@ class Booking(Base):
         for serv in res:
             service.append(serv)
         return service
+
+    @staticmethod
+    def top3_customers():
+        rows = []
+        stmt = text("SELECT customer.name AS name, COUNT(*) as bookings, SUM(cost_per_hour * duration_hrs) +"
+        "SUM(cost_per_hour * duration_mins /60) as total FROM customer LEFT JOIN booking ON "
+        "customer.id = booking.customer_id LEFT JOIN service ON booking.service_id = service.id "
+        "WHERE customer.account_id != 0 GROUP BY customer.name ORDER BY bookings DESC LIMIT 3")
+        res = db.engine.execute(stmt)
+        for r in res:
+            row = []
+            for x in r:
+                row.append(x)
+            rows.append(row)
+        return rows

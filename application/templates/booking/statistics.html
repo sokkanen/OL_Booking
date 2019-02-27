@@ -84,6 +84,31 @@
             {% endfor %}
     </table>
 </div>
+<h3>
+    <u>Top registered customers by bookings and sales: </u>
+</h3>
+<div>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <th scope="col">
+            Name
+        </th>
+        <th scope="col">
+            Bookings
+        </th>
+        <th scope="col">
+            Sales (€)
+        </th>
+        </thead>
+            {% for row in top_customers %}
+                <tr>
+                {% for column in row%}
+                    <td>   {{ column }} </td> 
+                {% endfor %}
+                </tr>
+            {% endfor %}
+    </table>
+</div>
 </div>
 
 {% endblock %}
