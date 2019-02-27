@@ -9,7 +9,10 @@ INSERT INTO booking (date_created, date_modified, notes, confirmed, requested_da
 ```
 * .. näen ne ajankohdat, jolloin palveluntarjoajat ovat varattuina, jotta tiedän ajoittaa oman varaukseni.
 ```
-SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins FROM Booking LEFT JOIN Worker ON Worker.id = Booking.worker_id LEFT JOIN Service ON Booking.service_id = Service.id WHERE Booking.confirmed = 1 GROUP BY Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins
+SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins FROM 
+Booking LEFT JOIN Worker ON Worker.id = Booking.worker_id LEFT JOIN Service ON Booking.service_id = 
+Service.id WHERE Booking.confirmed = 1 GROUP BY Booking.requested_date, Worker.name, 
+Service.duration_hrs, Service.duration_mins
 ```
 * .. tietojani käsitellään luottamuksellisesti, jotta tietoni eivät joudu vääriin käsiin
 
@@ -21,7 +24,10 @@ INSERT INTO booking (date_created, date_modified, notes, confirmed, requested_da
 ```
 * .. näen ne ajankohdat, jolloin palveluntarjoajat ovat varattuina, jotta tiedän ajoittaa oman varaukseni.
 ```
-SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins FROM Booking LEFT JOIN Worker ON Worker.id = Booking.worker_id LEFT JOIN Service ON Booking.service_id = Service.id WHERE Booking.confirmed = 1 GROUP BY Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins
+SELECT Booking.requested_date, Worker.name, Service.duration_hrs, Service.duration_mins 
+FROM Booking LEFT JOIN Worker ON Worker.id = Booking.worker_id LEFT JOIN Service ON 
+Booking.service_id = Service.id WHERE Booking.confirmed = 1 GROUP BY Booking.requested_date, 
+Worker.name, Service.duration_hrs, Service.duration_mins
 ```
 * .. voin rekisteröityä varausjärjestelmään, jotta voin tarkastella tilauksiani
 * .. näen varausjärjestelmästä kun tilaukseni on vahvistettu, jotta tiedän tilauksen olevan käsittelyssä.
@@ -72,9 +78,11 @@ INSERT INTO worker_service (worker_id, service_id) VALUES (?, ?)
 ```
 * .. näen kaikki järjestelmään tulleet tilaukset, jotta voin antaa tilauksia tehtäväksi työntekijöilleni.
 ```
-SELECT booking.id AS booking_id, booking.date_created AS booking_date_created, booking.date_modified AS booking_date_modified, booking.notes AS booking_notes, booking.confirmed AS booking_confirmed, booking.requested_date AS booking_requested_date, booking.customer_id AS booking_customer_id, booking.worker_id AS booking_worker_id, booking.service_id AS booking_service_id 
-FROM booking 
-WHERE booking.confirmed = 0
+SELECT booking.id AS booking_id, booking.date_created AS booking_date_created, 
+booking.date_modified AS booking_date_modified, booking.notes AS booking_notes, 
+booking.confirmed AS booking_confirmed, booking.requested_date AS booking_requested_date, 
+booking.customer_id AS booking_customer_id, booking.worker_id AS booking_worker_id, 
+booking.service_id AS booking_service_id FROM booking WHERE booking.confirmed = 0
 ```
 * .. voin poistaa tilauksia.
 ```
@@ -86,13 +94,17 @@ INSERT INTO booking (date_created, date_modified, notes, confirmed, requested_da
 ```
 * .. voin hallinnoida kaikkia järjestelmässä olevia asiakastietoja.
 ```
-SELECT customer.id AS customer_id, customer.date_created AS customer_date_created, customer.date_modified AS customer_date_modified, customer.name AS customer_name, customer.email AS customer_email, customer.address AS customer_address, customer.phone AS customer_phone, customer.account_id AS customer_account_id 
+SELECT customer.id AS customer_id, customer.date_created AS customer_date_created, 
+customer.date_modified AS customer_date_modified, customer.name AS customer_name, 
+customer.email AS customer_email, customer.address AS customer_address, 
+customer.phone AS customer_phone, customer.account_id AS customer_account_id 
 FROM customer ORDER BY customer.name
 ```
 ```
-SELECT account.id AS account_id, account.date_created AS account_date_created, account.date_modified AS account_date_modified, account.username AS account_username, account.password AS account_password, account.role AS account_role 
-FROM account 
-WHERE account.id = ?
+SELECT account.id AS account_id, account.date_created AS account_date_created, 
+account.date_modified AS account_date_modified, account.username AS account_username, 
+account.password AS account_password, account.role AS account_role 
+FROM account WHERE account.id = ?
 ```
 ```
 UPDATE customer SET date_modified=CURRENT_TIMESTAMP, address=? WHERE customer.id = ?
