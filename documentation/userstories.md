@@ -108,9 +108,7 @@ SELECT SUM(cost_per_hour * duration_hrs) + SUM(cost_per_hour * duration_mins / 6
 SELECT COUNT(id) FROM Booking WHERE Booking.requested_date > ? and Booking.requested_date < ?
 ```
 * näen mitkä 3 palvelua ovat kaikkein suosituimmat tilausmäärien perusteella:
-**
 ```
 SELECT COUNT(booking.id) AS amount, service.name as service FROM booking INNER JOIN service ON service.id = booking.service_id  GROUP BY service.name HAVING COUNT(booking.id) > 0 ORDER BY COUNT(booking.id) DESC LIMIT 3
 ```
-**
 * .. ne käyttäjät, joilla ei ole riittäviä oikeuksia, eivät pääse näkemään kaikkia tilauksia, asiakkaita tai statistiikkaa, eivätkä muokkaamaan työntekijä- tai palvelutietoja.
