@@ -43,7 +43,7 @@ ___________
 
 Viemällä Booking-näkymässä hiiren kursorin päivämäärän kohdalle, näkee asiakas tällä hetkellä järjestelmässä olevat, vahvistetut varaukset ko. päivälle.
 
-![unreg_booking_res](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/unreg_booking_res.jpg)
+![current_books](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/current_books.jpg)
 __________
 Rekisteröitymätön asiakas voi tehdä palveluvarauksen Booking-näkymässä.
 
@@ -89,11 +89,11 @@ Yläpalkin painiketta "My Accout" painamalla pääsee katsomaan ja muokkaamaan o
 
 Näkymä avautuu käyttäjätunnukseen liittyvien asiakastietojen listaan. Asiakas ei voi poistaa itseään järjestelmästä, vaan nämä oikeudet on annettu ainoastaan pääkäyttäjälle.
 
-![cust_related_accout](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_related_account.jpg)
+![cust_acc_view](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_accounts_view.jpg)
 ___________
 Painamalla nimessään olevaa linkkiä, asiakas pääsee tarkastelemaan hänestä talletettuja tietoja. 
 
-![cust_information](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_info.jpg)
+![cust_related_accout](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_related_account.jpg)
 
 Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), käyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella. Käyttäjätunnusta ei voi muuttaa ensirekisteröinnin jälkeen.
 
@@ -154,7 +154,7 @@ Työntekijä- ja palveluhallinnan tarjoamat toiminnallisuudet:
 Pääkäyttäjä näkee kaikkien asiakkaiden tiedot. Pääkäyttäjällä on oikeus poistaa käyttäjiä järjestelmästä. Käyttäjä poistetaan "Remove customer" -painikkeesta.
 ________
 
-![cust_information](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_info.jpg)
+![cust_related_accout](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_related_account.jpg)
 
 Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), pääkäyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella. Käyttäjätunnusta ei voi muuttaa.
 
