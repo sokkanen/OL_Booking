@@ -70,13 +70,17 @@ class Days_of_the_Month():
                 if len(d) == 1:
                     d = '0' + d
                 newday.append(d)
-                newday.append('No reservations')
                 for book in books:
                     if d == book[0]:
-                        if (book[1] == None):
-                            newday[1] = ("Ex-worker: " + book[2])
-                        else:
-                            newday[1] = (book[1] + ": "+ book[2])
+                        i = 0
+                        while i < len(book)-2:
+                            if (book[1] == None):
+                                newday.append("Ex-worker: " + book[i+2][11:-16] + book[i+2][30:])
+                            else:
+                                newday.append(book[i+1] + ": " + book[i+2][11:-16] + book[i+2][30:])
+                            i += 3
+                if newday[0]:
+                    newday.append('No reservations')
                 newweek.append(newday)
             lst.append(newweek)
         return lst

@@ -71,6 +71,8 @@ def cal_index():
     month = current.get_month()
     days = Days_of_the_Month(year, month)
     lst = days.get_days()
+    for x in lst:
+        print(x)
     if current_user.is_authenticated:
         return render_template("booking/calendar.html", year = year, month = month , days = lst, daynames = daynames, form = form)
     else:
