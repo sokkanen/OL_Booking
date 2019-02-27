@@ -73,7 +73,7 @@ Varauksen kentät ovat seuraavat:
 
 Varaus tehdään painamalla "Book service" -painiketta. Kenttien arvot nollataan "Reset" -painikkeesta.
 
-#### Vahvistettujen varausten tarkastelu
+#### Varausten tarkastelu
 
 Yläpalkin painiketta "My Bookings" painamalla, asiakas pääsee tarkastelemaan varauksiaan. Asiakkaalle näytetään sekä vahvistetut, että vahvistamattomat varaukset.
 
@@ -95,7 +95,7 @@ Painamalla nimessään olevaa linkkiä, asiakas pääsee tarkastelemaan hänest�
 
 ![cust_information](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_info.jpg)
 
-Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), käyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella.
+Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), käyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella. Käyttäjätunnusta ei voi muuttaa ensirekisteröinnin jälkeen.
 
 ## Työntekijä
 
@@ -156,7 +156,7 @@ ________
 
 ![cust_information](https://github.com/sokkanen/TSOHA_OL_Booking/blob/master/documentation/Images/cust_info.jpg)
 
-Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), pääkäyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella.
+Tietokenttien vaatimukset ovat samat kuin rekisteröidyttäessä järjestelmään. Salasana ei vaihdu, ellei kenttien arvoa muuteta. Mikäli henkilötiedot haluaa palauttaa ennalleen (ennen tallennusta), pääkäyttäjä voi painaa "Reset" -painiketta. Henkilötiedot muutetaan pysyvästi "Modify" -painikkeella. Käyttäjätunnusta ei voi muuttaa.
 
 #### Varausten vahvistaminen / tehtäväksi antaminen ja poistaminen
 
