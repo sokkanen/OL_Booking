@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, validators
 from wtforms.fields.html5 import EmailField
-from wtforms.validators import InputRequired, EqualTo, ValidationError
+from wtforms.validators import InputRequired, EqualTo, ValidationError, Email
 from wtforms.widgets import PasswordInput
 from application.account.models import Account
 from flask_login import current_user
@@ -16,7 +16,7 @@ class NewCustomerForm(FlaskForm):
     password = StringField('Password:', [InputRequired(), validators.Length(min=5, max=100), EqualTo('confirm_password', message='Passwords must match')], widget=PasswordInput(hide_value=False))
     confirm_password = StringField('Repeat Password:', widget=PasswordInput(hide_value=False))
     name = StringField("Name: ", [InputRequired(), validators.Length(min=3, max=50)])
-    email = EmailField('Email: ', [InputRequired(), validators.DataRequired(), validators.Email(), validators.Length(min=5, max=50)])
+    email = EmailField('Email: ', [validators.Length(max=50), InputRequired(), Email()])
     address = StringField("Address : ", [InputRequired(), validators.Length(min=5, max=100)])
     phone = StringField("Phone : ", [InputRequired(), validators.Length(min=5, max=20)])
 
