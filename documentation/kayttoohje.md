@@ -29,7 +29,7 @@ Rekisteröitymisen kentät ovat seuraavat:
 * Name: Asiakkaan nimi. Kenttä on pakollinen, 3-50 merkkiä.
 * Username: Käyttäjätunnus järjestelmään. Kenttä on pakollinen, 3-30 merkkiä.
 * Password ja Repeat password: Käyttäjän salasana. Pakollinen, 5-100 merkkiä.
-* Email: Asiakkaan sähköpostiosoite. Kenttä on pakollinen. Kenttä tarkastaa, että syöte on validin muotoinen sähköpostiosoite 5-50 merkkiä.
+* Email: Asiakkaan sähköpostiosoite. Kenttä on pakollinen. Kenttä tarkastaa, että syöte on validin muotoinen sähköpostiosoite max 50 merkkiä.
 * Address: Asiakkaan osoite. Kenttä on pakollinen. 5-100 merkkiä.
 * Phone: Asiakkaan puhelinnumero. Kenttä on pakollinen, 5-20 merkkiä.-
 ___________
@@ -54,7 +54,7 @@ Varauksen kentät ovat seuraavat:
 * Service: Alasvetovalikosta valitaan palvelu, jonka asiakas haluaa varata.
 * Notes: Viesti palveluntuottajalle. Kenttä ei ole pakollinen, max 150 merkkiä.
 * Name: Asiakkaan nimi. Kenttä on pakollinen, 3-50 merkkiä.
-* Email: Asikkaan sähköpostiosoite. Kenttä on pakollinen. Kenttä tarkastaa, että syöte on validin muotoinen sähköpostiosoite.
+* Email: Asiakkaan sähköpostiosoite. Kenttä on pakollinen. Kenttä tarkastaa, että syöte on validin muotoinen sähköpostiosoite. Max 50 merkkiä
 * Address: Asikkaan osoite. Kenttä on pakollinen, 5-100 merkkiä.
 * Phone: Asiakkaan puhelinnumero. Kenttä on pakollinen, 5-20 merkkiä.
 
