@@ -29,8 +29,8 @@ Rekisteröitymisen kentät ovat seuraavat:
 * Name: Asiakkaan nimi. Kenttä on pakollinen, 3-50 merkkiä.
 * Username: Käyttäjätunnus järjestelmään. Kenttä on pakollinen, 3-30 merkkiä.
 * Password ja Repeat password: Käyttäjän salasana. Pakollinen, 5-100 merkkiä.
-* Email: Asikkaan sähköpostiosoite. Kenttä on pakollinen. Kenttä tarkastaa, että syöte on validin muotoinen sähköpostiosoite.
-* Address: Asikkaan osoite. Kenttä on pakollinen. 5-100 merkkiä.
+* Email: Asiakkaan sähköpostiosoite. Kenttä on pakollinen. Kenttä tarkastaa, että syöte on validin muotoinen sähköpostiosoite 5-50 merkkiä.
+* Address: Asiakkaan osoite. Kenttä on pakollinen. 5-100 merkkiä.
 * Phone: Asiakkaan puhelinnumero. Kenttä on pakollinen, 5-20 merkkiä.-
 ___________
 * Login (linkki yläpalkissa oikealla). Kirjautuminen kaikille käyttäjäryhmille aiemmin luodulla käyttäjätunnuksella.
