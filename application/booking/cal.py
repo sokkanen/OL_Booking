@@ -36,8 +36,8 @@ class Month_And_Year:
 class First_And_Last:
     def __init__(self, year, month):
         self.my = Month_And_Year()
-        self.first = datetime.today().replace(year=year).replace(month=month).replace(day=1).replace(hour=00).replace(minute=00).replace(second=00).replace(microsecond=00000)
-        self.last = datetime.today().replace(year=year).replace(month=month).replace(day=monthrange(self.my.get_year(), self.my.get_month())[1]).replace(hour=23).replace(minute=59).replace(second=0).replace(microsecond=00000)
+        self.first = datetime(year, month, 1)
+        self.last = datetime(year, month, monthrange(year, month)[1])
 
     def plus_one(self):
         self.first.month + 1
