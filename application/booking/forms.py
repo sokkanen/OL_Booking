@@ -8,6 +8,8 @@ from wtforms.validators import InputRequired
 from datetime import datetime
 
 def date_not_in_past(form, field):
+    if not isinstance(field.data, datetime):
+        raise ValidationError('The date was in wrong format. Please select a date from the calendar.')
     current = datetime.now()
     if (current > field.data):
         raise ValidationError('Please choose an upcoming date')
